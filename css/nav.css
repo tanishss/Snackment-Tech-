@@ -1,0 +1,329 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Inter, system-ui, -apple-system, sans-serif;
+}
+
+/* ================= NAVBAR ================= */
+
+header {
+    position: sticky;
+    top: 0;
+}
+
+.navbar {
+    width: 100%;
+    background: #ffffff;
+    border-bottom: 1px solid #e5e7eb;
+    box-shadow: 0px 0px 0.8px 0.2px rgb(163, 162, 162);
+    padding-top: 1px;
+    padding-right: 1px;
+
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 120px;
+}
+
+/* ---------- LOGO ---------- */
+
+.nav-logo .logo {
+    height: 45px;
+    width: auto;
+    display: block;
+}
+
+/* ---------- SEARCH ---------- */
+
+.nav-search {
+    flex: 1;
+    max-width: 450px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 15px;
+    padding: 12px 18px;
+    transition: box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.nav-search input {
+    width: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 12px;
+    color: #111827;
+}
+
+.nav-search input::placeholder {
+    color: #828283;
+}
+
+.search-icon {
+    width: 15px;
+    height: 15px;
+    opacity: 0.6;
+}
+
+/* ---------- ACTIONS ---------- */
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* LOGIN BUTTON */
+
+.login-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    border-radius: 15px;
+    background: #ffffff;
+    border: 1px solid #d1d5db;
+    font-size: 12px;
+    color: #111827;
+    cursor: pointer;
+    transition: transform 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+}
+
+.login-btn img {
+    width: 14px;
+    height: 14px;
+    filter: none;
+    transition: filter 0.25s ease;
+}
+
+/* CART BUTTON */
+
+.cart-btn {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    border-radius: 15px;
+    border: none;
+    background: #65d852;
+    color: #ffffff;
+    font-size: 12px;
+    cursor: pointer;
+    transition: transform 0.25s ease, background 0.25s ease;
+
+}
+
+.cart-btn img {
+    width: 18px;
+    height: 18px;
+    filter: brightness(0) invert(1);
+    transition: transform 0.25s ease;
+}
+
+/* CART COUNT BADGE */
+
+.cart-count {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    width: 18px;
+    height: 18px;
+    background: #ef4444;
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: transform 0.25s ease;
+}
+
+/* ---------- HOVER EFFECTS ---------- */
+
+.login-btn:hover {
+    border-color: #65d852;
+    color: #65d852;
+    transform: scale(1.08);
+}
+
+.login-btn:hover img {
+    filter: brightness(0) saturate(100%) invert(48%) sepia(96%) saturate(365%) hue-rotate(73deg) brightness(95%) contrast(90%);
+}
+
+.cart-btn:hover {
+    background: #58c245;
+    transform: scale(1.08);
+    /* SAME AS LOGIN */
+}
+
+.cart-btn:hover img {
+    transform: scale(1.08);
+}
+
+.nav-search:focus-within {
+    border: 1.5px solid #65d852;
+}
+
+
+/* ---------- RESPONSIVE BASE ---------- */
+
+@media (max-width: 640px) {
+
+    .login-btn {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+
+        background: transparent;
+        border: none;
+        padding: 0;
+    }
+
+    /* 🔵 CIRCLE */
+    .login-icon {
+        width: 42px;
+        height: 42px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        border-radius: 50%;
+        border: 1px solid #d1d5db;
+        background: #ffffff;
+    }
+
+    /* 👤 ICON */
+    .login-icon img {
+        width: 18px;
+        height: 18px;
+
+        display: block;
+        filter: brightness(0); /* icon black ONLY */
+    }
+
+    /* TEXT BELOW */
+    .login-text {
+        font-size: 10px;
+        line-height: 1;
+        color: #111827;
+    }
+}
+@media (max-width: 640px) {
+
+    .cart-btn {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+
+        background: transparent;
+        border: none;
+        padding: 0;
+    }
+
+    /* 🔵 CIRCLE */
+    .cart-icon {
+        position: relative;
+
+        width: 42px;
+        height: 42px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        border-radius: 50%;
+        border: 1px solid #d1d5db;
+        background: #ffffff;
+    }
+
+    /* 🛒 ICON */
+    .cart-icon img {
+        width: 18px;
+        height: 18px;
+
+        display: block;
+        filter: brightness(0);   /* black icon */
+    }
+
+    /* 🔴 BADGE */
+    .cart-icon .cart-count {
+        position: absolute;
+        top: -4px;
+        right: -4px;
+
+        width: 16px;
+        height: 16px;
+
+        font-size: 10px;
+    }
+
+    /* TEXT BELOW */
+    .cart-text {
+        font-size: 10px;
+        line-height: 1;
+        color: #111827;
+    }
+}
+@media (max-width: 640px) {
+
+    .nav-logo img {
+        content: url("Assets/Images/Original logos/Snackment_logo_transparent.png");
+        height: 40px;
+    }
+}
+
+@media (max-width: 900px) {
+    .nav-container {
+        justify-content: space-between;
+        gap: 24px;
+    }
+}
+@media (max-width: 640px) {
+    .cart-btn:hover {
+        background: transparent;
+        transform: none;
+    }
+}
+@media (max-width: 640px) {
+    .cart-btn:active .cart-icon {
+        transform: scale(0.95);
+    }
+}
+@media (max-width: 640px) {
+    .cart-btn {
+        background: transparent;
+        border: none;
+    }
+}
+@media (max-width: 640px) {
+
+    /* completely disable desktop cart styles */
+    .cart-btn,
+    .cart-btn:hover,
+    .cart-btn:focus,
+    .cart-btn:active {
+        background: transparent !important;
+        transform: none !important;
+    }
+}
+
+@media (max-width: 640px) {
+    .cart-btn:active .cart-icon{
+        transform: scale(0.94);
+    }
+}

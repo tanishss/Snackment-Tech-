@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Complete Your Profile | Snackment</title>
+    <link rel="stylesheet" href="css/auth.css" />
+</head>
+
+<body>
+    <div class="celeb-background"></div>
+    <div class="auth-page">
+        <div class="auth-card">
+            <!-- TOP ICON -->
+            <div class="auth-icon">
+                <img src="Assets/Images/Auth logos/user.svg" alt="User">
+            </div>
+            <!-- HEADING -->
+            <h1>Complete Your Profile</h1>
+            <p class="auth-sub">
+                We're excited to have you! Just a few more details to personalize your experience.
+            </p>
+            <!-- PHONE PILL -->
+            <div class="phone-pill">
+                <img src="Assets/Images/Auth logos/phone-call.svg" alt="Phone">
+                <span>+91 5959595959</span>
+            </div>
+            <!-- FORM -->
+            <form class="auth-form">
+
+                <!-- FULL NAME -->
+                <label for="fullname">Full Name *</label>
+                <div class="input-group">
+                    <img src="Assets/Images/Auth logos/user.svg" alt="User">
+                    <input id="fullname" type="text" placeholder="Enter your full name" required />
+                </div>
+
+                <!-- EMAIL -->
+                <label for="email">Email Address *</label>
+                <div class="input-group">
+                    <img src="Assets/Images/Auth logos/envelope.svg" alt="Email">
+                    <input id="email" type="email" placeholder="your.email@example.com" required />
+                </div>
+                <p class="error-text" id="emailError">Please enter a valid email address</p>
+
+                <!-- HOSTEL + ROOM -->
+                <div class="row">
+                    <div class="field">
+                        <label>Hostel / Building *</label>
+                        <div class="input-group">
+                            <img src="Assets/Images/Auth logos/house.svg" alt="House">
+                            <input type="text" placeholder="e.g., Hostel A" required />
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label>Room Number *</label>
+                        <div class="input-group">
+                            <span class="hash">#</span>
+                            <input type="text" placeholder="e.g., 204" required />
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ADDRESS -->
+                <label for="address">Complete Address *</label>
+                <div class="input-group textarea">
+                    <img src="Assets/Images/Auth logos/marker.svg" alt="Location">
+                    <textarea id="address" placeholder="Enter your complete delivery address" required></textarea>
+                </div>
+
+                <!-- SUBMIT -->
+                <button type="submit" class="submit-btn" disabled>
+                    Create My Account
+                </button>
+
+            </form>
+            <!-- SUCCESS SCREEN -->
+            <div class="success-screen" id="successScreen">
+                <div class="success-icon">
+                    <img src="Assets/Images/Symbols/check.gif" alt="Success">
+                </div>
+
+                <h2>Account Created! 🎉</h2>
+
+                <p class="success-welcome">
+                    Welcome to Snackment, <span id="successName">User</span>!
+                </p>
+
+                <p class="success-desc">
+                    Your account has been successfully created. Get ready to enjoy
+                    cravings right to your hostel room!
+                </p>
+
+                <div class="success-features">
+                    <div class="feature">
+                        <div class="feature-box">
+                            <img src="Assets/Images/Auth logos/rocket-lunch.svg" alt="Fast">
+                        </div>
+                        <p>Fast Delivery</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-box">
+                            <img src="Assets/Images/Auth logos/brand.svg" alt="Price">
+                        </div>
+                        <p>Best Prices</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-box">
+                            <img src="Assets/Images/Auth logos/trophy-star.svg" alt="Quality">
+                        </div>
+                        <p>Top Quality</p>
+                    </div>
+                </div>
+
+                <button class="continue-btn" id="continueShopping">
+                    <img src="Assets/Images/Symbols/shopping-cart.svg" alt="Cart">
+                    <span>Continue Shopping</span>
+                </button>
+
+                <p class="success-footer">
+                     Start exploring our amazing collection of snacks & essentials 🛍️
+                </p>
+            </div>
+
+            <!-- TERMS -->
+            <p class="terms">
+                By creating an account, you agree to our
+                <a href="#">Terms of Service</a> and
+                <a href="#">Privacy Policy</a>
+            </p>
+
+        </div>
+
+        <!-- HELP -->
+        <p class="help">
+            Need help? <a href="#">Contact Support</a>
+        </p>
+    </div>
+
+    <script src="js/auth.js"></script>
+
+</body>
+
+</html>

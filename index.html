@@ -12,6 +12,9 @@
     <link rel="stylesheet" href="css/featured-products.css">
     <link rel="stylesheet" href="css/hostel-life.css">
     <link rel="stylesheet" href="css/modal.css">
+    <link rel="stylesheet" href="css/cart.css">
+    <link rel="stylesheet" href="css/active-order.css">
+
 </head>
 
 <body>
@@ -34,9 +37,15 @@
                     <div class="nav-actions">
                         <button class="login-btn"> <span class="login-icon"> <img src="Assets/Images/Symbols/user.svg"
                                     alt="User"> </span> <span class="login-text">Login</span> </button>
+                        <button class="logout-btn" style="display:none;">
+                            <span class="login-icon">
+                                <img src="Assets/Images/Symbols/user.svg" alt="User">
+                            </span>
+                            <span class="login-text">Logout</span>
+                        </button>
                         <button class="cart-btn"> <span class="cart-icon"> <img
                                     src="Assets/Images/Symbols/shopping-cart.svg" alt="Shopping Cart"> </span> <span
-                                class="cart-text"> Cart </span> <span class="cart-count"> 3 </span> </button>
+                                class="cart-text"> Cart </span> <span class="cart-count" hidden>0</span> </button>
                     </div>
                 </div>
             </nav>
@@ -108,7 +117,7 @@
                                 </div>
                                 <div class="card-info">
                                     <h4>Diet Coke</h4>
-                                    <span class="price">₹28</span>
+                                    <span class="price">₹35</span>
                                 </div>
                                 <button class="add-btn">+</button>
                             </div>
@@ -399,7 +408,7 @@
                 <div class="footer-col">
                     <h3>Quick Links</h3>
                     <ul>
-                        <li> <a href="" target="_blank"> About Us </a> </li>
+                        <li> <a href="HTML/AboutUs.html" target="_blank"> About Us </a> </li>
                         <li> <a href="" target="_blank"> How It Works </a> </li>
                         <li> <a href="" target="_blank"> Categories </a> </li>
                         <li> <a href="" target="_blank"> Offers </a> </li>
@@ -421,7 +430,7 @@
                 <div class="policies">
                     <span> <a href="" target="_blank"> Privacy Policy </a> </span>
                     <span> <a href="" target="_blank"> Terms of Service </a> </span>
-                    <span> <a href="" target="_blank"> Cookie Policy </a> </span>
+                    <span> <a href="HTML/cookies.html" target="_blank"> Cookie Policy </a> </span>
                 </div>
             </div>
 
@@ -446,7 +455,7 @@
                     placeholder="Enter 10 digit number" class="phone-input-field" />
             </div>
 
-            <button class="continue-btn" disabled>Continue</button>
+            <button type="button" class="continue-btn" disabled>Continue</button>
 
             <p class="terms">
                 By continuing, you agree to our
@@ -478,7 +487,197 @@
 
             <button class="verify-btn" disabled>Verify & Continue</button>
         </div>
+        <!-- WELCOME BACK STEP -->
+        <div class="auth-step" id="welcomeStep">
+            <div class="success-wrapper">
+                <img src="Assets/Images/Symbols/check.gif" alt="Success" class="success-icon-img" />
+            </div>
+
+            <h2 class="welcome-title">
+                Welcome Back!
+            </h2>
+
+            <p class="welcome-sub">
+                Great to see you again!
+            </p>
+
+            <p class="welcome-desc">
+                You're all set to continue shopping
+            </p>
+
+            <button class="start-btn" id="welcomeContinue">
+                Start Shopping
+            </button>
+
+        </div>
+
     </div>
+    <!-- TOAST -->
+    <div id="toast" class="toast">Item added to cart</div>
+    <!-- ================= CART DRAWER ================= -->
+    <aside class="cart-drawer" id="cartDrawer">
+
+        <!-- Cart Header -->
+        <div class="cart-header">
+            <div class="cart-title">
+                <h3>Your Cart</h3>
+                <p class="cart-subtitle">Delivering to your hostel</p>
+            </div>
+            <button class="cart-close">×</button>
+        </div>
+
+        <!-- Cart Body -->
+        <div class="cart-body" id="cartBody">
+
+            <!-- EMPTY CART STATE (default) -->
+            <div class="cart-empty">
+                <div class="empty-icon-circle">
+                    <img src="Assets/Images/Symbols/shopping-cart.svg" alt="Empty Cart">
+                </div>
+                <h4>Your cart is empty</h4>
+                <p class="add-some-snacks">Add some snacks to get started 😋</p>
+                <button class="start-shopping-btn">Start Shopping</button>
+            </div>
+
+            <!-- CART ITEMS WILL BE INJECTED BY JS -->
+            <!--
+        <div class="cart-item">
+            <img src="..." alt="">
+            <div class="item-info">
+                <h5>Product Name</h5>
+                <span class="item-price">₹18</span>
+            </div>
+            <div class="item-qty">
+                <button>-</button>
+                <span>1</span>
+                <button>+</button>
+            </div>
+        </div>
+        -->
+
+        </div>
+
+        <!-- Cart Footer -->
+        <div class="cart-footer" id="cartFooter" hidden>
+            <div class="cart-subtotal">
+                <div class="subtotal-left">
+                    <span class="subtotal-label">Subtotal</span>
+                    <span class="subtotal-items" id="cartItemsCount">0 items</span>
+                </div>
+
+                <span id="cartSubtotal" class="subtotal-amount">₹0</span>
+            </div>
+
+            <button class="checkout-btn">
+                Proceed to Checkout
+            </button>
+
+            <p class="free-delivery-text" id="freeDeliveryText">
+                Free delivery on orders above ₹199
+            </p>
+
+            <div class="free-delivery-progress">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="freeDeliveryProgress"></div>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Celebration Confetti -->
+    <div id="celebration" class="celebration"></div>
+
+    <!-- ================= ACTIVE ORDER BAR ================= -->
+
+    <div id="active-order-bar" class="active-order-bar active-order-hidden">
+        <div class="active-order-left">
+            <div class="active-order-icon">
+                <img id="active-order-icon" src="Assets/Images/Symbols/packing.svg" alt="">
+            </div>
+            <div class="active-order-content">
+                <span class="active-order-label">
+                    ORDER IN PROGRESS
+                </span>
+                <h3 id="active-order-status">
+                    Packing your order
+                </h3>
+                <div class="active-order-meta">
+                    <img id="active-order-meta-icon" src="Assets/Images/Symbols/clock.svg" alt="">
+                    <span id="active-order-time">
+                        Estimated: 5–7 min
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <button id="view-order-btn">
+            <img src="Assets/Images/Symbols/angle-small-right.svg" alt="">
+        </button>
+
+    </div>
+
+    <!-- ==========================================
+     ACTIVE ORDER MODAL
+========================================== -->
+
+    <div id="activeOrderOverlay" class="active-order-overlay">
+        <div class="active-order-modal">
+
+            <div class="modal-icon-wrapper">
+
+                <div class="modal-icon">
+
+                    <img src="Assets/Images/Symbols/truck-side.svg" alt="Truck">
+
+                </div>
+
+            </div>
+
+            <h2 id="active-order-modal-title">
+                Order in Progress
+            </h2>
+            <p id="active-order-modal-description">
+                You already have an active order.
+                Please finish your current order before
+                placing another one.
+            </p>
+
+            <div class="active-order-actions">
+
+                <button id="continueBrowsingBtn">
+
+                    Continue Browsing
+
+                </button>
+
+                <button id="viewOrderModalBtn">
+
+                    View Order
+
+                </button>
+
+            </div>
+
+            <div class="modal-footer">
+
+                <span></span>
+
+                <div class="secure-label">
+
+                    <img src="Assets/Images/Symbols/secure.svg" alt="">
+
+                    Secure • Snackment
+
+                </div>
+
+                <span></span>
+
+            </div>
+
+        </div>
+    </div>
+    <!-- ================= END CART DRAWER ================= -->
+
 
     <script>
         const logo = document.querySelector('.nav-logo img');
@@ -495,6 +694,12 @@
         window.addEventListener('resize', updateLogo);
     </script>
     <script src="js/modal.js"></script>
+    <script src="js/order-status.js"></script>
+    <script src="js/order-store.js"></script>
+    <script src="js/active-order.js"></script>
+    <script src="js/home.js"></script>
+    <script src="js/cart.js"></script>
+    
 </body>
 
 </html>

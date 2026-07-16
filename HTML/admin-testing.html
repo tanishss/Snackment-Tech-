@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snackment Admin Testing</title>
+    <link rel="stylesheet" href="../CSS/admin-testing.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <h1>
+            Snackment Admin Testing
+        </h1>
+        <p>
+            Control Order Status without Backend
+        </p>
+
+        <!-- ========================= -->
+        <section class="panel">
+
+            <h2>
+
+                Connection
+
+            </h2>
+
+            <div class="connection-box">
+
+                <div class="connection-status">
+
+                    <span class="status-dot" id="status-dot">
+                    </span>
+
+                    <span id="connection-text">
+
+                        Not Connected
+
+                    </span>
+
+                </div>
+
+                <button id="connect-btn">
+
+                    Connect Order Page
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+
+        <section class="panel">
+
+            <h2>
+
+                Current Backend Status
+
+            </h2>
+
+            <div class="current-backend-status" id="backend-status">
+
+                WAITING...
+
+            </div>
+
+        </section>
+        <section class="panel">
+            <h2>
+                Timeline Controls
+            </h2>
+            <div class="button-grid">
+                <button id="packing-btn">
+                    Packing
+                </button>
+                <button id="pickup-btn">
+                    Ready For Pickup
+                </button>
+                <button id="delivery-btn">
+                    Out For Delivery
+                </button>
+                <button id="delivered-btn">
+                    Delivered
+                </button>
+                <button id="reject-btn">
+                    Reject Order
+                </button>
+            </div>
+        </section>
+
+        <!-- ========================= -->
+
+        <section class="panel">
+            <h2>
+                Utilities
+            </h2>
+            <div class="button-grid">
+                <button id="reset-btn">
+                    Reset Timeline
+                </button>
+            </div>
+        </section>
+    </div>
+    <script src="../JS/admin-testing.js"></script>
+</body>
+
+</html>

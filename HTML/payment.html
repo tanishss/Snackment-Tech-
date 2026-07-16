@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment | Snackment</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../CSS/payment.css">
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+
+    <header class="payment-header">
+
+        <button class="back-btn" onclick="history.back()">
+            <i class="fa-solid fa-arrow-left"></i>
+            <span>Back</span>
+        </button>
+
+        <a href="../index.html" class="payment-logo">
+            <img src="../Assets/Images/Original logos/Snackment_logotext_transparent.png" alt="Snackment Logo">
+        </a>
+
+    </header>
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="payment-page">
+
+        <!-- Left Side -->
+
+        <section class="payment-left">
+
+            <div class="page-heading">
+                <h1>Payment Method</h1>
+                <p>Choose how you'd like to pay for this order.</p>
+            </div>
+
+            <!-- Scan on Delivery -->
+
+            <div class="payment-card active" data-method="scan">
+
+                <div class="payment-icon">
+                    <img src="../Assets/Images/Symbols/qr.svg" alt="">
+                </div>
+
+                <div class="payment-content">
+                    <h3>Scan on Delivery</h3>
+                    <p class="payment-description">Scan the QR code when collecting your order from Snackment.</p>
+                    <span class="payment-note">No online payment required.</span>
+                </div>
+
+                <div class="payment-status">
+
+                    <span class="recommended">
+                        Recommended
+                    </span>
+
+                    <div class="selected-check">
+                        <i class="fa-solid fa-check"></i>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- UPI -->
+
+            <div class="payment-card disabled">
+
+                <div class="payment-icon">
+                    <img src="../Assets/Images/Symbols/phone.svg" alt="">
+                </div>
+
+                <div class="payment-content">
+                    <h3>UPI Payment</h3>
+                    <p class="payment-description">Pay instantly using your preferred UPI app.</p>
+                    <span class="payment-note">Google Pay • PhonePe • Paytm</span>
+                </div>
+
+                <div class="payment-status">
+
+                    <span class="coming-soon">
+                        Coming Soon
+                    </span>
+
+                </div>
+
+            </div>
+
+            <!-- Info -->
+
+            <div class="payment-info">
+
+                <img class="info-icon" src="../Assets/Images/Symbols/info.svg" alt="">
+
+                <div class="info-text">
+                    <h4>Your payment information is secure.</h4>
+                    <p>Snackment never stores your payment credentials.</p>
+                </div>
+
+                <img class="secure-icon" src="../Assets/Images/Symbols/secure.svg" alt="">
+
+            </div>
+
+        </section>
+
+        <!-- Right Side -->
+
+        <aside class="order-summary">
+
+            <h2>Order Summary</h2>
+
+            <div class="summary-row">
+                <span>Items Total <small id="item-count">(0 items)</small></span>
+                <span id="items-total">₹0</span>
+            </div>
+
+            <div class="summary-row">
+                <span>Delivery</span>
+                <span id="delivery-charge">₹0</span>
+            </div>
+
+            <div class="summary-divider"></div>
+
+            <div class="summary-total">
+                <span>Total Payable</span>
+                <span id="grand-total">₹0</span>
+            </div>
+
+            <button id="continue-payment-btn">
+                Continue
+                <i class="fa-solid fa-arrow-right"></i>
+            </button>
+
+        </aside>
+
+    </main>
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer id="footer"></footer>
+
+    <!-- JS -->
+    <script src="../JS/order-store.js"></script>
+    <script src="../JS/payment.js"></script>
+
+
+</body>
+
+</html>

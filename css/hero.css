@@ -258,6 +258,7 @@
   background: #65d852;
   color: white;
   border: none;
+  pointer-events: none;
 }
 .card-1 .card-image {
   height: 70%;

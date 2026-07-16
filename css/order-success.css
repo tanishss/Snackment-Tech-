@@ -1,0 +1,1448 @@
+/* ==========================================
+   RESET
+========================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary: #65D852;
+    --primary-hover: #58C245;
+    --heading: #1F2940;
+    --text: #667085;
+    --light-text: #98A2B3;
+    --background: #F8FAFC;
+    --card: #FFFFFF;
+    --border: #E5E7EB;
+    --shadow:
+        0 12px 35px rgba(15, 23, 42, .05);
+    --radius: 26px;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    background: var(--background);
+    color: var(--heading);
+}
+
+/* ==========================================
+   HEADER
+========================================== */
+
+.success-header {
+    height: 64px;
+    background: white;
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.back-btn {
+    position: absolute;
+    left: 200px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    color: #374151;
+    transition: .25s;
+}
+
+.back-btn:hover {
+    color: var(--heading);
+}
+
+.header-logo img {
+    height: 42px;
+    display: block;
+}
+
+/* ==========================================
+   PAGE
+========================================== */
+
+.success-page {
+    width: min(1150px, 94%);
+    margin: 42px auto 70px;
+}
+
+/* ==========================================
+   HERO CARD
+========================================== */
+
+.hero-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 30px;
+    padding: 54px 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: var(--shadow);
+    margin-bottom: 34px;
+}
+
+/* ==========================================
+   SUCCESS ANIMATION
+========================================== */
+
+.success-animation {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 28px;
+}
+
+.success-ring {
+    position: absolute;
+    width: 118px;
+    height: 118px;
+    border-radius: 50%;
+    background: #65d8521f;
+    transform: scale(.3);
+    opacity: 0;
+}
+
+.success-icon {
+    width: 82px;
+    height: 82px;
+    border-radius: 50%;
+    background: #65D852;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow:
+        0 10px 28px rgba(101, 216, 82, .25);
+    transform: scale(.3);
+    opacity: 0;
+
+}
+
+.success-icon img {
+    width: 34px;
+    display: block;
+    filter: brightness(0) invert(1);
+
+}
+
+/* ==========================================
+   HERO TEXT
+========================================== */
+
+.hero-card h1 {
+    font-size: 40px;
+    font-weight: 650;
+    color: var(--heading);
+    line-height: 1.1;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(18px);
+}
+
+.hero-card p {
+    margin-top: 18px;
+    width: 100%;
+    max-width: 620px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.7;
+    color: var(--text);
+    opacity: 0;
+    transform: translateY(18px);
+}
+
+/* ==========================================
+   META PILLS
+========================================== */
+
+.hero-meta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 34px;
+}
+
+.meta-pill {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 11px 18px;
+    border-radius: 999px;
+    font-size: 15px;
+    font-weight: 600;
+    background: #F3F4F6;
+    color: #7A7F8C;
+    opacity: 0;
+    transform: translateY(16px);
+}
+
+.meta-pill:first-child {
+    background: #F0FBEE;
+    color: #3d6f35;
+}
+
+.meta-pill img {
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
+}
+
+.meta-pill span {
+    white-space: nowrap;
+}
+
+.hero-meta .meta-pill:nth-child(1) img {
+    filter: brightness(0) saturate(100%) invert(55%) sepia(17%) saturate(890%) hue-rotate(61deg) brightness(88%) contrast(92%);
+}
+
+.hero-meta .meta-pill:nth-child(2) img,
+.hero-meta .meta-pill:nth-child(3) img {
+    filter: brightness(0) saturate(100%) invert(52%) sepia(8%) saturate(302%) hue-rotate(183deg) brightness(90%) contrast(90%);
+}
+
+/* ==========================================
+   HERO INITIAL ANIMATION STATES
+========================================== */
+
+.hero-card.show .success-ring {
+    animation: ringPop .55s ease forwards;
+}
+
+.hero-card.show .success-icon {
+    animation: iconPop .45s .15s ease forwards;
+}
+
+.hero-card.show h1 {
+    animation: fadeUp .45s .45s ease forwards;
+}
+
+.hero-card.show p {
+    animation: fadeUp .45s .62s ease forwards;
+}
+
+.hero-card.show .meta-pill:nth-child(1) {
+    animation: fadeUp .4s .85s ease forwards;
+}
+
+.hero-card.show .meta-pill:nth-child(2) {
+    animation: fadeUp .4s .95s ease forwards;
+}
+
+.hero-card.show .meta-pill:nth-child(3) {
+    animation: fadeUp .4s 1.05s ease forwards;
+}
+
+/* ==========================================
+   KEYFRAMES
+========================================== */
+
+@keyframes iconPop {
+    0% {
+        transform: scale(.3);
+        opacity: 0;
+    }
+
+    60% {
+        transform: scale(1.12);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes ringPop {
+    0% {
+        transform: scale(.2);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==========================================
+   PART 2
+========================================== */
+
+/* ==========================================
+   CONTENT GRID
+========================================== */
+
+.content-grid {
+    display: grid;
+    grid-template-columns: 2fr 1.1fr;
+    gap: 30px;
+}
+
+.left-column,
+.right-column {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+/* ==========================================
+   COMMON CARD
+========================================== */
+
+.status-card,
+.delivery-card,
+.summary-card,
+.support-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 28px;
+    box-shadow: var(--shadow);
+}
+
+
+/* ==========================================
+   CARD HEADER
+========================================== */
+
+.card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 34px;
+}
+
+.card-header h2 {
+    font-size: 25px;
+    font-weight: 700;
+    color: var(--heading);
+}
+
+.card-header img {
+    width: 24px;
+    height: 24px;
+}
+
+.live-badge {
+    background: #EDFAEB;
+    color: #3d6f35;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 999px;
+    animation: livePulse 2s infinite;
+}
+
+/* ==========================================
+   ORDER STATUS CARD
+========================================== */
+
+.status-card {
+    padding: 35px;
+}
+
+/* ==========================================
+   TIMELINE
+========================================== */
+
+.status-timeline {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    margin: 50px 0 60px;
+}
+
+/* Base line */
+
+.timeline-line {
+    position: absolute;
+    top: 26px;
+    left: 80px;
+    right: 80px;
+    height: 4px;
+    background: #E5E7EB;
+    border-radius: 999px;
+    overflow: hidden;
+    transform-origin: left;
+    transform: scaleX(0);
+    z-index: 1;
+}
+
+/* ==========================================
+   STEP
+========================================== */
+
+.timeline-step {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 180px;
+}
+
+.step-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: #F3F4F6;
+    border: 2px solid #E5E7EB;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: .35s;
+}
+
+.step-icon img {
+    width: 24px;
+    height: 24px;
+}
+
+/* Completed */
+
+
+.timeline-step.completed img {
+    filter: brightness(0) invert(1);
+}
+
+/* Active */
+.timeline-step.active .step-icon {
+    background: white;
+    border: 3px solid var(--primary);
+    box-shadow:
+        0 0 0 10px rgba(101, 216, 82, .15);
+}
+
+/* Labels */
+
+.timeline-step h4 {
+    margin-top: 18px;
+    margin-bottom: 4px;
+    line-height: 1.2;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--heading);
+    text-align: center;
+    transition: color .35s ease;
+}
+
+.timeline-step span {
+    margin-top: 0;
+    line-height: 1.2;
+    font-size: 14px;
+    color: #98A2B3;
+    text-align: center;
+    transition: color .35s ease;
+}
+
+.timeline-step.completed h4 {
+    color: var(--primary);
+}
+
+.timeline-step.pending h4,
+.timeline-step.pending span {
+    color: #ADB3BD;
+    transition: color .35s ease;
+}
+
+.timeline-step.pending .step-icon {
+    background: #F3F4F6;
+    border: 3px solid #D8DCE3;
+    box-shadow: none;
+    transition: all .4s ease;
+}
+
+.timeline-step.pending img {
+
+    filter:
+        brightness(0) saturate(100%) invert(73%) sepia(7%) saturate(320%) hue-rotate(184deg) brightness(90%) contrast(87%);
+
+}
+
+/* ==========================================
+   CURRENT STATUS
+========================================== */
+
+.current-status {
+    border: 1.5px solid #D6F5D2;
+    background: #F7FDF5;
+    border-radius: 22px;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.current-status-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 13px;
+    background: #E3F7DE;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.current-status-icon img {
+    width: 22px;
+    filter:
+        brightness(0) saturate(100%) invert(71%) sepia(56%) saturate(676%) hue-rotate(58deg) brightness(94%) contrast(80%);
+    transition:
+
+        filter .35s ease,
+        transform .35s ease;
+}
+
+.current-status-content {
+    flex: 1;
+}
+
+.status-top {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 5px;
+}
+
+.status-top h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--heading);
+    transition: all .35s ease;
+}
+
+.active-badge {
+    background: #FFF3D9;
+    color: #D97706;
+    padding: 2px 8px;
+    border-radius: 999px;
+    font-size: 10px;
+    font-weight: 700;
+    transition: all .35s ease;
+}
+
+.status-bottom {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #667085;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.status-bottom img {
+    width: 15px;
+    filter:
+        brightness(0) saturate(100%) invert(72%) sepia(8%) saturate(385%) hue-rotate(184deg) brightness(90%) contrast(88%);
+}
+
+.status-bottom strong {
+    color: var(--heading);
+    font-weight: 600;
+    transition: all .35s ease;
+}
+
+/* ==========================================
+   DELIVERY DETAILS
+========================================== */
+
+.delivery-card {
+    padding: 35px;
+}
+
+.delivery-card .card-header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 18px;
+    margin-bottom: 28px;
+}
+
+.delivery-grid {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    row-gap: 22px;
+    column-gap: 40px;
+}
+
+.delivery-grid div {
+    color: #98A2B3;
+    font-size: 17px;
+    font-weight: 500;
+}
+
+.delivery-grid strong {
+    color: var(--heading);
+    font-size: 17px;
+    font-weight: 600;
+    text-align: right;
+}
+
+#arrival-time {
+    color: var(--primary);
+}
+
+.delivery-card .header-icon {
+    width: 58px;
+    height: 58px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #F0FBEE;
+    border-radius: 18px;
+    flex-shrink: 0;
+}
+
+.delivery-card .header-icon img {
+    width: 28px;
+    height: 28px;
+    filter:
+        brightness(0) saturate(100%) invert(73%) sepia(23%) saturate(1197%) hue-rotate(58deg) brightness(98%) contrast(89%);
+}
+
+@keyframes livePulse {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: .6;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+
+/* ==========================================
+   PART 3
+========================================== */
+
+/* ==========================================
+   ORDER SUMMARY
+========================================== */
+
+.summary-card {
+    padding: 35px;
+}
+
+.summary-card .card-header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 18px;
+    margin-bottom: 28px;
+}
+
+
+.summary-card .header-icon {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #F0FBEE;
+    border-radius: 18px;
+    flex-shrink: 0;
+}
+
+.summary-card .header-icon img {
+    width: 24px;
+    height: 24px;
+    filter:
+        brightness(0) saturate(100%) invert(73%) sepia(23%) saturate(1197%) hue-rotate(58deg) brightness(98%) contrast(89%);
+}
+
+#summary-items {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.summary-divider {
+    height: 1px;
+    background: var(--border);
+    margin: 15px 0;
+}
+
+.summary-row,
+.summary-total {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.summary-row {
+    margin-bottom: 10px;
+    color: #494e5b;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.summary-row strong {
+    color: black;
+}
+
+.summary-total {
+    margin-top: 20px;
+}
+
+.summary-total span {
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.summary-total strong {
+    font-size: 25px;
+    font-weight: 700;
+    color: var(--heading);
+}
+
+/* ==========================================
+   PAYMENT METHOD
+========================================== */
+
+.payment-method {
+    margin-top: 28px;
+    background: #F9FAFB;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 18px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.payment-method>img:first-child {
+    width: 24px;
+    height: 24px;
+}
+
+.payment-method img:first-child {
+    filter:
+        brightness(0) saturate(100%) invert(72%) sepia(8%) saturate(385%) hue-rotate(184deg) brightness(90%) contrast(88%);
+}
+
+.payment-method>img:last-child {
+    width: 20px;
+    height: 20px;
+    margin-left: auto;
+}
+
+.payment-method img:last-child {
+    filter:
+        brightness(0) saturate(100%) invert(71%) sepia(56%) saturate(676%) hue-rotate(58deg) brightness(94%) contrast(91%);
+}
+
+.payment-method small {
+    display: block;
+    color: #98A2B3;
+}
+
+.payment-method h4 {
+    font-size: 17px;
+    color: var(--heading);
+}
+
+/* ==========================================
+   SUPPORT CARD
+========================================== */
+
+.support-card {
+    margin-top: 30px;
+    padding: 26px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 46.5vw;
+    background-color: #F0F6FF;
+    border: 1px solid #DDEBFE;
+}
+
+.support-icon {
+    width: 58px;
+    height: 58px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #DBEAFE;
+    border-radius: 18px;
+    flex-shrink: 0;
+}
+
+.support-left {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.support-icon img {
+    width: 30px;
+    height: 30px;
+    filter:
+        brightness(0) saturate(100%) invert(29%) sepia(99%) saturate(1457%) hue-rotate(214deg) brightness(93%) contrast(92%);
+}
+
+.support-left h3 {
+    font-size: 18px;
+    color: #1E4ED8;
+    margin-bottom: 0px;
+}
+
+.support-left p {
+    color: #4083f5;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.contact-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 48px;
+    padding: 0 22px;
+    border-radius: 14px;
+    text-decoration: none;
+    color: #1E4ED8;
+    font-size: 17px;
+    font-weight: 650;
+    transition: .25s;
+}
+
+.contact-btn:hover {
+    color: #23293b;
+}
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+@media (max-width:1200px) {
+    .success-page {
+        width: 95%;
+    }
+
+    .content-grid {
+        grid-template-columns: 1fr 360px;
+    }
+}
+
+@media (max-width:900px) {
+    .content-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .timeline-step {
+        width: 150px;
+    }
+
+    .timeline-line {
+        left: 60px;
+        right: 60px;
+    }
+
+    .delivery-grid {
+        grid-template-columns: 160px 1fr;
+    }
+
+    .support-card {
+        width: 100%;
+    }
+
+    .support-left {
+        flex: 1;
+    }
+
+    .contact-btn {
+        flex-shrink: 0;
+    }
+
+    .back-btn {
+        left: 30px;
+        gap: 8px;
+        font-size: 14px;
+    }
+
+    .back-btn img {
+        width: 18px;
+        height: 18px;
+    }
+}
+
+@media (max-width:640px) {
+    .success-header {
+        height: 60px;
+    }
+
+    .back-btn {
+        left: 18px;
+        font-size: 14px;
+    }
+
+    .header-logo img {
+        height: 36px;
+    }
+
+    .success-page {
+        width: 92%;
+        margin: 30px auto 50px;
+    }
+
+    .hero-card {
+        width: 100%;
+        padding: 34px 18px;
+        border-radius: 24px;
+    }
+
+    .hero-card h1 {
+        width: 100%;
+        font-size: 22px;
+        line-height: 1.2;
+    }
+
+    .hero-card p {
+        width: 100%;
+        max-width: none;
+        font-size: 15px;
+        line-height: 1.6;
+    }
+
+    .hero-meta {
+        width: 100%;
+        gap: 12px;
+    }
+
+    .meta-pill {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .status-card,
+    .delivery-card,
+    .summary-card {
+        padding: 22px;
+    }
+
+    .card-header h2 {
+        font-size: 24px;
+    }
+
+    .status-timeline {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0;
+        overflow: visible;
+        margin: 35px 0 45px;
+    }
+
+    .timeline-step {
+        min-width: 0;
+        width: 100%;
+    }
+
+    .timeline-line,
+    .timeline-progress {
+        left: calc(16.66%);
+        right: calc(16.66%);
+    }
+
+    .step-icon {
+        width: 48px;
+        height: 48px;
+        position: relative;
+        z-index: 10;
+        background: white;
+    }
+
+    .step-icon img {
+        width: 20px;
+    }
+
+    .status-top {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .current-status-icon {
+        width: 58px;
+        height: 58px;
+        border-radius: 16px;
+    }
+
+    .current-status-icon img {
+        width: 26px;
+    }
+
+    .status-top h3 {
+        font-size: 20px;
+        line-height: 1.3;
+    }
+
+    .status-bottom {
+        gap: 8px;
+        font-size: 15px;
+        line-height: 1.4;
+    }
+
+    .status-bottom img {
+        width: 14px;
+    }
+
+    .current-status {
+        padding: 18px 16px;
+        gap: 14px;
+    }
+
+    .current-status {
+        align-items: flex-start;
+    }
+
+    .delivery-grid {
+        grid-template-columns: 1fr;
+        row-gap: 12px;
+    }
+
+    .delivery-grid strong {
+        text-align: left;
+        margin-bottom: 10px;
+    }
+
+    .summary-total strong {
+        font-size: 28px;
+    }
+
+    .support-card {
+        width: 100%;
+        padding: 22px;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        text-align: center;
+    }
+
+    .support-left {
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        text-align: left;
+        gap: 16px;
+    }
+
+    .contact-btn {
+        width: 100%;
+        max-width: 260px;
+        height: 48px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        margin: 0 auto;
+
+        background: #fff;
+        border: 1px solid #DDEBFE;
+        border-radius: 14px;
+
+        font-size: 16px;
+        font-weight: 600;
+        color: #1E4ED8;
+    }
+
+    .support-icon {
+        width: 52px;
+        height: 52px;
+        border-radius: 16px;
+        flex-shrink: 0;
+    }
+
+    .support-icon img {
+        width: 26px;
+        height: 26px;
+    }
+
+
+    .support-left h3 {
+        font-size: 17px;
+    }
+
+    .support-left p {
+        font-size: 14px;
+        line-height: 1.5;
+    }
+
+    .active-badge {
+        display: none;
+    }
+
+    .delivery-card .header-icon {
+        width: 52px;
+        height: 52px;
+        border-radius: 16px;
+    }
+
+    .delivery-card .header-icon img {
+        width: 24px;
+    }
+
+    .delivery-card .card-header {
+        margin-bottom: 22px;
+        gap: 14px;
+    }
+
+    .delivery-card .card-header h2 {
+        font-size: 22px;
+    }
+
+    .delivery-grid div {
+        font-size: 15px;
+        font-weight: 600;
+    }
+
+    .delivery-grid strong {
+        font-size: 18px;
+        line-height: 1.45;
+    }
+
+    #arrival-time {
+        font-size: 20px;
+        font-weight: 700;
+    }
+}
+
+/* ==========================================
+   JS HELPER CLASSES
+========================================== */
+
+.hidden {
+    display: none !important;
+}
+
+.fade-in {
+    animation: fadeUp .45s ease forwards;
+}
+
+.scale-in {
+    animation: iconPop .45s ease forwards;
+}
+
+.progress-fill {
+    animation: progressFill .9s ease forwards;
+}
+
+@keyframes progressFill {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 66%;
+    }
+}
+
+/* ===================================================
+   TIMELINE ANIMATION STATES
+=================================================== */
+
+/* Green Line */
+
+.timeline-progress {
+    position: absolute;
+    top: 26px;
+    left: 80px;
+    width: 0;
+    height: 4px;
+    background: #65D852;
+    border-radius: 999px;
+}
+
+/* Initial Hidden */
+
+.timeline-step {
+    opacity: 0;
+}
+
+.timeline-step .step-icon {
+    opacity: 0;
+}
+
+.timeline-step.show .step-icon {
+    opacity: 1;
+}
+
+.timeline-progress {
+    z-index: 1;
+}
+
+.step-icon {
+    position: relative;
+    z-index: 5;
+    overflow: visible;
+}
+
+.timeline-step {
+    z-index: 6;
+}
+
+.step-label {
+    opacity: 0;
+    transform: translateY(14px);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+/* ===================================================
+   SHOW STATES
+=================================================== */
+
+.timeline-line.show {
+    animation: drawGreyLine .55s ease forwards;
+}
+
+.timeline-step.show {
+    opacity: 1;
+}
+
+.timeline-step.show .step-icon {
+    animation: circlePop .45s ease forwards;
+}
+
+.timeline-step.show .step-label {
+    animation: labelReveal .4s .12s ease forwards;
+}
+
+/* ===================================================
+   GREEN PROGRESS
+=================================================== */
+
+.timeline-progress.fill {
+    animation: fillPacking .8s ease forwards;
+}
+
+.timeline-progress.complete {
+    animation: fillComplete .7s ease forwards;
+}
+
+@keyframes fillComplete {
+    from {
+        width: calc(50% - 90px);
+    }
+
+    to {
+        width: calc(100% - 160px);
+    }
+}
+
+.timeline-step.completed .step-icon {
+    background: #65D852;
+    border: 3px solid #65D852;
+    box-shadow: none;
+    transition:
+        background .45s ease,
+        border-color .45s ease,
+        box-shadow .45s ease,
+        transform .35s ease;
+}
+
+.timeline-step.completed .step-icon img {
+    filter: brightness(0) invert(1);
+    transition: filter .35s ease;
+}
+
+/* ===================================================
+   PACKING ACTIVE
+=================================================== */
+
+.timeline-step.active .step-icon {
+    background: #fff;
+    border: 3px solid #65D852;
+    animation:
+        packingGlow 2s ease-in-out infinite,
+        packingScale 2s ease-in-out infinite;
+    transition:
+        background .4s,
+        border-color .4s,
+        box-shadow .4s;
+}
+
+.timeline-step.active img {
+    filter: none;
+    transition: filter .35s ease;
+}
+
+/* ===================================================
+   KEYFRAMES
+=================================================== */
+
+@keyframes drawGreyLine {
+    from {
+        transform: scaleX(0);
+    }
+
+    to {
+        transform: scaleX(1);
+    }
+}
+
+@keyframes circlePop {
+    0% {
+        opacity: 0;
+        transform: scale(.25);
+    }
+
+    65% {
+        opacity: 1;
+        transform: scale(1.15);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes labelReveal {
+    from {
+        opacity: 0;
+        transform: translateY(14px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fillPacking {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: calc(50% - 90px);
+    }
+}
+
+@keyframes packingGlow {
+    0% {
+        box-shadow:
+            0 0 0 rgba(101, 216, 82, 0);
+    }
+
+    50% {
+        box-shadow:
+            0 0 0 12px rgba(101, 216, 82, .18);
+    }
+
+    100% {
+        box-shadow:
+            0 0 0 rgba(101, 216, 82, 0);
+    }
+}
+
+@keyframes packingScale {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.status-changing {
+    animation: statusFade .45s ease;
+}
+
+@keyframes statusFade {
+    0% {
+        opacity: .35;
+        transform: translateY(10px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes completeStep {
+    0% {
+        transform: scale(.82);
+    }
+
+    55% {
+        transform: scale(1.12);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.timeline-step.completed .step-icon {
+    animation: completeStep .45s ease;
+}
+
+.active-badge.active {
+    background: #FFF3D9;
+    color: #D97706;
+}
+
+.active-badge.live {
+    background: #E6F7ED;
+    color: #16A34A;
+}
+
+.active-badge.ready {
+    background: #ECFDF3;
+    color: #15803D;
+}
+
+.active-badge.done {
+    background: #DCFCE7;
+    color: #15803D;
+}
+
+.active-badge.error {
+    background: #FEE2E2;
+    color: #DC2626;
+}

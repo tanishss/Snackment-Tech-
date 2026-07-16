@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Checkout | Snackment</title>
+  <link rel="stylesheet" href="../css/checkout.css">
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header class="checkout-header">
+    <div class="checkout-nav">
+
+      <button id="backToCart" class="back-to-cart" onclick="history.back()">
+        ← Back to cart
+      </button>
+
+      <div class="checkout-logo">
+        <img src="../Assets/Images/Original logos/Snackment_logotext_transparent.png" alt="Snackment">
+      </div>
+
+    </div>
+  </header>
+
+
+  <!-- MAIN -->
+  <div class="checkout-container">
+
+    <!-- LEFT -->
+    <div class="checkout-left">
+
+      <!-- DELIVERY ADDRESS -->
+      <div class="card address-card">
+        <div class="card-header">
+          <div class="icon-circle">
+            <img src="../Assets/Images/Auth logos/marker.svg" alt="Location">
+          </div>
+          <h3>Delivery Address</h3>
+        </div>
+
+        <div class="address-box">
+          <div class="address-text">
+            <strong id="addressTitle">Loading...</strong>
+            <p id="addressDesc">Please wait</p>
+
+          </div>
+
+          <button class="change-btn">
+            <img src="../Assets/Images/Symbols/pencil.svg" alt="Edit">
+            <span>Change</span>
+          </button>
+        </div>
+      </div>
+
+
+      <!-- ORDER SUMMARY -->
+      <div class="card">
+        <div class="card-header order-header">
+
+          <div class="order-title">
+
+            <div class="icon-circle">
+
+              <img src="../Assets/Images/Symbols/shopping-bag.svg" alt="">
+
+            </div>
+
+            <h3>Order Summary</h3>
+
+          </div>
+
+          <span id="itemCount">0 items</span>
+
+        </div>
+
+        <div id="orderItems"></div>
+
+        <button class="outline-btn" id="editCartBtn">Edit Cart</button>
+      </div>
+
+      <!-- APPLY DISCOUNT -->
+      <div class="card">
+        <div class="coupon-header">
+          <div class="icon-circle">
+            <img src="../Assets/Images/Symbols/brand.svg" alt="">
+          </div>
+          <h3>Apply Discount</h3>
+        </div>
+
+        <div class="coupon-input">
+          <input type="text" placeholder="Enter coupon code" />
+          <button disabled>Apply</button>
+        </div>
+
+        <h4 class="coupon-heading">
+          Available Coupons
+        </h4>
+        <div class="coupon-list" id="couponList">
+
+        </div>
+      </div>
+
+    </div>
+
+    <!-- RIGHT -->
+    <div class="checkout-right">
+      <div class="card bill-card">
+        <div class="card-title">Bill Details</div>
+
+        <div class="row">
+          <span>Item Total</span>
+          <span id="itemTotal">₹0</span>
+        </div>
+
+        <div class="row coupon-row" id="couponRow" style="display:none;">
+          <span>Coupon Discount</span>
+          <span id="couponDiscount">-₹0</span>
+        </div>
+        <div id="removeCouponBox" style="display:none; margin-top:12px;">
+          <button id="removeCouponBtn" class="remove-coupon-btn">
+            ✕ Remove Coupon
+          </button>
+        </div>
+
+        <div class="row">
+          <span>Delivery Fee</span>
+          <span id="deliveryFee">₹0</span>
+        </div>
+        <hr class="bill-divider">
+
+        <div class="row total">
+          <span>Total Payable</span>
+          <span id="totalPayable">₹0</span>
+        </div>
+
+        <div class="free-hint" id="freeHint"></div>
+
+        <p id="savingText" class="saving-text"></p>
+      </div>
+
+
+
+      <div class="card delivery-method-card">
+        <h3>Choose Delivery Method</h3>
+        <p class="delivery-subtitle">
+        </p>
+        <div class="delivery-options">
+          <div class="delivery-option active" data-delivery="pickup">
+            <div class="delivery-info">
+              <h4>I'll Pick It Up</h4>
+              <p>Collect from Room 135</p>
+              <span>Ready in 3–5 mins</span>
+            </div>
+            <div class="delivery-price">
+              FREE
+            </div>
+          </div>
+          <div class="delivery-option" data-delivery="room">
+            <div class="delivery-info">
+              <h4>Deliver to My Room</h4>
+              <p>We'll bring it to your hostel room</p>
+              <span>Delivered in 8–10 mins</span>
+            </div>
+            <div class="delivery-price">
+              ₹10
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BOTTOM CTA -->
+    <footer class="checkout-footer">
+
+      <div class="checkout-footer-content">
+
+        <div class="footer-price">
+
+          <small>Total Amount</small>
+
+          <strong>
+            ₹<span id="footerTotal">0</span>
+          </strong>
+
+        </div>
+
+        <button id="placeOrderBtn">
+
+          Place Order • ₹0
+
+        </button>
+
+      </div>
+
+    </footer>
+
+    <!-- ADDRESS MODAL -->
+    <div class="address-overlay" id="addressOverlay">
+      <div class="address-modal">
+        <div class="modal-header">
+          <div class="modal-title">
+            <div class="icon-circle">
+              <img src="../Assets/Images/Auth logos/marker.svg" alt="Location">
+            </div>
+            <div>
+              <h2>Select Delivery Address</h2>
+              <p>Choose where to deliver</p>
+            </div>
+          </div>
+          <button id="closeAddressModal">&times;</button>
+        </div>
+        <div class="modal-body">
+
+          <!-- ================= ADDRESS LIST ================= -->
+
+          <div id="addressListView">
+
+            <!-- DEFAULT ADDRESS -->
+
+            <h5 class="address-section-title">Default Address</h5>
+
+            <div id="defaultAddress">
+
+              <div class="address-option selected">
+
+                <div class="address-left">
+
+                  <div class="home-icon">
+                    <img src="../Assets/Images/Symbols/home.svg" alt="Home">
+                  </div>
+
+                  <div class="address-info">
+
+                    <div class="address-top">
+
+                      <h4 id="modalAddressTitle"></h4>
+
+                      <span class="default-badge">
+                        Default
+                      </span>
+
+                    </div>
+
+                    <p id="modalAddressDesc"></p>
+
+                  </div>
+
+                </div>
+
+                <div class="tick">
+                  <img src="../Assets/Images/Symbols/check-mark.svg" alt="">
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <!-- SAVED ADDRESSES -->
+
+            <h5 class="address-section-title" id="savedHeading" style="display:none;">
+              Saved Addresses
+            </h5>
+
+            <div id="savedAddresses">
+
+            </div>
+
+
+            <button class="add-address-btn" id="openAddAddress">
+              + Add New Address
+            </button>
+          </div>
+
+
+
+          <!-- ================= ADD ADDRESS FORM ================= -->
+
+          <div id="addAddressView" class="hidden">
+
+            <div class="form-group">
+              <label>Hostel / Building Name *</label>
+              <input type="text" id="hostelInput" placeholder="e.g., Hostel A, Block B" required>
+            </div>
+
+            <div class="form-group">
+              <label>Room Number *</label>
+              <input type="text" id="roomInput" placeholder="e.g., 204, B-305" required>
+            </div>
+
+            <div class="form-group">
+              <label>Complete Address *</label>
+
+              <textarea id="addressInput" placeholder="Floor, landmarks, nearby location..." required></textarea>
+            </div>
+
+            <div class="form-actions">
+
+              <button id="cancelAddress">
+                Cancel
+              </button>
+
+              <button id="saveAddress">
+                Save Address
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="../js/checkout.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Success | Snackment</title>
+    <link rel="stylesheet" href="../CSS/order-success.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+
+<body>
+    <!-- ===========================
+         HEADER
+    ============================ -->
+    <header class="success-header">
+        <button class="back-btn">
+            <i class="fa-solid fa-arrow-left"></i>
+            Back
+        </button>
+        <div class="header-logo">
+            <img src="../Assets/Images/Original logos/Snackment_logotext_transparent.png" alt="Snackment">
+        </div>
+    </header>
+    <!-- ===========================
+         PAGE
+    ============================ -->
+    <main class="success-page">
+        <!-- ===========================
+             HERO CARD
+        ============================ -->
+        <section class="hero-card" id="hero-card">
+            <div class="success-animation">
+                <div class="success-ring"></div>
+                <div class="success-icon" id="success-icon">
+                    <img src="../Assets/Images/Symbols/checkbold.svg" alt="">
+                </div>
+            </div>
+            <h1 id="success-title">
+                Order Placed Successfully!
+            </h1>
+            <p id="success-subtitle">
+                Your order has been received and is now being processed.
+            </p>
+            <div class="hero-meta">
+                <div class="meta-pill">
+                    <img src="../Assets/Images/Symbols/utensils.svg" alt="">
+                    <span id="order-id">
+                        Order ID: #SNK889340
+                    </span>
+                </div>
+                <div class="meta-pill">
+                    <img src="../Assets/Images/Symbols/clock.svg" alt="">
+                    <span id="order-time">
+                        03:51 PM
+                    </span>
+                </div>
+                <div class="meta-pill">
+                    <img src="../Assets/Images/Auth logos/marker.svg" alt="">
+                    <span id="delivery-type">
+                        Room Delivery
+                    </span>
+                </div>
+            </div>
+        </section>
+        <!-- ===========================
+             CONTENT GRID
+        ============================ -->
+        <section class="content-grid">
+            <!-- ===========================
+                 LEFT COLUMN
+            ============================ -->
+            <div class="left-column">
+                <!-- ORDER STATUS -->
+                <section class="status-card">
+                    <div class="card-header">
+                        <h2>Order Status</h2>
+                        <span class="live-badge">
+                            Live
+                        </span>
+                    </div>
+                    <!-- Timeline -->
+                    <div class="status-timeline">
+                        <!-- Grey Base Line -->
+                        <div class="timeline-line"></div>
+                        <!-- Green Progress Line -->
+                        <div class="timeline-progress"></div>
+                        <!-- STEP 1 -->
+                        <div class="timeline-step" id="step-1">
+                            <div class="step-icon">
+                                <img src="../Assets/Images/Symbols/check-mark.svg" alt="">
+                            </div>
+                            <div class="step-label" id="step-1-label">
+                                <h4>
+                                    Order Placed
+                                </h4>
+                                <span>
+                                    Confirmed
+                                </span>
+                            </div>
+                        </div>
+                        <!-- STEP 2 -->
+                        <div class="timeline-step" id="step-2">
+                            <div class="step-icon">
+                                <img src="../Assets/Images/Symbols/packing.svg" alt="">
+                            </div>
+                            <div class="step-label" id="step-2-label">
+                                <h4>
+                                    Packing
+                                </h4>
+                                <span>
+                                    In Progress
+                                </span>
+                            </div>
+                        </div>
+                        <!-- STEP 3 -->
+                        <div class="timeline-step pending" id="step-3">
+                            <div class="step-icon">
+                                <img src="../Assets/Images/Symbols/person-carry-box.svg" alt="">
+                            </div>
+                            <div class="step-label" id="step-3-label">
+                                <h4 id="last-step-title">
+                                    Ready for Pickup
+                                </h4>
+                                <span id="last-step-subtitle">
+                                    Pending
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- CURRENT STATUS -->
+                    <div class="current-status" id="current-status-card">
+                        <div class="current-status-icon">
+                            <img id="current-status-icon" src="../Assets/Images/Symbols/packing.svg" alt="">
+                        </div>
+                        <div class="current-status-content">
+                            <div class="status-top">
+                                <h3 id="current-status-title">
+                                    Packing your order...
+                                </h3>
+                                <span class="active-badge" id="current-status-badge">
+                                    ACTIVE
+                                </span>
+                            </div>
+                            <div class="status-bottom">
+                                <img src="../Assets/Images/Symbols/clock.svg" alt="">
+                                <span>
+                                    Estimated time:
+                                    <strong id="current-status-message">5–7 minutes</strong>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- DELIVERY DETAILS -->
+                <section class="delivery-card">
+                    <div class="card-header">
+                        <div class="header-icon">
+                            <img src="../Assets/Images/Auth logos/marker.svg" alt="">
+                        </div>
+                        <h2 id="delivery-card-title">
+                            Delivery Details
+                        </h2>
+                    </div>
+                    <div class="delivery-grid">
+                        <div>Hostel</div>
+                        <strong id="hostel-name">
+                            Hostel A
+                        </strong>
+                        <div>Room Number</div>
+                        <strong id="room-number">
+                            Room 204
+                        </strong>
+                        <div>Full Address</div>
+                        <strong id="address">
+                            Hostel A, Room 204
+                        </strong>
+                        <div id="arrival-label">
+                            Expected Arrival
+                        </div>
+                        <strong id="arrival-time">
+                            5–8 minutes
+                        </strong>
+                    </div>
+                </section>
+            </div>
+            <!-- ===========================
+                 RIGHT COLUMN
+            ============================ -->
+            <div class="right-column">
+                <!-- ORDER SUMMARY -->
+                <section class="summary-card">
+                    <div class="card-header">
+                        <div class="header-icon">
+                            <img src="../Assets/Images/Symbols/shopping-bag.svg" alt="">
+                        </div>
+                        <h2>
+                            Order Summary
+                        </h2>
+                    </div>
+                    <div id="summary-items">
+                        <!-- JS -->
+                    </div>
+                    <div class="summary-divider"></div>
+                    <div class="summary-row">
+                        <span>Subtotal</span>
+                        <strong id="subtotal">
+                            ₹0
+                        </strong>
+                    </div>
+                    <div class="summary-row">
+                        <span>Delivery</span>
+                        <strong id="delivery-charge">
+                            ₹0
+                        </strong>
+                    </div>
+                    <div class="summary-divider"></div>
+                    <div class="summary-total">
+                        <span>Total Paid</span>
+                        <strong id="grand-total">
+                            ₹0
+                        </strong>
+                    </div>
+                    <div class="payment-method">
+                        <img src="../Assets/Images/Symbols/credit-card.svg" alt="">
+                        <div>
+                            <small>
+                                Payment Method
+                            </small>
+                            <h4 id="payment-method">
+                                Scan on Delivery
+                            </h4>
+                        </div>
+                        <img src="../Assets/Images/Auth logos/brand.svg" alt="">
+                    </div>
+                </section>
+            </div>
+        </section>
+        <!-- SUPPORT -->
+        <section class="support-card">
+            <div class="support-left">
+                <div class="support-icon">
+                    <img src="../Assets/Images/Icons/instagramlogo.svg" alt="">
+                </div>
+                <div>
+                    <h3>
+                        Need help?
+                    </h3>
+                    <p>
+                        Dm Snackment on Instagram ,we're here for you.
+                    </p>
+                </div>
+            </div>
+            <a href="https://www.instagram.com/snackment/" target="_blank" class="contact-btn">
+                Contact ›
+            </a>
+        </section>
+    </main>
+    <script src="../JS/order-store.js"></script>
+    <script src="../JS/order-success.js"></script>
+    <script src="../JS/order-status.js"></script>
+</body>
+
+</html>

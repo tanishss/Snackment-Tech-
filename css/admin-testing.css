@@ -1,0 +1,239 @@
+*{
+
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+
+}
+
+body{
+
+    font-family:"Poppins",sans-serif;
+
+    background:#F6F8FB;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    min-height:100vh;
+
+    color:#1F2937;
+
+}
+
+.container{
+
+    width:100%;
+    max-width:720px;
+
+    background:#fff;
+
+    border:1px solid #E5E7EB;
+
+    border-radius:24px;
+
+    padding:40px;
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,.06);
+
+}
+
+h1{
+
+    font-size:34px;
+
+    font-weight:700;
+
+    margin-bottom:10px;
+
+}
+
+p{
+
+    color:#6B7280;
+
+    margin-bottom:34px;
+
+}
+
+.panel{
+
+    margin-top:30px;
+
+    padding:28px;
+
+    border:1px solid #E5E7EB;
+
+    border-radius:20px;
+
+}
+
+.panel h2{
+
+    font-size:20px;
+
+    margin-bottom:20px;
+
+}
+
+.button-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:16px;
+
+}
+
+button{
+
+    height:54px;
+
+    border:none;
+
+    border-radius:14px;
+
+    background:#65D852;
+
+    color:white;
+
+    font-size:16px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+button:hover{
+
+    background:#58C245;
+
+    transform:translateY(-2px);
+
+}
+
+button:active{
+
+    transform:scale(.98);
+
+}
+
+#reject-btn{
+
+    background:#EF4444;
+
+}
+
+#reject-btn:hover{
+
+    background:#DC2626;
+
+}
+
+#reset-btn{
+
+    background:#111827;
+
+}
+
+#reset-btn:hover{
+
+    background:#000;
+
+}
+
+@media(max-width:640px){
+
+    .container{
+
+        width:92%;
+
+        padding:28px;
+
+    }
+
+    .button-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+/* ==========================================
+   CONNECTION
+========================================== */
+
+.connection-box{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:20px;
+
+}
+
+.connection-status{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    font-size:17px;
+
+    font-weight:600;
+
+}
+
+.status-dot{
+
+    width:14px;
+
+    height:14px;
+
+    border-radius:50%;
+
+    background:#EF4444;
+
+}
+
+.status-dot.connected{
+
+    background:#65D852;
+
+}
+
+
+/* ==========================================
+   CURRENT STATUS
+========================================== */
+
+.current-backend-status{
+
+    margin-top:16px;
+
+    padding:16px;
+
+    border-radius:14px;
+
+    background:#F3F4F6;
+
+    font-size:18px;
+
+    font-weight:700;
+
+    text-align:center;
+
+    color:#1F2937;
+
+}

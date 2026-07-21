@@ -11,7 +11,7 @@ window.ORDER_STATUS = {
 
         title: "Packing your order...",
 
-        subtitle: "Estimated • 5–7 min",
+        subtitle: " • 5–7 min",
 
         badge: "ACTIVE",
 
@@ -45,7 +45,7 @@ window.ORDER_STATUS = {
 
         label: "OUT FOR DELIVERY",
 
-        title: "Coming to your room...",
+        title: "Coming to your room",
 
         subtitle: "ETA • 1–2 min",
 

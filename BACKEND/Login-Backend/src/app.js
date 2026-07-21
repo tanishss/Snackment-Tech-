@@ -25,7 +25,7 @@ app.use("/api/cart", require("./routes/cart"));
 app.use("/api/user", userRoutes);
 app.use("/api/address", addressRoutes);
 app.use("/api/coupon", couponRoutes);
-app.use("/api/order", orderRoutes);
+app.use("/api/orders", orderRoutes);
 
 /* Test route */
 app.get('/', (req, res) => {

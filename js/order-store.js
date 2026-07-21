@@ -2,11 +2,18 @@
 
 const OrderStore = (() => {
 
-    let currentOrder = JSON.parse(
-        localStorage.getItem(
-            "snackment_latest_order"
-        )
+    const storedOrder = localStorage.getItem(
+        "snackment_latest_order"
     );
+
+    let currentOrder = null;
+
+    if (
+        storedOrder &&
+        storedOrder !== "undefined"
+    ) {
+        currentOrder = JSON.parse(storedOrder);
+    }
 
     const subscribers = [];
 

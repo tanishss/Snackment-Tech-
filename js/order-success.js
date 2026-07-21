@@ -37,19 +37,26 @@ if (!order) {
 // ==========================================
 
 init();
+let previousStatus = order.orderStatus;
+
 OrderStore.subscribe((updatedOrder) => {
 
     order = updatedOrder;
 
     if (!order) {
-
         window.location.replace("../index.html");
-
         return;
-
     }
 
-    renderOrderTimeline(order.orderStatus);
+    if (order.orderStatus !== previousStatus) {
+
+        previousStatus = order.orderStatus;
+
+        animateStatusTransition();
+
+        renderOrderTimeline(order.orderStatus);
+
+    }
 
 });
 function init() {
@@ -83,7 +90,7 @@ function renderHero() {
         `Order ID: ${order.orderId}`;
     orderTime.textContent =
         formatTime(order.createdAt);
-    if (order.deliveryType === "pickup") {
+    if (order.deliveryMethod === "pickup") {
         deliveryTypeText.textContent =
             "Self Pickup";
     }
@@ -98,24 +105,26 @@ function renderHero() {
 // ==========================================
 
 function renderSummary() {
-    const bill = order.bill;
+    const pricing = order.pricing;
     subtotal.textContent =
-        `₹${bill.subtotal}`;
+        `₹${pricing.subtotal}`;
     deliveryCharge.textContent =
-        bill.delivery === 0
+        pricing.deliveryFee === 0
             ? "FREE"
-            : `₹${bill.delivery}`;
+            : `₹${pricing.deliveryFee}`;
     grandTotal.textContent =
-        `₹${bill.total}`;
+        `₹${pricing.total}`;
     paymentMethod.textContent =
-        order.paymentMethod;
+        order.paymentMethod === "scan_on_delivery"
+            ? "Scan on Delivery"
+            : "UPI";
     summaryItems.innerHTML = `
         <div class="summary-row">
             <span>
-                Items (${order.itemCount})
+                Items (${order.items.length})
             </span>
             <strong>
-                ₹${bill.subtotal}
+                ₹${pricing.subtotal}
             </strong>
         </div>
     `;
@@ -127,7 +136,7 @@ function renderSummary() {
 
 function renderDelivery() {
 
-    if (order.deliveryType === "pickup") {
+    if (order.deliveryMethod === "pickup") {
 
         deliveryCardTitle.textContent =
             "Pickup From";
@@ -155,13 +164,13 @@ function renderDelivery() {
             "Delivery Details";
 
         hostelName.textContent =
-            order.deliveryAddress?.hostel || "--";
+            order.address?.hostel || "--";
 
         roomNumber.textContent =
-            order.deliveryAddress?.room || "--";
+            order.address?.room || "--";
 
         address.textContent =
-            order.deliveryAddress?.address || "--";
+            order.address?.address || "--";
 
         arrivalLabel.textContent =
             "Expected Arrival";
@@ -178,7 +187,7 @@ function renderDelivery() {
 // ==========================================
 
 function renderTimeline() {
-    if (order.deliveryType === "pickup") {
+    if (order.deliveryMethod === "pickup") {
         lastStepTitle.textContent =
             "Ready for Pickup";
         lastStepSubtitle.textContent =
@@ -217,7 +226,9 @@ const step1 = document.getElementById("step-1");
 const step2 = document.getElementById("step-2");
 const step3 = document.getElementById("step-3");
 const currentStatusCard = document.getElementById("current-status-card");
-
+function wait(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
 // ---------- START ----------
 
 window.addEventListener("load", () => {
@@ -226,23 +237,12 @@ window.addEventListener("load", () => {
 
         if (order.orderStatus === "PACKING") {
 
-            startHeroAnimation();
+            playInitialAnimation();
 
         } else {
 
             heroCard.classList.add("show");
-
-            timelineLine.classList.add("show");
-
-            revealStep(step1);
-            revealStep(step2);
-            revealStep(step3);
-
-            revealCurrentStatus();
-
-            renderOrderTimeline(
-                order.orderStatus
-            );
+            renderOrderTimeline(order.orderStatus);
 
         }
 
@@ -254,48 +254,42 @@ window.addEventListener("load", () => {
 // HERO
 // ==========================================
 
-function startHeroAnimation() {
-    heroCard.classList.add("show");
-    // Hero animation finishes
-    // then wait a little before timeline
-    setTimeout(() => {
-        startTimeline();
-    }, 1800);
-}
+
 
 // ==========================================
 // TIMELINE SEQUENCE
 // ==========================================
-function startTimeline() {
-    // Draw Grey Line
+async function playInitialAnimation() {
+    setCurrentStatus("PACKING");
+    heroCard.classList.add("show");
+
+    await wait(1800);
+
     timelineLine.classList.add("show");
-    // Step 1
-    setTimeout(() => {
-        revealStep(step1);
-        step1.classList.add("completed");
-    }, 550);
-    // Step 2
-    setTimeout(() => {
-        revealStep(step2);
-    }, 950);
-    // Step 3
-    setTimeout(() => {
-        revealStep(step3);
-    }, 1350);
-    // Fill Green Line till Packing
-    setTimeout(() => {
-        timelineProgress.classList.add("fill");
-    }, 1800);
-    // Packing becomes active
-    setTimeout(() => {
 
-        activatePacking();
+    await wait(550);
 
-        renderOrderTimeline(
-            order.orderStatus
-        );
+    revealStep(step1);
+    step1.classList.add("completed");
 
-    }, 2500);
+    await wait(400);
+
+    revealStep(step2);
+
+    await wait(400);
+
+    revealStep(step3);
+
+    await wait(450);
+
+    timelineProgress.classList.add("fill");
+
+    await wait(700);
+
+    step2.classList.add("active");
+
+    revealCurrentStatus();
+
 }
 
 // ==========================================
@@ -306,14 +300,6 @@ function revealStep(step) {
     step.classList.add("show");
 }
 
-// ==========================================
-// PACKING
-// ==========================================
-
-function activatePacking() {
-    step2.classList.add("active");
-    revealCurrentStatus();
-}
 
 // ==========================================
 // CURRENT STATUS CARD
@@ -331,14 +317,6 @@ function revealCurrentStatus() {
 // (Future use)
 // ==========================================
 
-function resetTimeline() {
-    timelineLine.classList.remove("show");
-    timelineProgress.classList.remove("fill");
-    step1.className = "timeline-step";
-    step2.className = "timeline-step";
-    step3.className = "timeline-step";
-}
-
 
 
 // ==========================================
@@ -348,26 +326,11 @@ function resetTimeline() {
 function setCurrentStatus(status) {
     const config = window.ORDER_STATUS[status];
     if (!config) return;
-    animateCurrentStatus();
-    currentStatusIcon.style.transform = "scale(.75)";
-    currentStatusIcon.style.opacity = ".3";
 
-    setTimeout(() => {
-
-        currentStatusIcon.src = `../Assets/Images/Symbols/${config.icon}`;
-        currentStatusTitle.textContent =
-            config.title;
-
-        currentStatusBadge.className =
-            "active-badge " + config.badgeClass;
-
-        currentStatusMessage.textContent =
-            config.subtitle;
-
-        currentStatusIcon.style.transform = "scale(1)";
-        currentStatusIcon.style.opacity = "1";
-
-    }, 180);
+    currentStatusIcon.src = `../Assets/Images/Symbols/${config.icon}`;
+    currentStatusTitle.textContent = config.title;
+    currentStatusBadge.className = "active-badge " + config.badgeClass;
+    currentStatusMessage.textContent = config.subtitle;
 }
 
 // ==========================================
@@ -403,16 +366,36 @@ function fillTimelineComplete() {
 // ==========================================
 
 function renderOrderTimeline(status) {
-    setCurrentStatus(status);
+    
+    // Reset Timeline
 
+    [step1, step2, step3].forEach(step => {
+        step.className = "timeline-step show";
+    });
+
+    timelineProgress.classList.remove("fill");
+    timelineProgress.classList.remove("complete");
+    timelineProgress.style.width = "";
+    setStepSubtitle(step2, "In Progress");
+setStepSubtitle(step3, "Pending");
+    setCurrentStatus(status);
     switch (status) {
 
         // PACKING
 
         case "PACKING":
+
             step1.classList.add("completed");
+
             step2.classList.add("active");
-            timelineProgress.classList.add("fill");
+
+            step3.classList.add("pending");
+            // Page refresh ke liye
+            timelineProgress.style.width = "calc(50% - 90px)";
+
+
+            //timelineProgress.classList.add("fill");
+
             break;
 
         // ======================================
@@ -431,7 +414,6 @@ function renderOrderTimeline(status) {
 
             setStepSubtitle(step3, "In Progress");
 
-            popStep(step3);
 
             break;
 
@@ -450,8 +432,6 @@ function renderOrderTimeline(status) {
             setStepSubtitle(step2, "Packed");
 
             setStepSubtitle(step3, "In Progress");
-
-            popStep(step3);
 
             break;
         // ======================================
@@ -479,25 +459,16 @@ function animateCurrentStatus() {
     void currentStatusCard.offsetWidth;
     currentStatusCard.classList.add("status-changing");
 }
-
+function animateStatusTransition() {
+    animateCurrentStatus();
+}
 // ==========================================
 // POP ANIMATION
 // ==========================================
 
-function popStep(step) {
-    step.classList.remove("show");
-    void step.offsetWidth;
-    step.classList.add("show");
-}
-
 // ==========================================
 // STOP PACKING
 // ==========================================
-
-function stopPackingAnimation() {
-    step2.classList.remove("active");
-    step2.classList.add("completed");
-}
 
 // ==========================================
 // BACKEND READY FUNCTIONS

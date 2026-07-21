@@ -30,6 +30,7 @@ const removeCouponBtn = document.getElementById("removeCouponBtn");
 
 let selectedCoupon = "";
 let selectedAddress = null;
+let checkoutItems = [];
 
 const FREE_DELIVERY_LIMIT = 199;
 const DELIVERY_FEE = 10;
@@ -40,17 +41,17 @@ let bill = {};
 let deliveryType = "pickup";
 
 const latestOrder = JSON.parse(
-    localStorage.getItem(
-        "snackment_latest_order"
-    )
+  localStorage.getItem(
+    "snackment_latest_order"
+  )
 );
 if (
-    latestOrder &&
-    hasActiveOrder()
+  latestOrder &&
+  hasActiveOrder()
 ) {
-    window.location.replace(
-        "order-success.html"
-    );
+  window.location.replace(
+    "order-success.html"
+  );
 }
 
 async function loadCheckout() {
@@ -224,6 +225,7 @@ function calculateBill() {
 }
 
 function renderCheckout(items) {
+  checkoutItems = items;
   orderItemsEl.innerHTML = "";
 
   cartSubtotal = 0;
@@ -387,15 +389,18 @@ placeOrderBtn.onclick = () => {
 
   const checkoutPayload = {
 
-    bill,
+    deliveryMethod: deliveryType,
 
-    itemCount: document.querySelectorAll(".order-item").length,
+    coupon: appliedCoupon
+      ? {
+        code: appliedCoupon.code,
+        discount: bill.discount
+      }
+      : null,
 
-    deliveryType,
+    address: selectedAddress,
 
-    couponCode: appliedCoupon?.code || null,
-
-    selectedAddress
+    paymentMethod: "scan_on_delivery"
 
   };
 

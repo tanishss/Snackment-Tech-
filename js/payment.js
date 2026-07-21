@@ -31,24 +31,59 @@ if (!checkoutData) {
 // RENDER ORDER SUMMARY
 // ==========================================
 
-function renderSummary() {
+async function renderSummary() {
 
-    const bill = checkoutData.bill;
+    try {
 
-    itemCount.textContent = `(${checkoutData.itemCount} item${checkoutData.itemCount > 1 ? "s" : ""})`;
+        const token = localStorage.getItem("token");
 
-    itemsTotal.textContent = `₹${bill.subtotal}`;
+        const couponCode =
+            checkoutData.coupon?.code || "";
 
-    deliveryCharge.textContent =
-        bill.delivery === 0
-            ? "FREE"
-            : `₹${bill.delivery}`;
+        const response = await fetch(
 
-    grandTotal.textContent = `₹${bill.total}`;
+            `http://localhost:5001/api/orders/preview?deliveryMethod=${checkoutData.deliveryMethod}&coupon=${couponCode}`,
+
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            }
+
+        );
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            throw new Error(data.message);
+        }
+
+
+        itemCount.textContent =
+            `(${data.itemCount} item${data.itemCount > 1 ? "s" : ""})`;
+
+        itemsTotal.textContent =
+            `₹${data.pricing.subtotal}`;
+
+        deliveryCharge.textContent =
+            data.pricing.deliveryFee === 0
+                ? "FREE"
+                : `₹${data.pricing.deliveryFee}`;
+
+        grandTotal.textContent =
+            `₹${data.pricing.total}`;
+
+    } catch (err) {
+
+        console.error(err);
+
+        alert(err.message);
+
+    }
+
 }
 
 renderSummary();
-
 // ==========================================
 // CONTINUE BUTTON
 // ==========================================
@@ -59,81 +94,60 @@ continueBtn.addEventListener("click", createOrder);
 // CREATE ORDER (Frontend Simulation)
 // ==========================================
 
-function createOrder() {
 
-    continueBtn.disabled = true;
 
-    continueBtn.innerHTML = `
-        <i class="fa-solid fa-spinner fa-spin"></i>
-        Creating Order...
-    `;
+async function createOrder() {
 
-    setTimeout(() => {
-        const now = new Date().toISOString();
+    try {
 
-        const order = {
-            
-            orderId:
-                "SNK" +
-                Date.now(),
+        continueBtn.disabled = true;
 
-            createdAt:now,
+        continueBtn.innerHTML = `
+            <i class="fa-solid fa-spinner fa-spin"></i>
+            Creating Order...
+        `;
 
-            updatedAt: now,
+        const token = localStorage.getItem("token");
 
-            orderStatus:
-                "PACKING",
+        const response = await fetch(
+            "http://localhost:5001/api/orders",
+            {
+                method: "POST",
 
-            statusHistory: [
-                {
-                    status: "PACKING",
-                    time: now
-                }
-            ],
-            
-            paymentStatus:
-                "PENDING",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`
+                },
 
-            paymentMethod:
-                "Scan on Delivery",
-
-            ...checkoutData,
-
-            deliveryAddress:
-                checkoutData.selectedAddress
-
-        };
-
-        delete order.selectedAddress;
-
-        // Save latest order
-
-        OrderStore.set(order);
-
-        // Future order history
-
-        const orders = JSON.parse(
-            localStorage.getItem("snackment_orders")
-        ) || [];
-
-        orders.unshift(order);
-
-        localStorage.setItem(
-            "snackment_orders",
-            JSON.stringify(orders)
+                body: JSON.stringify(checkoutData)
+            }
         );
 
-        // Clear temporary data
+        const data = await response.json();
 
-        // Backend will clear cart
-        // localStorage.removeItem("snackment_cart");
+        if (!response.ok) {
+            throw new Error(data.message);
+        }
 
+        // Save latest order
+        OrderStore.set(data.order);
+
+        // Clear temporary checkout
         localStorage.removeItem("snackment_checkout");
 
         // Redirect
-
         window.location.replace("order-success.html");
 
-    }, 1200);
+    } catch (err) {
+
+        console.error(err);
+
+        alert(err.message);
+
+        continueBtn.disabled = false;
+
+        continueBtn.innerHTML = "Continue";
+
+    }
 
 }

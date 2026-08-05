@@ -11,7 +11,11 @@ router.get(
     authMiddleware,
     orderController.getOrderPreview
 );
-
+router.get(
+    "/active",
+    authMiddleware,
+    orderController.getActiveOrder
+);
 router.post(
     "/",
     authMiddleware,

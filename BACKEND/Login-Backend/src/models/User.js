@@ -7,9 +7,19 @@ const userSchema = new mongoose.Schema({
     unique: true
   },
 
-    // PROFILE DATA
+  // PROFILE DATA
   name: String,
-  email: String,
+  email: {
+    type: String,
+    unique: true,
+    sparse: true,
+    lowercase: true,
+    trim: true
+  },
+  password: {
+    type: String,
+    required: true
+  },
   hostel: String,
   room: String,
   address: String,
@@ -18,15 +28,6 @@ const userSchema = new mongoose.Schema({
     type: Boolean,
     default: false
   },
-
-  otp: String,
-  otpExpiresAt: Date,
-  lastOtpSentAt: Date,
-
-  isVerified: {
-    type: Boolean,
-    default: false
-  }
 
 }, { timestamps: true });
 

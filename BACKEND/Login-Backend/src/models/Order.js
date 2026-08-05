@@ -122,10 +122,6 @@ const orderSchema = new mongoose.Schema(
             ],
             default: "PACKING",
         },
-
-        estimatedReadyTime: {
-            type: Date,
-        },
     },
     {
         timestamps: true,

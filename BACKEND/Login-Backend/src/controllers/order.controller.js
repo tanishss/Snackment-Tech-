@@ -1,3 +1,4 @@
+const generateOrderId = require("../utils/generateOrderId");
 const Order = require("../models/Order");
 const Cart = require("../models/Cart");
 const Coupon = require("../models/Coupon");
@@ -116,10 +117,7 @@ exports.createOrder = async (req, res) => {
         // -----------------------------
         // Generate Order ID
         // -----------------------------
-        const orderId =
-            "SNK" +
-            Date.now().toString().slice(-8);
-
+        const orderId = await generateOrderId();
         // -----------------------------
         // Save Order
         // -----------------------------
@@ -158,8 +156,7 @@ exports.createOrder = async (req, res) => {
 
             paymentStatus: "pending",
 
-            orderStatus: "PACKING"
-
+            orderStatus: "PACKING",
         });
         console.log("Saved Status:", order.orderStatus);
 
@@ -321,4 +318,37 @@ exports.getOrderPreview = async (req, res) => {
 
     }
 
+};
+
+exports.getActiveOrder = async (req, res) => {
+    try {
+
+        const order = await Order.findOne({
+            user: req.userId,
+            orderStatus: {
+                $nin: ["DELIVERED", "CANCELLED"]
+            }
+        }).sort({ createdAt: -1 });
+
+        if (!order) {
+            return res.json({
+                success: true,
+                order: null
+            });
+        }
+
+        res.json({
+            success: true,
+            order
+        });
+
+    } catch (err) {
+
+        console.error(err);
+
+        res.status(500).json({
+            message: "Failed to fetch active order"
+        });
+
+    }
 };

@@ -1,9 +1,15 @@
-const express = require('express');
+console.log("AUTH ROUTES LOADED");
+const express = require("express");
 const router = express.Router();
+
 const {
-  sendOTP,
-  verifyOTP
-} = require('../controllers/auth.controller');
-router.post('/send-otp', sendOTP);
-router.post('/verify-otp', verifyOTP);
+    checkPhone,
+    register,
+    login
+} = require("../controllers/auth.controller");
+
+router.post("/check-phone", checkPhone);
+router.post("/register", register);
+router.post("/login", login);
+
 module.exports = router;

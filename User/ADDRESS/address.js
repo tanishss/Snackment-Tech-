@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // CONFIG
     // ==========================================================
 
-    const API_URL = "http://localhost:5001/api/address";
+    const API_URL = "https://snackment-backend.onrender.com/api/address";
 
     // ==========================================================
     // AUTH

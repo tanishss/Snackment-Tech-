@@ -42,7 +42,7 @@ async function renderSummary() {
 
         const response = await fetch(
 
-            `http://localhost:5001/api/orders/preview?deliveryMethod=${checkoutData.deliveryMethod}&coupon=${couponCode}`,
+            `https://snackment-backend.onrender.com/api/orders/preview?deliveryMethod=${checkoutData.deliveryMethod}&coupon=${couponCode}`,
 
             {
                 headers: {
@@ -110,7 +110,7 @@ async function createOrder() {
         const token = localStorage.getItem("token");
 
         const response = await fetch(
-            "http://localhost:5001/api/orders",
+            "https://snackment-backend.onrender.com/api/orders",
             {
                 method: "POST",
 

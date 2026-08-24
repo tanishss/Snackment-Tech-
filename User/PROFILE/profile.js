@@ -224,7 +224,7 @@ async function saveName() {
 
     try {
 
-        const response = await fetch("http://localhost:5001/api/profile/name", {
+        const response = await fetch("https://snackment-backend.onrender.com/api/profile/name", {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
@@ -278,7 +278,7 @@ async function savePhone() {
     try {
 
         const response = await fetch(
-            "http://localhost:5001/api/profile/phone",
+            "https://snackment-backend.onrender.com/api/profile/phone",
             {
                 method: "PATCH",
                 headers: {
@@ -347,7 +347,7 @@ async function savePassword() {
     try {
 
         const response = await fetch(
-            "http://localhost:5001/api/profile/password",
+            "https://snackment-backend.onrender.com/api/profile/password",
             {
                 method: "PATCH",
                 headers: {
@@ -422,7 +422,7 @@ async function loadProfile() {
 
     try {
 
-        const response = await fetch("http://localhost:5001/api/profile", {
+        const response = await fetch("https://snackment-backend.onrender.com/api/profile", {
             headers: {
                 Authorization: `Bearer ${token}`
             }

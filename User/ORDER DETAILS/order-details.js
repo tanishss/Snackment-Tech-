@@ -31,7 +31,7 @@ const infoContainer =
 // ==========================================================
 
 const API_BASE_URL =
-    "http://localhost:5001/api";
+    "https://snackment-backend.onrender.com/api";
 
 const token =
     localStorage.getItem("token");

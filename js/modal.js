@@ -219,7 +219,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     try {
 
-      const response = await fetch("http://localhost:5001/api/auth/check-phone", {
+      const response = await fetch("https://snackment-backend.onrender.com/api/auth/check-phone", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -321,7 +321,7 @@ document.addEventListener("DOMContentLoaded", () => {
     try {
 
       const response = await fetch(
-        "http://localhost:5001/api/auth/check-email",
+        "https://snackment-backend.onrender.com/api/auth/check-email",
         {
           method: "POST",
           headers: {
@@ -381,7 +381,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     try {
 
-      const response = await fetch("http://localhost:5001/api/auth/login", {
+      const response = await fetch("https://snackment-backend.onrender.com/api/auth/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -443,7 +443,7 @@ document.addEventListener("DOMContentLoaded", () => {
     try {
 
       const response = await fetch(
-        "http://localhost:5001/api/auth/reset-password",
+        "https://snackment-backend.onrender.com/api/auth/reset-password",
         {
           method: "PATCH",
           headers: {

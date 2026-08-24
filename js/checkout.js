@@ -1,4 +1,4 @@
-const API_BASE = "http://localhost:5001/api";
+const API_BASE = "https://snackment-backend.onrender.com/api";
 const token = localStorage.getItem("token");
 
 if (!token) {

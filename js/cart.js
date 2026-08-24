@@ -1,5 +1,5 @@
 // ================= API CONFIG =================
-const API_BASE = "http://localhost:5001/api";
+const API_BASE = "https://snackment-backend.onrender.com/api";
 
 function hasCelebrated() {
     return sessionStorage.getItem("free_delivery_celebrated") === "true";

@@ -16,7 +16,7 @@ const startShoppingBtn = document.getElementById("startShoppingBtn");
 // CONFIG
 // ==========================================================
 
-const API_BASE_URL = "http://localhost:5001/api";
+const API_BASE_URL = "https://snackment-backend.onrender.com/api";
 
 const token = localStorage.getItem("token");
 

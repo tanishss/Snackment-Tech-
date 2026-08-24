@@ -3,7 +3,7 @@
 ========================================================== */
 
 const API_BASE_URL =
-    "http://localhost:5001/api/admin";
+    "https://snackment-backend.onrender.com/api/admin";
 
 
 /* ==========================================================

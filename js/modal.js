@@ -18,52 +18,117 @@ document.addEventListener("DOMContentLoaded", () => {
   /* =====================
      ELEMENTS
   ===================== */
-  const loginBtn = document.querySelector('.login-btn');
-  const logoutBtn = document.querySelector('.logout-btn');
+  const navbarLoginBtn = document.querySelector(".login-btn");
+  const loginText = navbarLoginBtn.querySelector(".login-text");
 
-  // 🔐 Toggle buttons based on token
-  if (localStorage.getItem("token")) {
-    loginBtn.style.display = "none";
-    logoutBtn.style.display = "inline-flex";
+  const passwordLoginBtn = document.querySelector(".password-login-btn");
+
+  if (token) {
+    loginText.textContent = "Profile";
   } else {
-    loginBtn.style.display = "inline-flex";
-    logoutBtn.style.display = "none";
+    loginText.textContent = "Login";
   }
-
   const overlay = document.querySelector('.overlay');
   const modal = document.querySelector('.login-modal');
   const closeBtn = document.querySelector('.close-btn');
   const pageContent = document.querySelector('.page-content');
-
-  const phoneStep = document.getElementById("phoneStep");
-  const otpStep = document.getElementById("otpStep");
-
   const phoneInput = document.querySelector('.phone-input-field');
   const continueBtn = document.querySelector('.continue-btn');
+  const phoneStep = document.getElementById("phoneStep");
+  const passwordStep = document.getElementById("passwordStep");
+  const loginPassword = document.getElementById("loginPassword");
+  const toggleLoginPassword = document.querySelector(".toggle-login-password");
+  const forgotPassword = document.querySelector(".forgot-password");
 
-  const maskedPhone = document.getElementById("maskedPhone");
-  const timerEl = document.getElementById("timer");
+  const forgotEmailStep = document.getElementById("forgotEmailStep");
+  const resetPasswordStep = document.getElementById("resetPasswordStep");
 
-  const otpInputs = document.querySelectorAll(".otp-inputs input");
-  const verifyBtn = document.querySelector(".verify-btn");
+  const forgotEmail = document.getElementById("forgotEmail");
+  const forgotEmailBtn = document.querySelector(".forgot-email-btn");
 
-  const welcomeStep = document.getElementById("welcomeStep");
-  const welcomeContinue = document.getElementById("welcomeContinue");
+  const resetPassword = document.getElementById("resetPassword");
+  const confirmResetPassword = document.getElementById("confirmResetPassword");
 
-  logoutBtn.addEventListener("click", () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("snackment_logged_in");
-    sessionStorage.removeItem("free_delivery_celebrated");
-    location.reload();
+  const resetPasswordBtn = document.querySelector(".reset-password-btn");
+
+  const toggleResetPassword = document.querySelector(".toggle-reset-password");
+  const toggleConfirmResetPassword = document.querySelector(".toggle-confirm-reset-password");
+  toggleLoginPassword.addEventListener("click", () => {
+
+    if (loginPassword.type === "password") {
+
+      loginPassword.type = "text";
+      toggleLoginPassword.src = "Assets/Images/Symbols/eye.svg";
+
+    } else {
+
+      loginPassword.type = "password";
+      toggleLoginPassword.src = "Assets/Images/Symbols/eye-off.svg";
+
+    }
+
+  });
+  toggleResetPassword.addEventListener("click", () => {
+
+    if (resetPassword.type === "password") {
+
+      resetPassword.type = "text";
+      toggleResetPassword.src = "Assets/Images/Symbols/eye.svg";
+
+    } else {
+
+      resetPassword.type = "password";
+      toggleResetPassword.src = "Assets/Images/Symbols/eye-off.svg";
+
+    }
+
   });
 
+  toggleConfirmResetPassword.addEventListener("click", () => {
 
+    if (confirmResetPassword.type === "password") {
+
+      confirmResetPassword.type = "text";
+      toggleConfirmResetPassword.src = "Assets/Images/Symbols/eye.svg";
+
+    } else {
+
+      confirmResetPassword.type = "password";
+      toggleConfirmResetPassword.src = "Assets/Images/Symbols/eye-off.svg";
+
+    }
+
+  });
+  function validateResetPasswords() {
+
+    const newPass = resetPassword.value.trim();
+    const confirmPass = confirmResetPassword.value.trim();
+
+    if (
+      newPass.length >= 5 &&
+      newPass === confirmPass
+    ) {
+
+      resetPasswordBtn.disabled = false;
+      resetPasswordBtn.classList.add("active");
+
+    } else {
+
+      resetPasswordBtn.disabled = true;
+      resetPasswordBtn.classList.remove("active");
+
+    }
+
+  }
+
+  resetPassword.addEventListener("input", validateResetPasswords);
+  confirmResetPassword.addEventListener("input", validateResetPasswords);
   /* =====================
      OPEN / CLOSE MODAL
   ===================== */
-  loginBtn.addEventListener('click', () => {
+  navbarLoginBtn.addEventListener('click', () => {
     if (localStorage.getItem("token")) {
-      // Already logged in → do nothing
+      window.location.href = "User/PROFILE/profile.html";
       return;
     }
 
@@ -75,9 +140,21 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.style.overflow = 'hidden';
 
     phoneStep.classList.add("active");
-    otpStep.classList.remove("active");
-    welcomeStep.classList.remove("active");
+
+    passwordStep.classList.remove("active");
+    forgotEmailStep.classList.remove("active");
+    resetPasswordStep.classList.remove("active");
+
+    phoneInput.value = "";
+    continueBtn.disabled = true;
+    continueBtn.classList.remove("active");
+
+    loginPassword.value = "";
+    passwordLoginBtn.disabled = true;
+    passwordLoginBtn.classList.remove("active");
+
   });
+
   // 🔐 OPEN LOGIN MODAL (REUSABLE)
   window.openLoginModal = function () {
     // 🔥 FIX 3 again
@@ -89,8 +166,19 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.style.overflow = 'hidden';
 
     phoneStep.classList.add("active");
-    otpStep.classList.remove("active");
-    welcomeStep.classList.remove("active");
+
+    passwordStep.classList.remove("active");
+    forgotEmailStep.classList.remove("active");
+    resetPasswordStep.classList.remove("active");
+
+    phoneInput.value = "";
+    continueBtn.disabled = true;
+    continueBtn.classList.remove("active");
+
+    loginPassword.value = "";
+    passwordLoginBtn.disabled = true;
+    passwordLoginBtn.classList.remove("active");
+
   };
 
   function closeModal() {
@@ -118,225 +206,293 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  /* =====================
-     PHONE → OTP SWITCH
-  ===================== */
   continueBtn.addEventListener("click", async (e) => {
-    e.preventDefault(); // 🔥 THIS IS THE FIX
 
-    const phone = phoneInput.value;
+    e.preventDefault();
+
+    const phone = phoneInput.value.trim();
+
     if (phone.length !== 10) return;
 
-    await fetch("http://localhost:5001/api/auth/send-otp", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ phone })
-    });
-
-    maskedPhone.textContent = `+91 ••••${phone.slice(-4)}`;
-    phoneStep.classList.remove("active");
-    otpStep.classList.add("active");
-
-    setTimeout(startTimer, 100);
-  });
-
-
-  /* =====================
-     OTP TIMER (30s)
-  ===================== */
-  const resendBtn = document.getElementById("resendBtn");
-  const resendText = document.getElementById("resendText");
-
-  let interval;
-  let timeLeft = 30;
-
-  function startTimer() {
-    clearInterval(interval);
-    timeLeft = 30;
-
-    // show timer, hide resend
-    resendBtn.style.display = "none";
-    resendText.style.display = "block";
-
-    timerEl.textContent = timeLeft;
-
-    interval = setInterval(() => {
-      timeLeft--;
-      timerEl.textContent = timeLeft;
-
-      if (timeLeft <= 0) {
-        clearInterval(interval);
-
-        // hide timer, show resend
-        resendText.style.display = "none";
-        resendBtn.style.display = "block";
-      }
-    }, 1000);
-  }
-
-
-  /* =====================
-     OTP INPUT HANDLING
-  ===================== */
-  otpInputs.forEach((input, index) => {
-    input.addEventListener("input", () => {
-      input.value = input.value.replace(/\D/g, "");
-
-      if (input.value && index < otpInputs.length - 1) {
-        otpInputs[index + 1].focus();
-      }
-
-      checkOTP();
-    });
-  });
-
-  // BACKSPACE HANDLING
-  otpInputs.forEach((input, index) => {
-    input.addEventListener("keydown", (e) => {
-      if (e.key === "Backspace") {
-        if (input.value === "" && index > 0) {
-          otpInputs[index - 1].focus();
-          otpInputs[index - 1].value = "";
-        }
-      }
-    });
-  });
-
-  function checkOTP() {
-    const otp = Array.from(otpInputs).map(i => i.value).join("");
-
-    if (otp.length === 6) {
-      verifyBtn.classList.add("active");
-      verifyBtn.disabled = false;
-    } else {
-      verifyBtn.classList.remove("active");
-      verifyBtn.disabled = true;
-    }
-  }
-
-  /* =====================
-     WELCOME BACK
-  ===================== */
-  function showWelcomeBack() {
-    otpStep.classList.remove("active");
-    welcomeStep.classList.add("active");
-  }
-
-
-  /* =====================
-   VERIFY OTP (FINAL FIX)
-===================== */
-  verifyBtn.addEventListener("click", async () => {
-    if (!verifyBtn.classList.contains("active")) return;
-
-    const phone = phoneInput.value;
-    const otp = Array.from(otpInputs).map(i => i.value).join("");
+    continueBtn.disabled = true;
+    continueBtn.textContent = "Checking...";
 
     try {
-      const res = await fetch("http://localhost:5001/api/auth/verify-otp", {
+
+      const response = await fetch("http://localhost:5001/api/auth/check-phone", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
         },
-        body: JSON.stringify({ phone, otp })
+        body: JSON.stringify({
+          phone
+        })
       });
 
-      const data = await res.json();
+      const data = await response.json();
 
-      // ❌ INVALID / EXPIRED / WRONG OTP
-      if (!res.ok) {
-        alert(data.message || "Invalid or expired OTP");
-        return;
-      }
+      console.log(data);
+      if (data.exists) {
+        sessionStorage.setItem("loginPhone", phone);
 
-      // ✅ SUCCESS
-      localStorage.setItem("token", data.token);
+        phoneStep.classList.remove("active");
+        passwordStep.classList.add("active");
 
-      // 🔄 MERGE GUEST CART AFTER LOGIN
-      const guestCart = JSON.parse(localStorage.getItem("snackment_cart"));
+        continueBtn.textContent = "Continue";
 
-      if (guestCart && guestCart.items?.length) {
-        fetch(`${API_BASE}/cart/merge`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${data.token}`
-          },
-          body: JSON.stringify({
-            items: guestCart.items.map(item => ({
-              productId: item.id,
-              name: item.name,
-              price: item.price,
-              image: item.image,
-              qty: item.qty
-            }))
-          })
-        }).then(() => {
-          localStorage.removeItem("snackment_cart"); // clear guest cart
-
-          // ✅ IMPORTANT: stop celebration from re-triggering
-          sessionStorage.removeItem("free_delivery_celebrated");
-        });
-      }
-
-
-      if (data.isProfileComplete) {
-        showWelcomeBack();
+        // ✅ Cursor automatically password field mein aa jayega
+        loginPassword.focus();
       } else {
+        sessionStorage.setItem("registerPhone", phone);
         window.location.href = "auth.html";
       }
 
     } catch (err) {
-      alert("Network error. Please try again.");
+
+      alert("Network Error");
+
+    } finally {
+
+      continueBtn.disabled = false;
+      continueBtn.textContent = "Continue";
+
     }
+
   });
-  /* =====================
-   RESEND OTP
-===================== */
-  resendBtn.addEventListener("click", async () => {
-    const phone = phoneInput.value;
-    if (phone.length !== 10) return;
+  loginPassword.addEventListener("input", () => {
 
-    otpInputs.forEach(input => input.value = "");
-    otpInputs[0].focus();
+    if (loginPassword.value.trim().length >= 5) {
 
-    verifyBtn.classList.remove("active");
-    verifyBtn.disabled = true;
+      passwordLoginBtn.disabled = false;
+      passwordLoginBtn.classList.add("active");
+
+    } else {
+
+      passwordLoginBtn.disabled = true;
+      passwordLoginBtn.classList.remove("active");
+
+    }
+
+  });
+
+  forgotPassword.addEventListener("click", () => {
+
+
+    passwordStep.classList.remove("active");
+    forgotEmailStep.classList.add("active");
+
+    loginPassword.value = "";
+    passwordLoginBtn.disabled = true;
+    passwordLoginBtn.classList.remove("active");
+
+    forgotEmail.value = "";
+    forgotEmailBtn.disabled = true;
+    forgotEmailBtn.classList.remove("active");
+
+  });
+
+  forgotEmail.addEventListener("input", () => {
+
+    const email = forgotEmail.value.trim();
+
+    const validEmail =
+      /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+    if (validEmail) {
+
+      forgotEmailBtn.disabled = false;
+      forgotEmailBtn.classList.add("active");
+
+    } else {
+
+      forgotEmailBtn.disabled = true;
+      forgotEmailBtn.classList.remove("active");
+
+    }
+
+  });
+  forgotEmailBtn.addEventListener("click", async () => {
+
+    if (forgotEmailBtn.disabled) return;
+
+    forgotEmailBtn.disabled = true;
+    forgotEmailBtn.textContent = "Checking...";
 
     try {
-      const res = await fetch("http://localhost:5001/api/auth/send-otp", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ phone })
-      });
 
-      const data = await res.json();
+      const response = await fetch(
+        "http://localhost:5001/api/auth/check-email",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            email: forgotEmail.value.trim()
+          })
+        }
+      );
 
-      if (!res.ok) {
-        alert(data.message || "Please wait before resending OTP");
+      const data = await response.json();
+
+      if (!data.exists) {
+
+        alert("No account found with this email.");
+
+        forgotEmailBtn.disabled = false;
+        forgotEmailBtn.textContent = "Continue";
+
         return;
+
       }
 
-      startTimer();
-    } catch {
-      alert("Network error. Please try again.");
+      sessionStorage.setItem(
+        "resetEmail",
+        forgotEmail.value.trim()
+      );
+      resetPassword.value = "";
+      confirmResetPassword.value = "";
+
+      resetPasswordBtn.disabled = true;
+      resetPasswordBtn.classList.remove("active");
+
+      forgotEmailStep.classList.remove("active");
+      resetPasswordStep.classList.add("active");
+      resetPassword.focus();
+    } catch (err) {
+
+      alert("Server Error");
+
+    } finally {
+
+      forgotEmailBtn.disabled = false;
+      forgotEmailBtn.textContent = "Continue";
+
     }
+
   });
 
-  /* =====================
-     WELCOME CONTINUE
-  ===================== */
-  welcomeContinue.addEventListener("click", () => {
-    closeModal();
+  passwordLoginBtn.addEventListener("click", async () => {
 
-    if (localStorage.getItem("token")) {
-      loginBtn.style.display = "none";
-      logoutBtn.style.display = "inline-flex";
+    if (passwordLoginBtn.disabled) return;
+
+    passwordLoginBtn.disabled = true;
+    passwordLoginBtn.textContent = "Logging in...";
+
+    try {
+
+      const response = await fetch("http://localhost:5001/api/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          phone: sessionStorage.getItem("loginPhone"),
+          password: loginPassword.value
+        })
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+
+        alert(data.message || "Login failed");
+
+        passwordLoginBtn.disabled = false;
+        passwordLoginBtn.textContent = "Login";
+        return;
+
+      }
+
+      console.log(data);
+
+      // ✅ Save login data
+      localStorage.setItem("token", data.token);
+      localStorage.setItem("user", JSON.stringify(data.user));
+
+      // ✅ Remove temporary phone
+      sessionStorage.removeItem("loginPhone");
+
+      // ✅ Close modal
+      closeModal();
+
+      // ✅ Navbar button becomes Profile
+      loginText.textContent = "Profile";
+
+      // ✅ Refresh page
+      window.location.reload();
+
+    } catch (err) {
+
+      alert("Server Error");
+
+      passwordLoginBtn.disabled = false;
+      passwordLoginBtn.textContent = "Login";
+
     }
+
   });
 
-  continueBtn.addEventListener("click", () => {
-    console.log("CONTINUE CLICKED");
+  resetPasswordBtn.addEventListener("click", async () => {
+
+    if (resetPasswordBtn.disabled) return;
+
+    resetPasswordBtn.disabled = true;
+    resetPasswordBtn.textContent = "Updating...";
+
+    try {
+
+      const response = await fetch(
+        "http://localhost:5001/api/auth/reset-password",
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+
+            email: sessionStorage.getItem("resetEmail"),
+            password: resetPassword.value
+
+          })
+        }
+      );
+
+      const data = await response.json();
+
+      if (!response.ok) {
+
+        alert(data.message);
+
+        resetPasswordBtn.disabled = false;
+        resetPasswordBtn.textContent = "Reset Password";
+
+        return;
+
+      }
+
+      // ✅ Auto Login
+
+      localStorage.setItem("token", data.token);
+      localStorage.setItem("user", JSON.stringify(data.user));
+
+      sessionStorage.removeItem("resetEmail");
+
+      closeModal();
+
+      loginText.textContent = "Profile";
+
+      window.location.reload();
+
+    } catch (err) {
+
+      alert("Server Error");
+
+      resetPasswordBtn.disabled = false;
+      resetPasswordBtn.textContent = "Reset Password";
+
+    }
+
   });
 
 });

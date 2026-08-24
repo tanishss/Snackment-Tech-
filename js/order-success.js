@@ -38,6 +38,7 @@ if (!order) {
 
 init();
 let previousStatus = order.orderStatus;
+let currentTimelineStatus = order.orderStatus;
 
 OrderStore.subscribe((updatedOrder) => {
 
@@ -52,9 +53,10 @@ OrderStore.subscribe((updatedOrder) => {
 
         previousStatus = order.orderStatus;
 
-        animateStatusTransition();
-
-        renderOrderTimeline(order.orderStatus);
+        transitionTimeline(
+            currentTimelineStatus,
+            order.orderStatus
+        );
 
     }
 
@@ -241,8 +243,7 @@ window.addEventListener("load", () => {
 
         } else {
 
-            heroCard.classList.add("show");
-            renderOrderTimeline(order.orderStatus);
+            revealRestoredState(order.orderStatus);
 
         }
 
@@ -311,6 +312,19 @@ function revealCurrentStatus() {
     void currentStatusCard.offsetWidth;
     currentStatusCard.classList.add("fade-in");
 }
+async function revealRestoredState(status) {
+
+    heroCard.classList.add("show");
+
+    await wait(500);
+
+    renderOrderTimeline(status, true);
+
+    setCurrentStatus(status);
+
+    revealCurrentStatus();
+
+}
 
 // ==========================================
 // RESET
@@ -364,86 +378,141 @@ function fillTimelineComplete() {
 // PART 2B
 // STATUS ENGINE
 // ==========================================
+function renderFinalTransitionState(step3Title = "In Progress") {
 
-function renderOrderTimeline(status) {
-    
-    // Reset Timeline
+    completeStep(step1);
 
-    [step1, step2, step3].forEach(step => {
-        step.className = "timeline-step show";
-    });
+    fillTimelineComplete();
 
-    timelineProgress.classList.remove("fill");
-    timelineProgress.classList.remove("complete");
-    timelineProgress.style.width = "";
-    setStepSubtitle(step2, "In Progress");
-setStepSubtitle(step3, "Pending");
-    setCurrentStatus(status);
+    completeStep(step2);
+
+    activateStep(step3);
+
+    setStepSubtitle(step2, "Packed");
+
+    setStepSubtitle(step3, step3Title);
+}
+function renderPackingState() {
+
+    completeStep(step1);
+
+    activateStep(step2);
+
+    step3.classList.remove("active", "completed");
+    step3.classList.add("pending");
+
+    timelineProgress.style.width = "calc(50% - 90px)";
+}
+
+function renderReadyState() {
+    renderFinalTransitionState();
+}
+
+function renderOutForDeliveryState() {
+    renderFinalTransitionState();
+}
+
+function renderDeliveredState() {
+
+    renderFinalTransitionState("Completed");
+
+    completeStep(step3);
+
+    setStepSubtitle(step3, "Delivered");
+}
+
+async function transitionTimeline(from, to) {
+
+    if (from === to) return;
+
+    switch (`${from}->${to}`) {
+
+        case "PACKING->READY_FOR_PICKUP":
+
+            completeStep(step2);
+
+            await wait(250);
+
+            fillTimelineComplete();
+
+            await wait(350);
+
+            activateStep(step3);
+
+            await wait(250);
+
+            setCurrentStatus(to);
+
+            animateCurrentStatus();
+
+            renderOrderTimeline(to);
+
+            break;
+
+        case "READY_FOR_PICKUP->DELIVERED":
+
+            setCurrentStatus(to);
+
+            animateCurrentStatus();
+
+            renderOrderTimeline(to);
+
+            break;
+
+
+        case "OUT_FOR_DELIVERY->DELIVERED":
+
+            setCurrentStatus(to);
+
+            animateCurrentStatus();
+
+            renderOrderTimeline(to);
+
+            break;
+
+        default:
+
+            renderOrderTimeline(to);
+
+    }
+
+    currentTimelineStatus = to;
+}
+
+function renderOrderTimeline(status, isInitialRender = false) {
+
+    if (isInitialRender) {
+
+        [step1, step2, step3].forEach(step => {
+            step.className = "timeline-step show";
+        });
+
+        timelineProgress.classList.remove("fill");
+        timelineProgress.classList.remove("complete");
+        timelineProgress.style.width = "";
+
+        setStepSubtitle(step2, "In Progress");
+        setStepSubtitle(step3, "Pending");
+    }
+
+
     switch (status) {
 
-        // PACKING
-
         case "PACKING":
-
-            step1.classList.add("completed");
-
-            step2.classList.add("active");
-
-            step3.classList.add("pending");
-            // Page refresh ke liye
-            timelineProgress.style.width = "calc(50% - 90px)";
-
-
-            //timelineProgress.classList.add("fill");
-
+            renderPackingState();
             break;
-
-        // ======================================
-        // READY FOR PICKUP
-        // ======================================
 
         case "READY_FOR_PICKUP":
-
-            fillTimelineComplete();
-
-            completeStep(step2);
-
-            activateStep(step3);
-
-            setStepSubtitle(step2, "Packed");
-
-            setStepSubtitle(step3, "In Progress");
-
-
+            renderReadyState();
             break;
-
-        // ======================================
-        // ROOM DELIVERY
-        // ======================================
 
         case "OUT_FOR_DELIVERY":
-
-            fillTimelineComplete();
-
-            completeStep(step2);
-
-            activateStep(step3);
-
-            setStepSubtitle(step2, "Packed");
-
-            setStepSubtitle(step3, "In Progress");
-
+            renderOutForDeliveryState();
             break;
-        // ======================================
-        // DELIVERED
-        // ======================================
+
         case "DELIVERED":
-            step2.classList.remove("active");
+            renderDeliveredState();
             break;
-
-        // ======================================
-        // REJECTED
-        // ======================================
     }
 }
 
@@ -458,9 +527,6 @@ function animateCurrentStatus() {
     currentStatusCard.classList.remove("status-changing");
     void currentStatusCard.offsetWidth;
     currentStatusCard.classList.add("status-changing");
-}
-function animateStatusTransition() {
-    animateCurrentStatus();
 }
 // ==========================================
 // POP ANIMATION

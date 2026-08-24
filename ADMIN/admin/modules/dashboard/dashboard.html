@@ -1,0 +1,1665 @@
+<section
+    class="dashboard-page"
+    id="dashboard-page"
+    aria-label="Snackment Admin Dashboard"
+>
+
+    <!-- =====================================================
+         DASHBOARD INTRO
+    ====================================================== -->
+
+    <section
+        class="dashboard-intro"
+        aria-labelledby="dashboard-greeting-title"
+    >
+
+        <div class="dashboard-intro-content">
+
+            <h2
+                class="dashboard-greeting-title"
+                id="dashboard-greeting-title"
+            >
+                Good Afternoon
+                <span
+                    class="dashboard-greeting-icon"
+                    aria-hidden="true"
+                >
+                    ☀️
+                </span>
+            </h2>
+
+            <p class="dashboard-greeting-description">
+                Here's what's happening at Snackment today.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         OVERVIEW STATISTICS
+    ====================================================== -->
+
+    <section
+        class="dashboard-overview"
+        aria-label="Today's overview"
+    >
+
+        <div
+            class="stats-grid"
+            id="stats-grid"
+        >
+
+            <!-- =================================================
+                 TODAY'S ORDERS
+            ================================================== -->
+
+            <article
+                class="stat-card"
+                data-stat="today-orders"
+            >
+
+                <div class="stat-card-header">
+
+                    <div
+                        class="stat-card-icon stat-card-icon--green"
+                        aria-hidden="true"
+                    >
+
+                        <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <rect
+                                x="5"
+                                y="5"
+                                width="14"
+                                height="14"
+                                rx="2"
+                            />
+
+                            <path
+                                d="M8.5 12L11 14.5L15.5 9.5"
+                            />
+                        </svg>
+
+                    </div>
+
+                    <span
+                        class="stat-change stat-change--positive"
+                    >
+                        +12%
+                    </span>
+
+                </div>
+
+                <div class="stat-card-body">
+
+                    <p class="stat-value">
+                        184
+                    </p>
+
+                    <p class="stat-label">
+                        Today's Orders
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <!-- =================================================
+                 PENDING
+            ================================================== -->
+
+            <article
+                class="stat-card"
+                data-stat="pending-orders"
+            >
+
+                <div class="stat-card-header">
+
+                    <div
+                        class="stat-card-icon stat-card-icon--yellow"
+                        aria-hidden="true"
+                    >
+
+                        <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <circle
+                                cx="12"
+                                cy="12"
+                                r="8"
+                            />
+
+                            <path
+                                d="M12 7V12L15 14"
+                            />
+                        </svg>
+
+                    </div>
+
+                    <span
+                        class="stat-change stat-change--negative"
+                    >
+                        -4%
+                    </span>
+
+                </div>
+
+                <div class="stat-card-body">
+
+                    <p class="stat-value">
+                        23
+                    </p>
+
+                    <p class="stat-label">
+                        Pending
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <!-- =================================================
+                 PREPARING
+            ================================================== -->
+
+            <article
+                class="stat-card"
+                data-stat="preparing-orders"
+            >
+
+                <div class="stat-card-header">
+
+                    <div
+                        class="stat-card-icon stat-card-icon--blue"
+                        aria-hidden="true"
+                    >
+
+                        <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <path
+                                d="M12 3L20 7L12 11L4 7L12 3Z"
+                            />
+
+                            <path
+                                d="M4 12L12 16L20 12"
+                            />
+
+                            <path
+                                d="M4 17L12 21L20 17"
+                            />
+                        </svg>
+
+                    </div>
+
+                    <span
+                        class="stat-change stat-change--positive"
+                    >
+                        +2%
+                    </span>
+
+                </div>
+
+                <div class="stat-card-body">
+
+                    <p class="stat-value">
+                        11
+                    </p>
+
+                    <p class="stat-label">
+                        Preparing
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <!-- =================================================
+                 READY
+            ================================================== -->
+
+            <article
+                class="stat-card"
+                data-stat="ready-orders"
+            >
+
+                <div class="stat-card-header">
+
+                    <div
+                        class="stat-card-icon stat-card-icon--green"
+                        aria-hidden="true"
+                    >
+
+                        <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <path
+                                d="M5 12L9.5 16.5L19 7"
+                            />
+                        </svg>
+
+                    </div>
+
+                    <span
+                        class="stat-change stat-change--positive"
+                    >
+                        0%
+                    </span>
+
+                </div>
+
+                <div class="stat-card-body">
+
+                    <p class="stat-value">
+                        7
+                    </p>
+
+                    <p class="stat-label">
+                        Ready
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <!-- =================================================
+                 DELIVERED
+            ================================================== -->
+
+            <article
+                class="stat-card"
+                data-stat="delivered-orders"
+            >
+
+                <div class="stat-card-header">
+
+                    <div
+                        class="stat-card-icon stat-card-icon--green"
+                        aria-hidden="true"
+                    >
+
+                        <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <path
+                                d="M3 7H15V17H3V7Z"
+                            />
+
+                            <path
+                                d="M15 10H19L21 13V17H15"
+                            />
+
+                            <circle
+                                cx="7"
+                                cy="18"
+                                r="2"
+                            />
+
+                            <circle
+                                cx="17"
+                                cy="18"
+                                r="2"
+                            />
+                        </svg>
+
+                    </div>
+
+                    <span
+                        class="stat-change stat-change--positive"
+                    >
+                        +18%
+                    </span>
+
+                </div>
+
+                <div class="stat-card-body">
+
+                    <p class="stat-value">
+                        143
+                    </p>
+
+                    <p class="stat-label">
+                        Delivered
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <!-- =================================================
+                 REVENUE TODAY
+            ================================================== -->
+
+            <article
+                class="stat-card"
+                data-stat="revenue-today"
+            >
+
+                <div class="stat-card-header">
+
+                    <div
+                        class="stat-card-icon stat-card-icon--green stat-card-icon--currency"
+                        aria-hidden="true"
+                    >
+                        ₹
+                    </div>
+
+                    <span
+                        class="stat-change stat-change--positive"
+                    >
+                        +22%
+                    </span>
+
+                </div>
+
+                <div class="stat-card-body">
+
+                    <p class="stat-value stat-value--currency">
+                        ₹6,842
+                    </p>
+
+                    <p class="stat-label">
+                        Revenue Today
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <!-- =================================================
+                 ACTIVE CUSTOMERS
+            ================================================== -->
+
+            <article
+                class="stat-card"
+                data-stat="active-customers"
+            >
+
+                <div class="stat-card-header">
+
+                    <div
+                        class="stat-card-icon stat-card-icon--blue"
+                        aria-hidden="true"
+                    >
+
+                        <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <circle
+                                cx="9"
+                                cy="8"
+                                r="3"
+                            />
+
+                            <circle
+                                cx="17"
+                                cy="9"
+                                r="2.5"
+                            />
+
+                            <path
+                                d="M3.5 19C3.5 15.9 5.9 13.5 9 13.5C12.1 13.5 14.5 15.9 14.5 19"
+                            />
+
+                            <path
+                                d="M14 14.5C14.9 13.8 16 13.5 17 13.5C19.5 13.5 21 15.4 21 18"
+                            />
+                        </svg>
+
+                    </div>
+
+                    <span
+                        class="stat-change stat-change--positive"
+                    >
+                        +8%
+                    </span>
+
+                </div>
+
+                <div class="stat-card-body">
+
+                    <p class="stat-value">
+                        1,247
+                    </p>
+
+                    <p class="stat-label">
+                        Active Customers
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <!-- =================================================
+                 PRODUCTS IN STOCK
+            ================================================== -->
+
+            <article
+                class="stat-card"
+                data-stat="products-in-stock"
+            >
+
+                <div class="stat-card-header">
+
+                    <div
+                        class="stat-card-icon stat-card-icon--orange"
+                        aria-hidden="true"
+                    >
+
+                        <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <rect
+                                x="5"
+                                y="7"
+                                width="14"
+                                height="14"
+                                rx="2"
+                            />
+
+                            <path
+                                d="M8 7V5C8 4.45 8.45 4 9 4H15C15.55 4 16 4.45 16 5V7"
+                            />
+
+                            <path
+                                d="M9 12H15"
+                            />
+                        </svg>
+
+                    </div>
+
+                    <span
+                        class="stat-change stat-change--negative"
+                    >
+                        -3%
+                    </span>
+
+                </div>
+
+                <div class="stat-card-body">
+
+                    <p class="stat-value">
+                        89
+                    </p>
+
+                    <p class="stat-label">
+                        Products in Stock
+                    </p>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         ANALYTICS
+    ====================================================== -->
+
+    <section
+        class="dashboard-charts"
+        aria-label="Dashboard analytics"
+    >
+
+
+        <!-- =================================================
+             REVENUE THIS WEEK
+        ================================================== -->
+
+        <article
+            class="dashboard-chart-card revenue-chart-card"
+            id="revenue-chart-card"
+        >
+
+            <header class="chart-card-header">
+
+                <div class="chart-card-heading">
+
+                    <h3 class="chart-card-title">
+                        Revenue This Week
+                    </h3>
+
+                    <p class="chart-card-description">
+                        Daily revenue breakdown
+                    </p>
+
+                </div>
+
+                <div class="chart-card-total">
+
+                    <span
+                        class="chart-total-value"
+                        id="weekly-revenue-total"
+                    >
+                        ₹36,400
+                    </span>
+
+                </div>
+
+            </header>
+
+
+            <div
+                class="revenue-chart-container"
+                id="revenue-chart"
+            >
+
+                <div
+                    class="revenue-y-axis"
+                    aria-hidden="true"
+                >
+                    <span>₹8k</span>
+                    <span>₹6k</span>
+                    <span>₹4k</span>
+                    <span>₹2k</span>
+                    <span>₹0</span>
+                </div>
+
+
+                <div class="revenue-chart-plot">
+
+                    <div
+                        class="chart-grid"
+                        aria-hidden="true"
+                    >
+                        <span class="chart-grid-line"></span>
+                        <span class="chart-grid-line"></span>
+                        <span class="chart-grid-line"></span>
+                        <span class="chart-grid-line"></span>
+                        <span class="chart-grid-line"></span>
+                    </div>
+
+
+                    <svg
+                        class="revenue-chart-svg"
+                        viewBox="0 0 700 250"
+                        preserveAspectRatio="none"
+                        aria-hidden="true"
+                    >
+
+                        <defs>
+
+                            <linearGradient
+                                id="revenue-area-gradient"
+                                x1="0"
+                                y1="0"
+                                x2="0"
+                                y2="1"
+                            >
+
+                                <stop
+                                    offset="0%"
+                                    stop-color="#65d852"
+                                    stop-opacity="0.18"
+                                />
+
+                                <stop
+                                    offset="100%"
+                                    stop-color="#65d852"
+                                    stop-opacity="0"
+                                />
+
+                            </linearGradient>
+
+                        </defs>
+
+
+                        <path
+                            class="revenue-area"
+                            d="
+                                M 0 190
+                                C 60 172 105 153 150 158
+                                C 190 163 210 176 250 160
+                                C 305 140 355 110 405 87
+                                C 455 65 515 36 570 34
+                                C 620 32 665 51 700 91
+                                L 700 250
+                                L 0 250
+                                Z
+                            "
+                        ></path>
+
+
+                        <path
+                            class="revenue-line"
+                            d="
+                                M 0 190
+                                C 60 172 105 153 150 158
+                                C 190 163 210 176 250 160
+                                C 305 140 355 110 405 87
+                                C 455 65 515 36 570 34
+                                C 620 32 665 51 700 91
+                            "
+                        ></path>
+
+
+                        <circle
+                            class="revenue-point"
+                            cx="570"
+                            cy="34"
+                            r="4"
+                        ></circle>
+
+                    </svg>
+
+
+                    <div
+                        class="revenue-x-axis"
+                        aria-hidden="true"
+                    >
+                        <span>Mon</span>
+                        <span>Tue</span>
+                        <span>Wed</span>
+                        <span>Thu</span>
+                        <span>Fri</span>
+                        <span>Sat</span>
+                        <span>Sun</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- =================================================
+             ORDERS BY HOUR
+        ================================================== -->
+
+        <article
+            class="dashboard-chart-card orders-hour-card"
+            id="orders-hour-card"
+        >
+
+            <header class="chart-card-header">
+
+                <div class="chart-card-heading">
+
+                    <h3 class="chart-card-title">
+                        Orders by Hour
+                    </h3>
+
+                    <p class="chart-card-description">
+                        Today's order volume
+                    </p>
+
+                </div>
+
+                <div class="chart-card-total">
+
+                    <span
+                        class="chart-total-value"
+                        id="daily-orders-total"
+                    >
+                        184
+                    </span>
+
+                </div>
+
+            </header>
+
+
+            <div
+                class="orders-hour-chart-container"
+                id="orders-hour-chart"
+            >
+
+                <div
+                    class="orders-y-axis"
+                    aria-hidden="true"
+                >
+                    <span>60</span>
+                    <span>45</span>
+                    <span>30</span>
+                    <span>15</span>
+                    <span>0</span>
+                </div>
+
+
+                <div class="orders-chart-plot">
+
+                    <div
+                        class="chart-grid"
+                        aria-hidden="true"
+                    >
+                        <span class="chart-grid-line"></span>
+                        <span class="chart-grid-line"></span>
+                        <span class="chart-grid-line"></span>
+                        <span class="chart-grid-line"></span>
+                        <span class="chart-grid-line"></span>
+                    </div>
+
+
+                    <div
+                        class="orders-bars"
+                        id="orders-bars"
+                    >
+
+                        <div
+                            class="order-bar-column"
+                            data-time="8am"
+                            data-orders="10"
+                        >
+                            <div
+                                class="order-bar"
+                                style="height: 32%;"
+                            ></div>
+
+                            <span class="order-bar-label">
+                                8am
+                            </span>
+                        </div>
+
+
+                        <div
+                            class="order-bar-column"
+                            data-time="10am"
+                            data-orders="18"
+                        >
+                            <div
+                                class="order-bar"
+                                style="height: 52%;"
+                            ></div>
+
+                            <span class="order-bar-label">
+                                10am
+                            </span>
+                        </div>
+
+
+                        <div
+                            class="order-bar-column"
+                            data-time="12pm"
+                            data-orders="35"
+                        >
+                            <div
+                                class="order-bar"
+                                style="height: 70%;"
+                            ></div>
+
+                            <span class="order-bar-label">
+                                12pm
+                            </span>
+                        </div>
+
+
+                        <div
+                            class="order-bar-column"
+                            data-time="2pm"
+                            data-orders="30"
+                        >
+                            <div
+                                class="order-bar"
+                                style="height: 61%;"
+                            ></div>
+
+                            <span class="order-bar-label">
+                                2pm
+                            </span>
+                        </div>
+
+
+                        <div
+                            class="order-bar-column"
+                            data-time="4pm"
+                            data-orders="24"
+                        >
+                            <div
+                                class="order-bar"
+                                style="height: 48%;"
+                            ></div>
+
+                            <span class="order-bar-label">
+                                4pm
+                            </span>
+                        </div>
+
+
+                        <div
+                            class="order-bar-column order-bar-column--active"
+                            data-time="6pm"
+                            data-orders="35"
+                        >
+                            <div
+                                class="order-bar"
+                                style="height: 100%;"
+                            ></div>
+
+                            <span class="order-bar-label">
+                                6pm
+                            </span>
+                        </div>
+
+
+                        <div
+                            class="order-bar-column"
+                            data-time="8pm"
+                            data-orders="36"
+                        >
+                            <div
+                                class="order-bar"
+                                style="height: 72%;"
+                            ></div>
+
+                            <span class="order-bar-label">
+                                8pm
+                            </span>
+                        </div>
+
+
+                        <div
+                            class="order-bar-column"
+                            data-time="10pm"
+                            data-orders="29"
+                        >
+                            <div
+                                class="order-bar"
+                                style="height: 58%;"
+                            ></div>
+
+                            <span class="order-bar-label">
+                                10pm
+                            </span>
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        class="orders-chart-tooltip"
+                        id="orders-chart-tooltip"
+                        aria-hidden="true"
+                    >
+
+                        <span class="tooltip-time">
+                            6pm
+                        </span>
+
+                        <strong class="tooltip-value">
+                            35 orders
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </article>
+
+    </section>
+
+
+    <!-- =====================================================
+         LOWER DASHBOARD
+    ====================================================== -->
+
+    <section
+        class="dashboard-lower-grid"
+        aria-label="Dashboard details"
+    >
+
+
+        <!-- =================================================
+             TOP SELLING PRODUCTS
+        ================================================== -->
+
+        <article
+            class="dashboard-panel top-selling-panel"
+            id="top-selling-products"
+        >
+
+            <header class="dashboard-panel-header">
+
+                <div class="dashboard-panel-heading">
+
+                    <h3 class="dashboard-panel-title">
+                        Top Selling Products
+                    </h3>
+
+                    <p class="dashboard-panel-description">
+                        Best performing products today
+                    </p>
+
+                </div>
+
+                <button
+                    type="button"
+                    class="dashboard-panel-action"
+                    id="view-all-products"
+                >
+                    View all
+
+                    <span aria-hidden="true">
+                        →
+                    </span>
+                </button>
+
+            </header>
+
+
+            <div
+                class="top-products-list"
+                id="top-products-list"
+            >
+
+
+                <!-- PRODUCT 01 -->
+
+                <article
+                    class="top-product-item"
+                    data-product="lays-classic"
+                >
+
+                    <span class="top-product-rank">
+                        01
+                    </span>
+
+                    <div class="top-product-image">
+
+                        <div
+                            class="top-product-image-placeholder"
+                            aria-hidden="true"
+                        >
+                            L
+                        </div>
+
+                    </div>
+
+                    <div class="top-product-info">
+
+                        <h4 class="top-product-name">
+                            Lays Classic
+                        </h4>
+
+                        <p class="top-product-meta">
+                            48 sold today
+                        </p>
+
+                    </div>
+
+                    <div class="top-product-sales">
+
+                        <strong>
+                            ₹1,440
+                        </strong>
+
+                        <span>
+                            Revenue
+                        </span>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PRODUCT 02 -->
+
+                <article
+                    class="top-product-item"
+                    data-product="kurkure-masala"
+                >
+
+                    <span class="top-product-rank">
+                        02
+                    </span>
+
+                    <div class="top-product-image">
+
+                        <div
+                            class="top-product-image-placeholder"
+                            aria-hidden="true"
+                        >
+                            K
+                        </div>
+
+                    </div>
+
+                    <div class="top-product-info">
+
+                        <h4 class="top-product-name">
+                            Kurkure Masala
+                        </h4>
+
+                        <p class="top-product-meta">
+                            41 sold today
+                        </p>
+
+                    </div>
+
+                    <div class="top-product-sales">
+
+                        <strong>
+                            ₹1,148
+                        </strong>
+
+                        <span>
+                            Revenue
+                        </span>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PRODUCT 03 -->
+
+                <article
+                    class="top-product-item"
+                    data-product="maggi-masala"
+                >
+
+                    <span class="top-product-rank">
+                        03
+                    </span>
+
+                    <div class="top-product-image">
+
+                        <div
+                            class="top-product-image-placeholder"
+                            aria-hidden="true"
+                        >
+                            M
+                        </div>
+
+                    </div>
+
+                    <div class="top-product-info">
+
+                        <h4 class="top-product-name">
+                            Maggi Masala
+                        </h4>
+
+                        <p class="top-product-meta">
+                            36 sold today
+                        </p>
+
+                    </div>
+
+                    <div class="top-product-sales">
+
+                        <strong>
+                            ₹900
+                        </strong>
+
+                        <span>
+                            Revenue
+                        </span>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PRODUCT 04 -->
+
+                <article
+                    class="top-product-item"
+                    data-product="oreo"
+                >
+
+                    <span class="top-product-rank">
+                        04
+                    </span>
+
+                    <div class="top-product-image">
+
+                        <div
+                            class="top-product-image-placeholder"
+                            aria-hidden="true"
+                        >
+                            O
+                        </div>
+
+                    </div>
+
+                    <div class="top-product-info">
+
+                        <h4 class="top-product-name">
+                            Oreo
+                        </h4>
+
+                        <p class="top-product-meta">
+                            29 sold today
+                        </p>
+
+                    </div>
+
+                    <div class="top-product-sales">
+
+                        <strong>
+                            ₹725
+                        </strong>
+
+                        <span>
+                            Revenue
+                        </span>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PRODUCT 05 -->
+
+                <article
+                    class="top-product-item"
+                    data-product="coca-cola"
+                >
+
+                    <span class="top-product-rank">
+                        05
+                    </span>
+
+                    <div class="top-product-image">
+
+                        <div
+                            class="top-product-image-placeholder"
+                            aria-hidden="true"
+                        >
+                            C
+                        </div>
+
+                    </div>
+
+                    <div class="top-product-info">
+
+                        <h4 class="top-product-name">
+                            Coca Cola
+                        </h4>
+
+                        <p class="top-product-meta">
+                            24 sold today
+                        </p>
+
+                    </div>
+
+                    <div class="top-product-sales">
+
+                        <strong>
+                            ₹600
+                        </strong>
+
+                        <span>
+                            Revenue
+                        </span>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </article>
+
+
+        <!-- =================================================
+             RECENT ORDERS
+        ================================================== -->
+
+        <article
+            class="dashboard-panel recent-orders-panel"
+            id="recent-orders"
+        >
+
+            <header class="dashboard-panel-header">
+
+                <div class="dashboard-panel-heading">
+
+                    <h3 class="dashboard-panel-title">
+                        Recent Orders
+                    </h3>
+
+                    <p class="dashboard-panel-description">
+                        Latest orders placed today
+                    </p>
+
+                </div>
+
+                <button
+                    type="button"
+                    class="dashboard-panel-action"
+                    id="view-all-orders"
+                >
+                    View all
+
+                    <span aria-hidden="true">
+                        →
+                    </span>
+                </button>
+
+            </header>
+
+
+            <div
+                class="recent-orders-table-container"
+                id="recent-orders-table-container"
+            >
+
+                <div class="recent-orders-table-wrapper">
+
+                    <table class="recent-orders-table">
+
+                        <thead>
+
+                            <tr>
+
+                                <th scope="col">
+                                    Order
+                                </th>
+
+                                <th scope="col">
+                                    Customer
+                                </th>
+
+                                <th scope="col">
+                                    Amount
+                                </th>
+
+                                <th scope="col">
+                                    Status
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody>
+
+
+                            <!-- ORDER 1042 -->
+
+                            <tr data-order-id="SNK1042">
+
+                                <td>
+
+                                    <div class="order-id-cell">
+
+                                        <strong>
+                                            #SNK1042
+                                        </strong>
+
+                                        <span>
+                                            2 min ago
+                                        </span>
+
+                                    </div>
+
+                                </td>
+
+
+                                <td>
+
+                                    <div class="customer-cell">
+
+                                        <div
+                                            class="customer-avatar"
+                                            aria-hidden="true"
+                                        >
+                                            R
+                                        </div>
+
+                                        <div class="customer-details">
+
+                                            <strong>
+                                                Riya Sharma
+                                            </strong>
+
+                                            <span>
+                                                Room 135
+                                            </span>
+
+                                        </div>
+
+                                    </div>
+
+                                </td>
+
+
+                                <td>
+
+                                    <strong class="order-amount">
+                                        ₹420
+                                    </strong>
+
+                                </td>
+
+
+                                <td>
+
+                                    <span
+                                        class="order-status order-status--delivered"
+                                    >
+                                        Delivered
+                                    </span>
+
+                                </td>
+
+                            </tr>
+
+
+                            <!-- ORDER 1041 -->
+
+                            <tr data-order-id="SNK1041">
+
+                                <td>
+
+                                    <div class="order-id-cell">
+
+                                        <strong>
+                                            #SNK1041
+                                        </strong>
+
+                                        <span>
+                                            8 min ago
+                                        </span>
+
+                                    </div>
+
+                                </td>
+
+
+                                <td>
+
+                                    <div class="customer-cell">
+
+                                        <div
+                                            class="customer-avatar"
+                                            aria-hidden="true"
+                                        >
+                                            A
+                                        </div>
+
+                                        <div class="customer-details">
+
+                                            <strong>
+                                                Aarav Mehta
+                                            </strong>
+
+                                            <span>
+                                                Room 212
+                                            </span>
+
+                                        </div>
+
+                                    </div>
+
+                                </td>
+
+
+                                <td>
+
+                                    <strong class="order-amount">
+                                        ₹275
+                                    </strong>
+
+                                </td>
+
+
+                                <td>
+
+                                    <span
+                                        class="order-status order-status--preparing"
+                                    >
+                                        Preparing
+                                    </span>
+
+                                </td>
+
+                            </tr>
+
+
+                            <!-- ORDER 1040 -->
+
+                            <tr data-order-id="SNK1040">
+
+                                <td>
+
+                                    <div class="order-id-cell">
+
+                                        <strong>
+                                            #SNK1040
+                                        </strong>
+
+                                        <span>
+                                            14 min ago
+                                        </span>
+
+                                    </div>
+
+                                </td>
+
+
+                                <td>
+
+                                    <div class="customer-cell">
+
+                                        <div
+                                            class="customer-avatar"
+                                            aria-hidden="true"
+                                        >
+                                            K
+                                        </div>
+
+                                        <div class="customer-details">
+
+                                            <strong>
+                                                Karan Singh
+                                            </strong>
+
+                                            <span>
+                                                Room 118
+                                            </span>
+
+                                        </div>
+
+                                    </div>
+
+                                </td>
+
+
+                                <td>
+
+                                    <strong class="order-amount">
+                                        ₹189
+                                    </strong>
+
+                                </td>
+
+
+                                <td>
+
+                                    <span
+                                        class="order-status order-status--ready"
+                                    >
+                                        Ready
+                                    </span>
+
+                                </td>
+
+                            </tr>
+
+
+                            <!-- ORDER 1039 -->
+
+                            <tr data-order-id="SNK1039">
+
+                                <td>
+
+                                    <div class="order-id-cell">
+
+                                        <strong>
+                                            #SNK1039
+                                        </strong>
+
+                                        <span>
+                                            21 min ago
+                                        </span>
+
+                                    </div>
+
+                                </td>
+
+
+                                <td>
+
+                                    <div class="customer-cell">
+
+                                        <div
+                                            class="customer-avatar"
+                                            aria-hidden="true"
+                                        >
+                                            N
+                                        </div>
+
+                                        <div class="customer-details">
+
+                                            <strong>
+                                                Neha Gupta
+                                            </strong>
+
+                                            <span>
+                                                Room 304
+                                            </span>
+
+                                        </div>
+
+                                    </div>
+
+                                </td>
+
+
+                                <td>
+
+                                    <strong class="order-amount">
+                                        ₹540
+                                    </strong>
+
+                                </td>
+
+
+                                <td>
+
+                                    <span
+                                        class="order-status order-status--delivered"
+                                    >
+                                        Delivered
+                                    </span>
+
+                                </td>
+
+                            </tr>
+
+
+                            <!-- ORDER 1038 -->
+
+                            <tr data-order-id="SNK1038">
+
+                                <td>
+
+                                    <div class="order-id-cell">
+
+                                        <strong>
+                                            #SNK1038
+                                        </strong>
+
+                                        <span>
+                                            29 min ago
+                                        </span>
+
+                                    </div>
+
+                                </td>
+
+
+                                <td>
+
+                                    <div class="customer-cell">
+
+                                        <div
+                                            class="customer-avatar"
+                                            aria-hidden="true"
+                                        >
+                                            V
+                                        </div>
+
+                                        <div class="customer-details">
+
+                                            <strong>
+                                                Vansh Kapoor
+                                            </strong>
+
+                                            <span>
+                                                Room 221
+                                            </span>
+
+                                        </div>
+
+                                    </div>
+
+                                </td>
+
+
+                                <td>
+
+                                    <strong class="order-amount">
+                                        ₹325
+                                    </strong>
+
+                                </td>
+
+
+                                <td>
+
+                                    <span
+                                        class="order-status order-status--preparing"
+                                    >
+                                        Preparing
+                                    </span>
+
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </article>
+
+    </section>
+
+</section>

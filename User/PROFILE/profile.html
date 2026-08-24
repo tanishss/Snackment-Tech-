@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile • Snackment</title>
+    <link rel="icon" type="image/png" href="../../Assets/Images/Original logos/Snackment_logo_transparent.png">
+    <link rel="stylesheet" href="profile.css">
+</head>
+
+<body>
+    <!-- =========================NAVBAR========================== -->
+
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="../../index.html" class="logo-link">
+                <img src="../../Assets/Images/Original logos/Snackment_logo+text_transparent.png" alt="Snackment"
+                    class="logo">
+            </a>
+        </div>
+    </header>
+
+    <!-- =========================MAIN========================== -->
+
+    <main class="profile-page">
+
+        <!-- Back -->
+
+        <a href="../../index.html" class="back-link" id="backButton">
+            ← Back to Store
+        </a>
+
+        <!-- Hero -->
+
+        <section class="profile-hero">
+            <div class="profile-avatar">
+                <span id="profileInitial">
+                    T
+                </span>
+            </div>
+            <h1 id="profileHeroName">
+                Loading
+            </h1>
+            <p id="profileHeroEmail">
+                Loading...
+            </p>
+            <span class="member-badge">
+                • Snackment Member
+            </span>
+        </section>
+
+        <!-- Card -->
+
+        <section class="profile-card">
+
+            <!-- PERSONAL -->
+            <div class="profile-section">
+                <h4>
+                    PERSONAL INFORMATION
+                </h4>
+                <button class="profile-item" id="editNameBtn" data-action="edit-name">
+                    <div class="item-left">
+                        <div class="icon-box">
+                            <img src="../../Assets/Images/Auth logos/user.svg" alt="">
+                        </div>
+                        <div class="item-content">
+                            <h3>Name</h3>
+                            <p id="profileName">
+                                Loading...
+                            </p>
+                        </div>
+                    </div>
+                    <span class="chevron">›</span>
+                </button>
+
+                <button class="profile-item" id="editPhoneBtn" data-action="edit-phone">
+                    <div class="item-left">
+                        <div class="icon-box">
+                            <img src="../../Assets/Images/Auth logos/phone-call.svg" alt="">
+                        </div>
+                        <div class="item-content">
+                            <h3>Phone Number</h3>
+                            <p id="profilePhone">
+                                Loading...
+                            </p>
+                        </div>
+                    </div>
+                    <span class="chevron">›</span>
+                </button>
+                <button class="profile-item">
+                    <div class="item-left">
+                        <div class="icon-box">
+                            <img src="../../Assets/Images/Auth logos/envelope.svg" alt="">
+                        </div>
+                        <div class="item-content">
+                            <h3>Email Address</h3>
+                            <p id="profileEmail">
+                                Loading...
+                            </p>
+                        </div>
+                    </div>
+                    <span class="verified-badge">
+                        <img src="../../Assets/Images/Symbols/checkbold.svg" alt="">
+                        Verified
+                    </span>
+                </button>
+                <button class="profile-item" id="changePasswordBtn" data-action="change-password">
+                    <div class="item-left">
+                        <div class="icon-box">
+                            <img src="../../Assets/Images/Auth logos/fingerprint.svg" alt="">
+                        </div>
+                        <h3>
+                            Change Password
+                        </h3>
+                    </div>
+                    <span class="chevron">›</span>
+                </button>
+            </div>
+
+            <!-- DELIVERY -->
+            <div class="profile-section">
+                <h4>
+                    DELIVERY
+                </h4>
+                <button class="profile-item" data-action="edit-address">
+                    <div class="item-left">
+                        <div class="icon-box">
+                            <img src="../../Assets/Images/Auth logos/marker.svg" alt="">
+                        </div>
+                        <div class="item-content">
+                            <h3>Hostel Address</h3>
+                            <p id="profileAddress">
+                                Loading...
+                            </p>
+                        </div>
+                    </div>
+                    <span class="chevron">›</span>
+                </button>
+            </div>
+
+            <!-- ORDERS -->
+            <div class="profile-section">
+                <h4>
+                    ORDERS
+                </h4>
+                <button class="profile-item" data-action="order-history">
+                    <div class="item-left">
+                        <div class="icon-box">
+                            <img src="../../Assets/Images/Symbols/time-past.svg" alt="">
+                        </div>
+                        <h3>
+                            Order History
+                        </h3>
+                    </div>
+                    <span class="chevron">›</span>
+                </button>
+            </div>
+
+            <!-- SUPPORT -->
+            <div class="profile-section">
+                <h4>
+                    SUPPORT
+                </h4>
+                <a href="https://www.instagram.com/snackment/" target="_blank" class="profile-item">
+                    <div class="item-left">
+                        <div class="icon-box">
+                            <img src="../../Assets/Images/Icons/instagramlogo.svg" alt="">
+                        </div>
+                        <h3>Contact Us</h3>
+                    </div>
+                    <span class="chevron">›</span>
+                </a>
+                <a href="../../HTML/AboutUs.html" class="profile-item">
+                    <div class="item-left">
+                        <div class="icon-box">
+                            <img src="../../Assets/Images/Symbols/info.svg" alt="">
+                        </div>
+                        <h3>About Snackment</h3>
+                    </div>
+                    <span class="chevron">›</span>
+                </a>
+            </div>
+
+            <!-- ACCOUNT -->
+            <div class="profile-section">
+                <h4>
+                    ACCOUNT
+                </h4>
+                <button class="profile-item logout-item" id="logoutBtn" data-action="logout">
+                    <div class="item-left">
+                        <div class="icon-box logout-icon">
+                            <img src="../../Assets/Images/Symbols/sign-out-alt.svg" alt="">
+                        </div>
+                        <h3>Logout</h3>
+                    </div>
+                </button>
+            </div>
+
+        </section>
+    </main>
+
+    <!-- Footer -->
+
+    <footer class="profile-footer">
+        Snackment • Hostel Convenience Store
+    </footer>
+
+    <!-- ========================= EDIT NAME MODAL ========================= -->
+
+    <div id="editNameModal" class="modal-overlay hidden">
+
+        <div class="edit-name-modal">
+
+            <div class="edit-name-header">
+
+                <h2>Edit Name</h2>
+
+                <button id="closeEditNameBtn" class="modal-close-btn">
+                    ✕
+                </button>
+
+            </div>
+
+            <div class="edit-name-body">
+
+                <label for="nameInput">
+                    Name
+                </label>
+
+                <input type="text" id="nameInput" maxlength="50" placeholder="Enter your name">
+
+            </div>
+
+            <div class="edit-name-actions">
+
+                <button id="cancelEditNameBtn" class="cancel-btn">
+                    Cancel
+                </button>
+
+                <button id="saveNameBtn" class="save-btn">
+                    Save Changes
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+    <!-- =========================LOGOUT MODAL========================== -->
+
+    <div class="modal-overlay hidden" id="logoutModal">
+
+        <div class="logout-modal">
+
+            <div class="logout-icon-circle">
+                <img src="../../Assets/Images/Symbols/sign-out-alt.svg" alt="Logout">
+            </div>
+
+            <h2>Logout?</h2>
+
+            <p>
+                Are you sure you want to logout from your Snackment account?
+            </p>
+
+            <div class="logout-actions">
+
+                <button class="cancel-btn" id="cancelLogoutBtn">
+                    Cancel
+                </button>
+
+                <button class="confirm-logout-btn" id="confirmLogoutBtn">
+                    Logout
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- ========================= EDIT PHONE MODAL ========================= -->
+
+    <div id="editPhoneModal" class="modal-overlay hidden">
+
+        <div class="edit-name-modal">
+
+            <div class="edit-name-header">
+
+                <h2>Edit Phone Number</h2>
+
+                <button id="closeEditPhoneBtn" class="modal-close-btn">
+                    &times;
+                </button>
+
+            </div>
+
+            <div class="edit-name-body">
+
+                <label for="phoneInput">
+                    Phone Number
+                </label>
+
+                <input type="tel" id="phoneInput" maxlength="10" placeholder="Enter phone number">
+
+            </div>
+
+            <div class="edit-name-actions">
+
+                <button id="cancelEditPhoneBtn" class="cancel-btn">
+                    Cancel
+                </button>
+
+                <button id="savePhoneBtn" class="save-btn">
+                    Save Changes
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- ========================= CHANGE PASSWORD MODAL ========================= -->
+
+    <div id="changePasswordModal" class="modal-overlay hidden">
+
+        <div class="edit-name-modal">
+
+            <div class="edit-name-header">
+
+                <h2>Change Password</h2>
+
+                <button id="closeChangePasswordBtn" class="modal-close-btn">
+                    &times;
+                </button>
+
+            </div>
+
+            <div class="edit-name-body">
+
+                <label for="currentPasswordInput">
+                    Current Password
+                </label>
+
+                <div class="password-input-wrapper">
+
+                    <input type="password" id="currentPasswordInput" placeholder="Enter current password">
+
+                    <button type="button" class="password-toggle" data-target="currentPasswordInput">
+
+                        <img src="../../Assets/Images/Symbols/eye.svg" alt="Show Password">
+
+                    </button>
+
+                </div>
+
+                <label for="newPasswordInput">
+                    New Password
+                </label>
+
+                <div class="password-input-wrapper">
+
+                    <input type="password" id="newPasswordInput" placeholder="Enter new password">
+
+                    <button type="button" class="password-toggle" data-target="newPasswordInput">
+
+                        <img src="../../Assets/Images/Symbols/eye.svg" alt="Show Password">
+
+                    </button>
+
+                </div>
+
+                <label for="confirmPasswordInput">
+                    Confirm New Password
+                </label>
+
+                <div class="password-input-wrapper">
+
+                    <input type="password" id="confirmPasswordInput" placeholder="Confirm new password">
+
+                    <button type="button" class="password-toggle" data-target="confirmPasswordInput">
+
+                        <img src="../../Assets/Images/Symbols/eye.svg" alt="Show Password">
+
+                    </button>
+
+                </div>
+
+            </div>
+
+            <div class="edit-name-actions">
+
+                <button id="cancelChangePasswordBtn" class="cancel-btn">
+                    Cancel
+                </button>
+
+                <button id="savePasswordBtn" class="save-btn">
+                    Save Changes
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+    <script src="profile.js"></script>
+</body>
+
+</html>

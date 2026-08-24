@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Snackment Admin</title>
+
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+
+<body>
+
+    <!-- =========================================================
+         ADMIN APPLICATION
+    ========================================================== -->
+
+    <div class="admin-layout">
+
+        <!-- =====================================================
+             SIDEBAR
+        ====================================================== -->
+
+        <aside
+            class="sidebar"
+            id="sidebar"
+            aria-label="Admin navigation"
+        ></aside>
+
+
+        <!-- =====================================================
+             MAIN AREA
+        ====================================================== -->
+
+        <main class="main-area">
+
+            <!-- =================================================
+                 TOPBAR
+            ================================================== -->
+
+            <header
+                class="topbar"
+                id="topbar"
+            ></header>
+
+
+            <!-- =================================================
+                 PAGE CONTENT
+            ================================================== -->
+
+            <section
+                class="page-content"
+                id="page-content"
+            ></section>
+
+        </main>
+
+    </div>
+
+
+    <!-- =========================================================
+         LOGOUT MODAL
+    ========================================================== -->
+
+    <div
+        class="logout-modal"
+        id="logout-modal"
+        aria-hidden="true"
+    >
+
+        <div
+            class="logout-modal-card"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="logout-modal-title"
+        >
+
+            <div class="logout-icon-wrapper">
+
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    aria-hidden="true"
+                >
+                    <path d="M10 17L15 12L10 7" />
+                    <path d="M15 12H3" />
+                    <path d="M21 19V5C21 3.89543 20.1046 3 19 3H13" />
+                </svg>
+
+            </div>
+
+
+            <div class="logout-modal-content">
+
+                <h2 id="logout-modal-title">
+                    Sign out?
+                </h2>
+
+                <p>
+                    Are you sure you want to sign out of the
+                    Snackment Admin Panel?
+                </p>
+
+            </div>
+
+
+            <div class="logout-modal-actions">
+
+                <button
+                    type="button"
+                    class="logout-cancel-button"
+                    id="logout-cancel-button"
+                >
+                    Cancel
+                </button>
+
+                <button
+                    type="button"
+                    class="logout-confirm-button"
+                    id="logout-confirm-button"
+                >
+                    Sign out
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================================================
+         ADMIN JAVASCRIPT
+    ========================================================== -->
+
+    <script src="js/admin.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,548 @@
+/* ==========================================================
+   RESET
+========================================================== */
+
+* {
+
+    margin: 0;
+
+    padding: 0;
+
+    box-sizing: border-box;
+
+}
+
+body {
+
+    font-family: "Inter", sans-serif;
+
+    background: #f8fafc;
+
+    color: #111827;
+
+}
+
+/* ==========================================================
+   PAGE
+========================================================== */
+
+.order-page {
+
+    width: min(900px, 92%);
+
+    margin: 34px auto 60px;
+
+}
+
+/* ==========================================================
+   HEADER
+========================================================== */
+
+.page-header {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin-bottom: 26px;
+
+}
+
+.page-header h1 {
+
+    font-size: 30px;
+
+    font-weight: 700;
+
+    color: #111827;
+
+}
+
+.back-btn {
+
+    border: none;
+
+    background: transparent;
+
+    cursor: pointer;
+
+    font-size: 16px;
+
+    font-weight: 600;
+
+    color: #65d852;
+
+    transition: .25s;
+
+}
+
+.back-btn:hover {
+
+    color: #58c245;
+
+}
+
+/* ==========================================================
+   COMMON CARD
+========================================================== */
+
+.card {
+
+    background: #ffffff;
+
+    border: 1px solid #eceff3;
+
+    border-radius: 18px;
+
+    padding: 24px;
+
+    margin-bottom: 22px;
+
+    box-shadow:
+
+        0 2px 8px rgba(15, 23, 42, .05);
+
+}
+
+.card h3 {
+
+    font-size: 18px;
+
+    font-weight: 700;
+
+    margin-bottom: 20px;
+
+    color: #111827;
+
+}
+
+/* ==========================================================
+   HERO CARD
+========================================================== */
+
+.hero-card {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+}
+
+.hero-left h2 {
+
+    font-size: 28px;
+
+    font-weight: 700;
+
+    margin-bottom: 8px;
+
+}
+
+.hero-left p {
+
+    color: #6b7280;
+
+    font-size: 15px;
+
+}
+
+/* ==========================================================
+   STATUS BADGE
+========================================================== */
+
+.status-badge {
+
+    padding: 10px 18px;
+
+    border-radius: 999px;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+}
+/* ==========================================================
+   TIMELINE
+========================================================== */
+
+#timelineContainer{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+}
+
+.timeline-step{
+
+    display:flex;
+
+    align-items:flex-start;
+
+    gap:16px;
+
+}
+
+.timeline-icon{
+
+    width:34px;
+
+    height:34px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    flex-shrink:0;
+
+    font-size:15px;
+
+    font-weight:700;
+
+}
+
+.timeline-icon.completed{
+
+    background:#65d852;
+
+    color:#fff;
+
+}
+
+.timeline-icon.current{
+
+    background:#fff4d6;
+
+    color:#d97706;
+
+    border:2px solid #fbbf24;
+
+}
+
+.timeline-icon.pending{
+
+    background:#f3f4f6;
+
+    color:#9ca3af;
+
+}
+
+.timeline-content h4{
+
+    font-size:16px;
+
+    margin-bottom:4px;
+
+    color:#111827;
+
+}
+
+.timeline-content p{
+
+    font-size:14px;
+
+    color:#6b7280;
+
+}
+
+/* ==========================================================
+   ORDER ITEMS
+========================================================== */
+
+#itemsContainer{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+}
+
+.item-card{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+}
+
+.item-image{
+
+    width:82px;
+
+    height:82px;
+
+    border-radius:14px;
+
+    object-fit:cover;
+
+    border:1px solid #eceff3;
+
+}
+
+.item-info{
+
+    flex:1;
+
+}
+
+.item-info h4{
+
+    font-size:17px;
+
+    margin-bottom:8px;
+
+}
+
+.item-price{
+
+    color:#6b7280;
+
+    font-size:15px;
+
+}
+
+.item-total{
+
+    font-size:18px;
+
+    font-weight:700;
+
+    color:#111827;
+
+}
+
+/* ==========================================================
+   BILL SUMMARY
+========================================================== */
+
+.bill-row{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    margin-bottom:16px;
+
+    font-size:15px;
+
+}
+
+.bill-total{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    margin-top:18px;
+
+    padding-top:18px;
+
+    border-top:1px solid #eceff3;
+
+    font-size:20px;
+
+    font-weight:700;
+
+}
+
+/* ==========================================================
+   DELIVERY / PAYMENT / INFO
+========================================================== */
+
+.info-row{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    margin-bottom:16px;
+
+    gap:20px;
+
+}
+
+.info-label{
+
+    color:#6b7280;
+
+    font-size:15px;
+
+}
+
+.info-value{
+
+    font-weight:600;
+
+    color:#111827;
+
+    text-align:right;
+
+}
+
+/* ==========================================================
+   HELP CARD
+========================================================== */
+
+.help-card{
+
+    text-align:center;
+
+}
+
+.help-card p{
+
+    color:#6b7280;
+
+    margin:12px 0 22px;
+
+    line-height:1.6;
+
+}
+
+.support-btn{
+
+    border:none;
+
+    background:#65d852;
+
+    color:white;
+
+    border-radius:12px;
+
+    padding:13px 28px;
+
+    cursor:pointer;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    transition:.25s;
+
+}
+
+.support-btn:hover{
+
+    background:#58c245;
+
+}
+/* ==========================================================
+   STATUS COLORS
+========================================================== */
+
+.status-badge.preparing{
+
+    background:#FFF4D6;
+
+    color:#D97706;
+
+}
+
+.status-badge.transit{
+
+    background:#DBEAFE;
+
+    color:#2563EB;
+
+}
+
+.status-badge.delivered{
+
+    background:#DCFCE7;
+
+    color:#16A34A;
+
+}
+
+.status-badge.cancelled{
+
+    background:#FEE2E2;
+
+    color:#DC2626;
+
+}
+
+.status-badge.pending{
+
+    background:#F3F4F6;
+
+    color:#6B7280;
+
+}
+/* ==========================================================
+   MOBILE
+========================================================== */
+
+@media(max-width:640px){
+
+    .order-page{
+
+        width:94%;
+
+        margin-top:24px;
+
+    }
+
+    .page-header{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        gap:14px;
+
+    }
+
+    .hero-card{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        gap:18px;
+
+    }
+
+    .item-card{
+
+        align-items:flex-start;
+
+    }
+
+    .item-image{
+
+        width:72px;
+
+        height:72px;
+
+    }
+
+    .info-row{
+
+        flex-direction:column;
+
+        gap:4px;
+
+    }
+
+    .info-value{
+
+        text-align:left;
+
+    }
+
+}

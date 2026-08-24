@@ -1,3 +1,21 @@
+# Environment / secrets
+.env
+.env.*
+!.env.example
+*.env.save
+
+# Dependencies
+node_modules/
+
+# macOS
+.DS_Store
+
+# Archives
+*.zip
+
+# Logs
+*.log
+npm-debug.log*
 # =========================Dependencies=================
 
 node_modules/

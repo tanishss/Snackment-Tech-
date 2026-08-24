@@ -24,6 +24,30 @@ const userSchema = new mongoose.Schema({
   room: String,
   address: String,
 
+  addresses: [
+    {
+      hostel: {
+        type: String,
+        required: true
+      },
+
+      room: {
+        type: String,
+        required: true
+      },
+
+      address: {
+        type: String,
+        required: true
+      },
+
+      isDefault: {
+        type: Boolean,
+        default: false
+      }
+    }
+  ],
+
   isProfileComplete: {
     type: Boolean,
     default: false

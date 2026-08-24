@@ -1,0 +1,264 @@
+<header class="topbar-inner">
+
+    <!-- =====================================================
+         LEFT SIDE
+    ====================================================== -->
+
+    <div class="topbar-left">
+
+        <!-- Mobile Menu -->
+
+        <button
+            type="button"
+            class="mobile-menu-button"
+            id="mobile-menu-button"
+            aria-label="Open navigation"
+        >
+
+            <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                aria-hidden="true"
+            >
+                <path d="M4 7H20" />
+                <path d="M4 12H20" />
+                <path d="M4 17H20" />
+            </svg>
+
+        </button>
+
+
+        <!-- Page Heading -->
+
+        <div class="page-heading">
+
+            <h1 id="page-title">
+                Dashboard
+            </h1>
+
+            <div class="breadcrumb">
+
+                <span>
+                    Home
+                </span>
+
+                <span class="breadcrumb-divider">
+                    /
+                </span>
+
+                <span id="breadcrumb-page">
+                    Dashboard
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         RIGHT SIDE
+    ====================================================== -->
+
+    <div class="topbar-right">
+
+
+        <!-- =================================================
+             NOTIFICATIONS
+        ================================================== -->
+
+        <div class="notification-wrapper">
+
+            <button
+                type="button"
+                class="notification-button"
+                id="notification-button"
+                aria-label="Notifications"
+                aria-expanded="false"
+                aria-controls="notification-popup"
+            >
+
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    aria-hidden="true"
+                >
+
+                    <path
+                        d="M18 9C18 5.69 15.76 3 12 3C8.24 3 6 5.69 6 9C6 14 4 15 4 17H20C20 15 18 14 18 9Z"
+                    />
+
+                    <path
+                        d="M10 20H14"
+                    />
+
+                </svg>
+
+
+                <!-- Unread Indicator -->
+
+                <span
+                    class="notification-dot"
+                    aria-hidden="true"
+                ></span>
+
+            </button>
+
+
+            <!-- =================================================
+                 NOTIFICATION POPUP
+            ================================================== -->
+
+            <div
+                class="notification-popup"
+                id="notification-popup"
+                aria-hidden="true"
+            >
+
+                <!-- Popup Arrow -->
+
+                <div
+                    class="notification-popup-arrow"
+                    aria-hidden="true"
+                ></div>
+
+
+                <!-- Popup Header -->
+
+                <div class="notification-popup-header">
+
+                    <h3>
+                        Notifications
+                    </h3>
+
+                </div>
+
+
+                <!-- Notification List -->
+
+                <div
+                    class="notification-list"
+                    id="notification-list"
+                >
+
+                    <!-- Notification 1 -->
+
+                    <div class="notification-item">
+
+                        <span
+                            class="notification-status success"
+                            aria-hidden="true"
+                        ></span>
+
+                        <div class="notification-content">
+
+                            <p>
+                                Order #1042 marked as delivered
+                            </p>
+
+                            <span>
+                                2 min ago
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Notification 2 -->
+
+                    <div class="notification-item">
+
+                        <span
+                            class="notification-status success"
+                            aria-hidden="true"
+                        ></span>
+
+                        <div class="notification-content">
+
+                            <p>
+                                New order from Riya Sharma
+                            </p>
+
+                            <span>
+                                8 min ago
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Notification 3 -->
+
+                    <div class="notification-item">
+
+                        <span
+                            class="notification-status warning"
+                            aria-hidden="true"
+                        ></span>
+
+                        <div class="notification-content">
+
+                            <p>
+                                Stock low: Lays Classic (3 left)
+                            </p>
+
+                            <span>
+                                1 hr ago
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             ADMIN PROFILE
+        ================================================== -->
+
+        <div class="admin-topbar-profile">
+
+            <!-- Avatar -->
+
+            <div
+                class="topbar-avatar"
+                id="topbar-avatar"
+                aria-hidden="true"
+            >
+                A
+            </div>
+
+
+            <!-- Admin Information -->
+
+            <div class="topbar-admin-info">
+
+                <span
+                    class="topbar-admin-name"
+                    id="topbar-admin-name"
+                >
+                    Admin User
+                </span>
+
+                <span
+                    class="topbar-admin-role"
+                    id="topbar-admin-role"
+                >
+                    Super Admin
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</header>

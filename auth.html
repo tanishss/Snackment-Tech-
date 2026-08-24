@@ -44,6 +44,41 @@
                 </div>
                 <p class="error-text" id="emailError">Please enter a valid email address</p>
 
+                <!-- PASSWORD + CONFIRM PASSWORD -->
+                <div class="row">
+                    <div class="field">
+                        <label for="password">Password *</label>
+                        <div class="input-group password-group">
+                            <img src="Assets/Images/Auth logos/fingerprint.svg" alt="Password">
+
+                            <input id="password" type="password" placeholder="Enter password" required />
+
+                            <img class="toggle-password" src="Assets/Images/Symbols/eye-off.svg"
+                                alt="Show Password">
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label for="confirmPassword">Confirm Password *</label>
+                        <div class="input-group password-group">
+                            <img src="Assets/Images/Auth logos/fingerprint.svg" alt="Password">
+
+                            <input id="confirmPassword" type="password" placeholder="Confirm password" required />
+
+                            <img class="toggle-password" src="Assets/Images/Symbols/eye-off.svg"
+                                alt="Show Password">
+                        </div>
+                    </div>
+                </div>
+
+                <p class="error-text" id="passwordError">
+                    Password must be at least 5 characters.
+                </p>
+
+                <p class="error-text" id="confirmPasswordError">
+                    Passwords do not match.
+                </p>
+
                 <!-- HOSTEL + ROOM -->
                 <div class="row">
                     <div class="field">
@@ -119,7 +154,7 @@
                 </button>
 
                 <p class="success-footer">
-                     Start exploring our amazing collection of snacks & essentials 🛍️
+                    Start exploring our amazing collection of snacks & essentials 🛍️
                 </p>
             </div>
 

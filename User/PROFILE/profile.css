@@ -1,0 +1,848 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+/* =========================RESET========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    background: #f8fafc;
+    color: #111827;
+    -webkit-font-smoothing: antialiased;
+}
+
+button,
+input {
+    font-family: inherit;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+/* =========================VARIABLES========================= */
+
+:root {
+    --primary: #65d852;
+    --primary-hover: #58c245;
+    --text: #111827;
+    --text-secondary: #6b7280;
+    --border: #e5e7eb;
+    --card: #ffffff;
+    --background: #f8fafc;
+    --success-bg: #eaf9e7;
+    --success-text: #2f8f2f;
+    --danger: #ef4444;
+    --radius: 22px;
+    --transition: 0.25s ease;
+
+}
+
+/* =========================BODY========================= */
+
+body {
+    background: var(--background);
+    color: var(--text);
+}
+
+/* =========================NAVBAR========================= */
+
+.navbar {
+    width: 100%;
+    background: white;
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-container {
+    max-width: 1280px;
+    margin: auto;
+    padding: 16px 28px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo {
+    height: 48px;
+    width: auto;
+}
+
+/* =========================MAIN========================= */
+
+.profile-page {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 42px 24px 80px;
+}
+
+/* =========================BACK BUTTON========================= */
+
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #6b7280;
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 42px;
+    transition: var(--transition);
+}
+
+.back-link:hover {
+    color: var(--text);
+}
+
+/* =========================PROFILE HERO========================= */
+
+.profile-hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 42px;
+}
+
+/* =========================
+   PROFILE AVATAR
+========================= */
+
+.profile-avatar {
+    width: 104px;
+    height: 104px;
+    border-radius: 50%;
+    background: var(--primary);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 42px;
+    font-weight: 700;
+    box-shadow: 0 15px 40px rgba(101, 216, 82, .25);
+    margin-bottom: 20px;
+}
+
+.item-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex: 1;
+}
+
+#profileHeroName {
+    font-size: 38px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+#profileHeroEmail {
+    color: var(--text-secondary);
+    font-size: 18px;
+    margin-bottom: 16px;
+}
+
+/* =========================MEMBER BADGE========================= */
+
+.member-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: #EAF7EB;
+    color: #2C7A1A;
+    font-size: 14px;
+    border: 1px solid #c8efc5;
+    font-weight: 650;
+}
+
+/* =========================PROFILE CARD========================= */
+
+.profile-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: 0 10px 35px rgba(17, 24, 39, 0.05);
+}
+
+/* =========================PROFILE SECTION========================= */
+
+.profile-section:not(:last-child) {
+    border-bottom: 8px solid #F9FAFC;
+}
+
+.profile-item:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    left: 80px;
+    /* icon + gap ke baad */
+    right: 35px;
+    bottom: 0;
+    height: 2px;
+    background: #F8F8FA;
+}
+
+.profile-section h4 {
+    padding: 24px 28px 12px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    color: #93969c;
+}
+
+/* =========================PROFILE ITEM========================= */
+
+.profile-item {
+    width: 100%;
+    background: white;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 28px;
+    position: relative;
+    transition: var(--transition);
+    text-decoration: none;
+    color: inherit;
+}
+
+.profile-item:hover {
+    background: #F9FAFB;
+    color: inherit;
+
+}
+
+
+.item-left {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.icon-box {
+    width: 42px;
+    height: 42px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #F3F4F6;
+    border-radius: 12px;
+    flex-shrink: 0;
+}
+
+.icon-box img {
+    width: 20px;
+    height: 20px;
+    filter: brightness(0) saturate(100%) invert(58%) sepia(8%) saturate(420%) hue-rotate(183deg) brightness(92%) contrast(88%);
+}
+
+.item-left h3 {
+    font-size: 16px;
+    font-weight: 650;
+    color: var(--text);
+}
+
+.item-left p {
+    margin-top: 2px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #A7ACB7;
+}
+
+.chevron {
+    font-size: 24px;
+    color: #aab2be;
+}
+
+/* =========================VERIFIED BADGE========================= */
+
+
+.verified-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 8px;
+    background: #EDFAEB;
+    border-radius: 999px;
+    color: #58874d;
+    font-size: 13px;
+    font-family: inherit;
+    /* ya Poppins */
+    font-weight: 600;
+    line-height: 1;
+    white-space: nowrap;
+}
+
+.verified-badge img {
+    width: 13px;
+    height: 13px;
+    object-fit: contain;
+    filter: brightness(0) saturate(100%) invert(56%) sepia(15%) saturate(917%) hue-rotate(64deg) brightness(90%) contrast(70%);
+}
+
+/* =========================LOGOUT========================= */
+
+.logout-item {
+    color: var(--danger);
+}
+
+.logout-item .icon-box {
+    width: 46px;
+    height: 46px;
+    background: #FEF2F2;
+}
+
+.logout-item h3 {
+    color: #f35454;
+}
+
+
+.logout-item img {
+    width: 22px;
+    height: 22px;
+    filter: brightness(0) saturate(100%) invert(52%) sepia(88%) saturate(1560%) hue-rotate(326deg) brightness(94%) contrast(98%);
+    opacity: .9;
+}
+
+.logout-item:hover {
+    background: #F9FAFB;
+}
+
+/* =========================FOOTER========================= */
+
+.profile-footer {
+    text-align: center;
+    padding: 34px 20px 50px;
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+/* ============================================================ */
+/* =========================RESPONSIVE========================= */
+/* ============================================================ */
+
+@media (max-width: 900px) {
+
+    .nav-container {
+        padding: 16px 20px;
+    }
+
+    .profile-page {
+        padding: 36px 20px 70px;
+    }
+
+    #profileHeroName {
+        font-size: 32px;
+    }
+
+    #profileHeroEmail {
+        font-size: 16px;
+    }
+
+}
+
+@media (max-width: 640px) {
+
+    .nav-container {
+        padding: 14px 16px;
+    }
+
+    .logo {
+        content: url("../../Assets/Images/Black logos/Snackment_logotext_black_transparent.png");
+        height: 42px;
+    }
+
+    .profile-btn span,
+    .cart-btn span {
+        display: none;
+    }
+
+    .profile-btn,
+    .cart-btn {
+        width: 46px;
+        height: 46px;
+        padding: 0;
+        justify-content: center;
+    }
+
+    .profile-page {
+        padding: 28px 16px 60px;
+    }
+
+    .back-link {
+        margin-bottom: 28px;
+        font-size: 14px;
+    }
+
+    .profile-avatar {
+        width: 84px;
+        height: 84px;
+        font-size: 34px;
+    }
+
+    #profileHeroName {
+        font-size: 26px;
+    }
+
+    #profileHeroEmail {
+        font-size: 15px;
+    }
+
+    .profile-section h4 {
+        padding: 20px 20px 10px;
+    }
+
+    .profile-item {
+        padding: 16px 20px;
+    }
+
+    .item-left {
+        gap: 14px;
+    }
+
+    .item-left h3 {
+        font-size: 15px;
+    }
+
+    .item-left p {
+        font-size: 13px;
+    }
+
+    .verified {
+        font-size: 11px;
+        padding: 5px 10px;
+    }
+}
+
+@media (max-width: 420px) {
+
+    .profile-page {
+
+        padding-inline: 12px;
+
+    }
+
+    .profile-card {
+
+        border-radius: 18px;
+
+    }
+
+    .profile-item {
+
+        padding: 15px 16px;
+
+    }
+
+    .item-left img {
+
+        width: 20px;
+        height: 20px;
+
+    }
+
+}
+
+
+/* ========================= LOGOUT MODAL ========================= */
+
+.hidden {
+    display: none;
+}
+
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.35);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    animation: fadeIn 0.25s ease;
+}
+
+.logout-modal {
+    width: min(92%, 560px);
+    background: #fff;
+    border-radius: 32px;
+    padding: 42px 38px;
+    text-align: center;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, .15);
+    animation: modalPop .25s ease;
+}
+
+.logout-icon-circle {
+    width: 92px;
+    height: 92px;
+    margin: 0 auto 26px;
+    border-radius: 50%;
+    background: rgba(239, 68, 68, .08);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logout-icon-circle img {
+    width: 42px;
+    height: 42px;
+    filter: brightness(0) saturate(100%) invert(52%) sepia(88%) saturate(1560%) hue-rotate(326deg) brightness(94%) contrast(98%);
+    opacity: .9;
+}
+
+.logout-modal h2 {
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #0f172a;
+}
+
+.logout-modal p {
+    margin: 18px auto 34px;
+    max-width: 420px;
+    color: #6b7280;
+    font-size: 1.08rem;
+    font-weight: 600;
+    line-height: 1.6;
+}
+
+.logout-actions {
+    display: flex;
+    gap: 18px;
+}
+
+.logout-actions button {
+    flex: 1;
+    height: 62px;
+    border: none;
+    border-radius: 18px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    font-weight: 700;
+    transition: .2s;
+}
+
+.cancel-btn {
+    background: #f3f4f6;
+    color: #374151;
+}
+
+.cancel-btn:hover {
+    background: #e5e7eb;
+}
+
+.confirm-logout-btn {
+    background: #ef4444;
+    color: white;
+}
+
+.confirm-logout-btn:hover {
+    background: #dc2626;
+}
+
+.modal-overlay.hidden {
+    display: none;
+}
+
+@keyframes fadeIn {
+
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+
+}
+
+@keyframes modalPop {
+
+    from {
+        opacity: 0;
+        transform: scale(.92);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+}
+
+@media (max-width:640px) {
+
+    .logout-modal {
+        padding: 32px 22px;
+        border-radius: 24px;
+    }
+
+    .logout-actions {
+        flex-direction: column;
+    }
+
+    .logout-actions {
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    .cancel-btn,
+    .confirm-logout-btn {
+        background: transparent;
+        box-shadow: none;
+        height: auto;
+        padding: 0;
+        border-radius: 0;
+    }
+
+    .cancel-btn {
+        color: #111827;
+    }
+
+    .confirm-logout-btn {
+        color: #ef4444;
+    }
+
+    .confirm-logout-btn {
+        transition: color .2s ease, transform .2s ease;
+    }
+
+    .cancel-btn:hover {
+        color: #25da3d;
+        transform: scale(1.04);
+    }
+
+    .confirm-logout-btn:hover {
+        color: #690a0a;
+        transform: scale(1.04);
+    }
+
+    .cancel-btn:active,
+    .confirm-logout-btn:active {
+        transform: scale(0.96);
+    }
+     
+}
+
+/* ========================= EDIT NAME MODAL ========================= */
+
+.edit-name-modal {
+    width: min(92%, 560px);
+    background: #fff;
+    border-radius: 32px;
+    overflow: hidden;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, .15);
+    animation: modalPop .25s ease;
+}
+
+/* Header */
+
+.edit-name-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 40px;
+    border-bottom: 1px solid #ececec;
+}
+
+.edit-name-header h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #111827;
+}
+
+/* Close Button */
+
+.modal-close-btn {
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 50%;
+    background: #f3f4f6;
+    color: #6b7280;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color .2s ease,
+                transform .2s ease;
+}
+
+.modal-close-btn:hover {
+    background: #e5e7eb;
+    transform: rotate(90deg);
+}
+
+/* Body */
+
+.edit-name-body {
+    padding: 25px 40px;
+}
+
+.edit-name-body label {
+    display: block;
+    margin-bottom: 12px;
+    font-size: .95rem;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: #9ca3af;
+}
+
+.edit-name-body input {
+    width: 100%;
+    height: 66px;
+    padding: 0 24px;
+    box-sizing: border-box;
+    border: 2px solid #d1d5db;
+    border-radius: 18px;
+    font-size: 1.25rem;
+    font-weight: 600;
+    transition: border-color .2s ease;
+}
+
+.edit-name-body input:focus {
+    outline: none;
+    border-color: #65d852;
+}
+
+/* Actions */
+
+.edit-name-actions {
+    display: flex;
+    gap: 18px;
+    padding: 0 40px 40px;
+}
+
+.edit-name-actions button {
+    flex: 1;
+    height: 62px;
+    border: none;
+    border-radius: 18px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition:
+        background-color .2s ease,
+        color .2s ease,
+        transform .2s ease;
+}
+
+.edit-name-actions button:focus-visible {
+    outline: 3px solid rgba(101, 216, 82, .25);
+    outline-offset: 3px;
+}
+
+.edit-name-actions button:active {
+    transform: scale(.97);
+}
+
+/* Cancel Button */
+
+.edit-name-actions .cancel-btn {
+    background: #f3f4f6;
+    color: #374151;
+}
+
+.edit-name-actions .cancel-btn:hover {
+    background: #e5e7eb;
+}
+
+/* Save Button */
+
+.edit-name-actions .save-btn {
+    background: #65d852;
+    color: #fff;
+}
+
+.edit-name-actions .save-btn:hover {
+    background: #58c245;
+}
+
+/* ========================= RESPONSIVE ========================= */
+
+@media (max-width: 640px) {
+
+    .edit-name-modal {
+        border-radius: 24px;
+    }
+
+    .edit-name-header,
+    .edit-name-body,
+    .edit-name-actions {
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+
+    .edit-name-actions {
+        flex-direction: column;
+    }
+
+}
+
+/* ========================= PASSWORD INPUT ========================= */
+
+.password-input-wrapper {
+    position: relative;
+    margin-bottom: 18px;
+}
+
+.password-input-wrapper input {
+    width: 100%;
+    padding: 14px 50px 14px 16px;
+    border: 1px solid #d1d5db;
+    border-radius: 18px;
+    font-size: 0.95rem;
+    font-family: inherit;
+    box-sizing: border-box;
+    transition: border-color 0.2s ease;
+}
+
+.password-input-wrapper input:focus {
+    outline: none;
+    border-color: #65d852;
+}
+
+.password-toggle {
+    position: absolute;
+    top: 50%;
+    right: 16px;
+    transform: translateY(-50%);
+    border: none;
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.password-toggle img {
+    width: 22px;
+    height: 22px;
+    opacity: 0.65;
+    transition: opacity 0.2s ease;
+}
+
+.password-toggle:hover img {
+    opacity: 1;
+}

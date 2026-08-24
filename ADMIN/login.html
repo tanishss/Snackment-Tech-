@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snackment Admin</title>
+    <link rel="stylesheet" href="CSS/login.css">
+</head>
+
+<body>
+    <main class="login-page">
+        <!-- =========================Background Decoration========================== -->
+
+        <div class="background-blur background-blur-1"></div>
+        <div class="background-blur background-blur-2"></div>
+
+        <!-- =========================Login Container========================== -->
+
+        <section class="login-container">
+
+            <!-- =========================Branding========================== -->
+
+            <div class="branding">
+                <img src="../Assets/Images/White logos/Snackment_logo+text_white_transparent.png" alt="Snackment"
+                    class="brand-logo">
+                <h1 class="brand-title">
+                    Welcome Back
+                </h1>
+                <p class="brand-description">
+                    Sign in to your admin account
+                </p>
+            </div>
+
+            <!-- =========================Login Card========================== -->
+
+            <section class="login-card">
+                <!-- =========================Phone Login Form========================== -->
+                <form id="phone-form" class="phone-form" autocomplete="off">
+                    <!-- Phone Label -->
+                    <label for="phone-number" class="input-label">
+                        Phone Number
+                    </label>
+                    <!-- Phone Input -->
+                    <div class="phone-input-container">
+                        <span class="country-code">
+                            +91
+                        </span>
+                        <input type="tel" id="phone-number" maxlength="10" inputmode="numeric" autocomplete="tel"
+                            pattern="[0-9]*" placeholder="98765 43210" required>
+                    </div>
+                    <!-- Error -->
+                    <p class="error-message hidden" id="phone-error">
+                        This phone number is not authorized as an administrator.
+                    </p>
+                    <!-- Continue -->
+                    <button type="submit" class="primary-button" id="continue-button">
+                        Continue
+                    </button>
+                </form>
+
+                <!-- =========================
+                     OTP Verification Form
+                ========================== -->
+
+                <form id="otp-form" class="otp-form hidden" autocomplete="off">
+
+                    <!-- OTP Heading -->
+
+                    <h2 class="otp-title">
+
+                        Verify OTP
+
+                    </h2>
+
+                    <!-- OTP Subtitle -->
+
+                    <p class="otp-description">
+
+                        We've sent a verification code to
+
+                    </p>
+
+                    <!-- Masked Number -->
+
+                    <span class="masked-phone-number" id="masked-phone-number">
+
+                        +91 ••••••3210
+
+                    </span>
+
+                    <!-- OTP Inputs -->
+
+                    <div class="otp-input-wrapper">
+
+                        <input type="text" maxlength="1" class="otp-input">
+
+                        <input type="text" maxlength="1" class="otp-input">
+
+                        <input type="text" maxlength="1" class="otp-input">
+
+                        <input type="text" maxlength="1" class="otp-input">
+
+                        <input type="text" maxlength="1" class="otp-input">
+
+                        <input type="text" maxlength="1" class="otp-input">
+
+                    </div>
+
+                    <!-- OTP Error -->
+
+                    <p class="error-message hidden" id="otp-error">
+
+                        Invalid OTP. Please try again.
+
+                    </p>
+
+                    <!-- Timer -->
+
+                    <div class="otp-footer">
+
+                        <span>
+
+                            Resend OTP in
+
+                        </span>
+
+                        <button type="button" id="resend-otp" disabled>
+
+                            00:30
+
+                        </button>
+
+                    </div>
+
+                    <!-- Verify -->
+
+                    <button type="submit" class="primary-button" id="verify-button">
+
+                        Verify & Continue
+
+                    </button>
+
+                    <!-- Back -->
+
+                    <button type="button" class="secondary-button" id="change-number">
+
+                        Change Phone Number
+
+                    </button>
+
+                </form>
+
+                <!-- =========================
+                     Loading State
+                ========================== -->
+
+                <div class="loading-state hidden" id="loading-state">
+
+                    <div class="loader"></div>
+
+                    <p>
+
+                        Verifying credentials...
+
+                    </p>
+
+                </div>
+
+            </section>
+
+            <!-- =========================
+                 Footer
+            ========================== -->
+
+            <footer class="login-footer">
+
+                <p>
+
+                    Internal Use Only
+
+                </p>
+
+            </footer>
+
+        </section>
+
+    </main>
+
+    <script src="JS/login.js"></script>
+
+</body>
+
+</html>

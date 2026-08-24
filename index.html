@@ -37,12 +37,7 @@
                     <div class="nav-actions">
                         <button class="login-btn"> <span class="login-icon"> <img src="Assets/Images/Symbols/user.svg"
                                     alt="User"> </span> <span class="login-text">Login</span> </button>
-                        <button class="logout-btn" style="display:none;">
-                            <span class="login-icon">
-                                <img src="Assets/Images/Symbols/user.svg" alt="User">
-                            </span>
-                            <span class="login-text">Logout</span>
-                        </button>
+
                         <button class="cart-btn"> <span class="cart-icon"> <img
                                     src="Assets/Images/Symbols/shopping-cart.svg" alt="Shopping Cart"> </span> <span
                                 class="cart-text"> Cart </span> <span class="cart-count" hidden>0</span> </button>
@@ -462,55 +457,101 @@
                 <a href="/">Terms of Service</a> and <a href="/">Privacy Policy</a>
             </p>
         </div>
+        <!-- PASSWORD STEP -->
+        <div class="auth-step" id="passwordStep">
 
-        <!-- OTP STEP -->
-        <div class="auth-step" id="otpStep">
-            <h2>Verify OTP</h2>
-            <p class="otp-text">
-                Enter the 6-digit code sent to
-                <span id="maskedPhone"></span>
-            </p>
+            <h2>Welcome Back</h2>
 
-            <div class="otp-inputs">
-                <input maxlength="1" />
-                <input maxlength="1" />
-                <input maxlength="1" />
-                <input maxlength="1" />
-                <input maxlength="1" />
-                <input maxlength="1" />
+            <p>Enter your password to continue</p>
+
+            <label>Password</label>
+
+            <div class="password-input">
+
+                <img src="Assets/Images/Auth logos/fingerprint.svg" alt="Password">
+
+                <input type="password" id="loginPassword" placeholder="Enter your password">
+
+                <img src="Assets/Images/Symbols/eye-off.svg" class="toggle-login-password" alt="Show Password">
+
             </div>
 
-            <p class="resend" id="resendText">
-                Resend OTP in <span id="timer">30</span>s
+            <p class="forgot-password">
+                Forgot Password?
             </p>
-            <button class="resend-btn" id="resendBtn">Resend OTP</button>
 
-            <button class="verify-btn" disabled>Verify & Continue</button>
+            <button type="button" class="password-login-btn" disabled>
+
+                Login
+
+            </button>
+
         </div>
-        <!-- WELCOME BACK STEP -->
-        <div class="auth-step" id="welcomeStep">
-            <div class="success-wrapper">
-                <img src="Assets/Images/Symbols/check.gif" alt="Success" class="success-icon-img" />
+        <!-- ================= FORGOT EMAIL STEP ================= -->
+
+        <div class="auth-step" id="forgotEmailStep">
+
+            <h2>Forgot Password</h2>
+
+            <p>Enter your registered email address</p>
+
+            <label>Email Address</label>
+
+            <div class="password-input">
+
+                <img src="Assets/Images/Auth logos/envelope.svg" alt="">
+
+                <input type="email" id="forgotEmail" placeholder="Enter your email">
+
             </div>
 
-            <h2 class="welcome-title">
-                Welcome Back!
-            </h2>
+            <button type="button" class="forgot-email-btn" disabled>
 
-            <p class="welcome-sub">
-                Great to see you again!
-            </p>
+                Continue
 
-            <p class="welcome-desc">
-                You're all set to continue shopping
-            </p>
-
-            <button class="start-btn" id="welcomeContinue">
-                Start Shopping
             </button>
 
         </div>
 
+        <!-- ================= RESET PASSWORD STEP ================= -->
+
+        <div class="auth-step" id="resetPasswordStep">
+
+            <h2>Create New Password</h2>
+
+            <p>Enter a new password for your account</p>
+
+            <label>New Password</label>
+
+            <div class="password-input">
+
+                <img src="Assets/Images/Auth logos/fingerprint.svg" alt="">
+
+                <input type="password" id="resetPassword" placeholder="Enter new password">
+
+                <img src="Assets/Images/Symbols/eye-off.svg" class="toggle-reset-password" alt="">
+
+            </div>
+
+            <label>Confirm Password</label>
+
+            <div class="password-input">
+
+                <img src="Assets/Images/Auth logos/fingerprint.svg" alt="">
+
+                <input type="password" id="confirmResetPassword" placeholder="Confirm new password">
+
+                <img src="Assets/Images/Symbols/eye-off.svg" class="toggle-confirm-reset-password" alt="">
+
+            </div>
+
+            <button type="button" class="reset-password-btn" disabled>
+
+                Reset Password
+
+            </button>
+
+        </div>
     </div>
     <!-- TOAST -->
     <div id="toast" class="toast">Item added to cart</div>
@@ -699,7 +740,7 @@
     <script src="js/active-order.js"></script>
     <script src="js/home.js"></script>
     <script src="js/cart.js"></script>
-    
+
 </body>
 
 </html>

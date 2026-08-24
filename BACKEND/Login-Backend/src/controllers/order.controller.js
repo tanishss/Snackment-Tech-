@@ -352,3 +352,79 @@ exports.getActiveOrder = async (req, res) => {
 
     }
 };
+// ==========================================================
+// GET ALL ORDERS
+// ==========================================================
+
+exports.getOrders = async (req, res) => {
+
+    try {
+
+        const orders = await Order.find({
+
+            user: req.userId
+
+        })
+            .sort({
+
+                createdAt: -1
+
+            });
+
+        res.json(orders);
+
+    } catch (err) {
+
+        console.error(err);
+
+        res.status(500).json({
+
+            message: "Failed to fetch orders."
+
+        });
+
+    }
+
+};
+
+// ==========================================================
+// GET SINGLE ORDER
+// ==========================================================
+
+exports.getOrderById = async (req, res) => {
+
+    try {
+
+        const order = await Order.findOne({
+
+            user: req.userId,
+
+            orderId: req.params.orderId
+
+        });
+
+        if (!order) {
+
+            return res.status(404).json({
+
+                message: "Order not found."
+
+            });
+
+        }
+
+        res.json(order);
+
+    } catch (err) {
+
+        console.error(err);
+
+        res.status(500).json({
+
+            message: "Failed to fetch order."
+
+        });
+
+    }
+
+};

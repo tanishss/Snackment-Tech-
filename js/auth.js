@@ -1,8 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-  if (!localStorage.getItem("token")) {
-    window.location.href = "index.html";
-  }
+  //if (!localStorage.getItem("token")) {
+  //  window.location.href = "index.html";
+  //}
 
   // 🔹 Elements
   const form = document.querySelector(".auth-form");
@@ -18,6 +18,16 @@ document.addEventListener("DOMContentLoaded", () => {
     window.location.href = "index.html";
   });
 
+  const password = document.getElementById("password");
+  const confirmPassword = document.getElementById("confirmPassword");
+
+  const passwordError = document.getElementById("passwordError");
+  const confirmPasswordError = document.getElementById("confirmPasswordError");
+  const toggleButtons = document.querySelectorAll(".toggle-password");
+  const phone = sessionStorage.getItem("registerPhone");
+  if (phone) {
+    document.querySelector(".phone-pill span").textContent = `+91 ${phone}`;
+  }
 
   // 🔹 Helpers
   function isValidEmail(email) {
@@ -29,6 +39,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const isHostelValid = hostelInput.value.trim().length > 0;
     const isRoomValid = roomInput.value.trim().length > 0;
     const isAddressValid = address.value.trim().length >= 10;
+    const isPasswordValid = password.value.trim().length >= 5;
+
+    const isConfirmPasswordValid =
+      password.value === confirmPassword.value &&
+      confirmPassword.value.trim() !== "";
 
     // ❌ Email invalid → show error
     if (email.value.trim() !== "" && !isEmailValid) {
@@ -37,10 +52,29 @@ document.addEventListener("DOMContentLoaded", () => {
       document.getElementById("emailError").style.display = "none";
     }
 
+    // Password validation
+    if (password.value.trim() !== "" && !isPasswordValid) {
+      passwordError.style.display = "block";
+    } else {
+      passwordError.style.display = "none";
+    }
+
+    // Confirm Password validation
+    if (
+      confirmPassword.value.trim() !== "" &&
+      !isConfirmPasswordValid
+    ) {
+      confirmPasswordError.style.display = "block";
+    } else {
+      confirmPasswordError.style.display = "none";
+    }
+
     // ✅ Enable submit only if ALL valid
     if (
       isNameValid &&
       isEmailValid &&
+      isPasswordValid &&
+      isConfirmPasswordValid &&
       isHostelValid &&
       isRoomValid &&
       isAddressValid
@@ -58,6 +92,30 @@ document.addEventListener("DOMContentLoaded", () => {
     field.addEventListener("input", validateForm);
   });
 
+  toggleButtons.forEach((button) => {
+
+    button.addEventListener("click", () => {
+
+      const input = button.previousElementSibling;
+
+      if (input.type === "password") {
+
+        input.type = "text";
+        button.src = "Assets/Images/Symbols/eye.svg";
+        button.alt = "Hide Password";
+
+      } else {
+
+        input.type = "password";
+        button.src = "Assets/Images/Symbols/eye-off.svg";
+        button.alt = "Show Password";
+
+      }
+
+    });
+
+  });
+
   // 🔹 Submit flow (REAL BACKEND)
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
@@ -70,18 +128,27 @@ document.addEventListener("DOMContentLoaded", () => {
     const userName = fullName.value.trim();
 
     try {
-      const res = await fetch("http://localhost:5001/api/profile", {
+      const res = await fetch("http://localhost:5001/api/auth/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": `Bearer ${localStorage.getItem("token")}`
         },
         body: JSON.stringify({
+
+          phone,
+
           name: userName,
+
           email: email.value.trim(),
+
+          password: password.value,
+
           hostel: hostelInput.value.trim(),
+
           room: roomInput.value.trim(),
+
           address: address.value.trim()
+
         })
       });
 
@@ -93,7 +160,12 @@ document.addEventListener("DOMContentLoaded", () => {
         submitBtn.disabled = false;
         return;
       }
+      // ✅ Save Login Session
+      localStorage.setItem("token", data.token);
+      localStorage.setItem("user", JSON.stringify(data.user));
 
+      // Registration phone no longer needed
+      sessionStorage.removeItem("registerPhone");
       // ✅ SUCCESS UI (same UI as before)
       document.querySelector(".auth-form").classList.add("hidden");
       document.querySelector(".auth-icon").style.display = "none";
@@ -117,6 +189,4 @@ document.addEventListener("DOMContentLoaded", () => {
       submitBtn.disabled = false;
     }
   });
-
-
 });

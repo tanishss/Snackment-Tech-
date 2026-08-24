@@ -83,9 +83,20 @@ exports.register = async (req, res) => {
             name,
             email,
             password: hashedPassword,
+
             hostel,
             room,
             address,
+
+            addresses: [
+                {
+                    hostel,
+                    room,
+                    address,
+                    isDefault: true
+                }
+            ],
+
             isProfileComplete: true
         });
         const token = jwt.sign(
@@ -184,4 +195,108 @@ exports.login = async (req, res) => {
             message: "Server Error"
         });
     }
+};
+
+exports.checkEmail = async (req, res) => {
+
+    try {
+
+        const { email } = req.body;
+
+        if (!email) {
+            return res.status(400).json({
+                message: "Email is required."
+            });
+        }
+
+        const user = await User.findOne({
+            email: email.trim().toLowerCase()
+        });
+
+        res.json({
+            exists: !!user
+        });
+
+    } catch (err) {
+
+        console.error(err);
+
+        res.status(500).json({
+            message: "Server Error"
+        });
+
+    }
+
+};
+
+exports.resetPassword = async (req, res) => {
+
+    try {
+
+        const { email, password } = req.body;
+
+        if (!email || !password) {
+            return res.status(400).json({
+                message: "Email and password are required."
+            });
+        }
+
+        if (password.length < 5) {
+            return res.status(400).json({
+                message: "Password must be at least 5 characters."
+            });
+        }
+
+        const user = await User.findOne({
+            email: email.trim().toLowerCase()
+        });
+
+        if (!user) {
+            return res.status(404).json({
+                message: "User not found."
+            });
+        }
+
+        const hashedPassword = await bcrypt.hash(password, 10);
+
+        user.password = hashedPassword;
+
+        await user.save();
+
+        const token = jwt.sign(
+            {
+                userId: user._id,
+                phone: user.phone
+            },
+            process.env.JWT_SECRET,
+            {
+                expiresIn: "7d"
+            }
+        );
+
+        return res.status(200).json({
+            message: "Password updated successfully",
+            token,
+            user: {
+                id: user._id,
+                phone: user.phone,
+                name: user.name,
+                email: user.email,
+                hostel: user.hostel,
+                room: user.room,
+                address: user.address,
+                isProfileComplete: user.isProfileComplete
+            }
+        });
+
+    } catch (err) {
+
+        console.error(err);
+
+        return res.status(500).json({
+            message: "Server Error"
+        });
+
+    }
+
 };

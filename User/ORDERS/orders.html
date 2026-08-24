@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>
+
+        Order History | Snackment
+
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="orders.css">
+
+</head>
+
+<body>
+
+    <!-- ====================================================== -->
+    <!-- HEADER -->
+    <!-- ====================================================== -->
+
+    <header class="orders-header">
+
+        <button
+            class="back-btn"
+            type="button">
+
+            <img
+                src="../../Assets/Images/Symbols/arrow-small-left.svg"
+                alt="Back">
+
+        </button>
+
+        <img
+            class="header-logo"
+            src="../../Assets/Images/Original logos/Snackment_logotext_transparent.png"
+            alt="Snackment">
+
+    </header>
+
+    <!-- ====================================================== -->
+    <!-- MAIN -->
+    <!-- ====================================================== -->
+
+    <main class="orders-page">
+
+        <!-- ================= PAGE HEADING ================= -->
+
+        <section class="page-heading">
+
+            <h1>
+
+                Order History
+
+            </h1>
+
+            <p>
+
+                View all your previous Snackment orders.
+
+            </p>
+
+        </section>
+
+        <!-- ================= SUMMARY ================= -->
+
+        <section class="orders-summary">
+
+            <div>
+
+                <h2>
+
+                    Your Orders
+
+                </h2>
+
+                <span id="orderCount">
+
+                    0 Orders
+
+                </span>
+
+            </div>
+
+        </section>
+
+        <!-- ================= EMPTY ================= -->
+
+        <section
+            id="emptyOrders"
+            class="empty-orders hidden">
+
+            <img
+                src="../../Assets/Images/Symbols/package.svg"
+                alt="No Orders">
+
+            <h2>
+
+                No Orders Yet
+
+            </h2>
+
+            <p>
+
+                Looks like you haven't placed your first Snackment order.
+
+            </p>
+
+            <button
+                id="startShoppingBtn"
+                type="button">
+
+                Start Shopping
+
+            </button>
+
+        </section>
+
+        <!-- ================= ORDERS ================= -->
+
+        <section
+            id="ordersContainer"
+            class="orders-container">
+
+            <!-- ================================================= -->
+            <!-- ORDER CARD TEMPLATE (Rendered by JS) -->
+            <!-- ================================================= -->
+
+            <!--
+
+            <article
+                class="order-card"
+                data-id="">
+
+                <div class="order-top">
+
+                    <div class="order-meta">
+
+                        <h3 class="order-id">
+
+                            #SNK0001
+
+                        </h3>
+
+                        <p class="order-date">
+
+                            8 Aug 2026 • 10:35 PM
+
+                        </p>
+
+                    </div>
+
+                    <span
+                        class="order-status delivered">
+
+                        Delivered
+
+                    </span>
+
+                </div>
+
+                <div class="order-items">
+
+                    <span class="item-chip">
+
+                        Garlic Maggi ×2
+
+                    </span>
+
+                    <span class="item-chip">
+
+                        Oreo ×1
+
+                    </span>
+
+                    <span class="item-chip">
+
+                        +2 More
+
+                    </span>
+
+                </div>
+
+                <div class="order-bottom">
+
+                    <div class="order-details">
+
+                        <div class="order-price">
+
+                            ₹248
+
+                        </div>
+
+                        <div class="order-info">
+
+                            <span>
+
+                                4 Items
+
+                            </span>
+
+                            <span>
+
+                                Room Delivery
+
+                            </span>
+
+                            <span>
+
+                                Scan on Delivery
+
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                    <button
+                        class="view-details-btn"
+                        type="button">
+
+                        View Details
+
+                    </button>
+
+                </div>
+
+            </article>
+
+            -->
+
+        </section>
+
+    </main>
+
+    <script src="orders.js"></script>
+
+</body>
+
+</html>

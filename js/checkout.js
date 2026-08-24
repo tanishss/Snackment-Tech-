@@ -126,6 +126,7 @@ async function loadSavedAddresses() {
     });
 
     const addresses = await res.json();
+    window.savedAddressCount = addresses.length;
 
     savedAddresses.innerHTML = "";
 
@@ -409,7 +410,7 @@ placeOrderBtn.onclick = () => {
     JSON.stringify(checkoutPayload)
   );
 
-  window.location.href = "payment.html";
+  window.location.replace("payment.html");
 
 };
 
@@ -463,6 +464,16 @@ const modalSubHeading = document.querySelector(".modal-title p");
 
 openAddAddress.addEventListener("click", () => {
 
+  if (window.savedAddressCount >= 5) {
+
+    alert(
+      "You can save a maximum of 5 addresses. Delete an existing address to add a new one."
+    );
+
+    return;
+
+  }
+
   listView.classList.add("hide");
   formView.classList.add("show");
 
@@ -470,7 +481,6 @@ openAddAddress.addEventListener("click", () => {
   modalSubHeading.textContent = "Choose where to deliver";
 
 });
-
 // ---------------- Cancel ----------------
 
 cancelAddress.addEventListener("click", () => {

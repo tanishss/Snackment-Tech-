@@ -1,0 +1,1558 @@
+/* ==========================================================
+                        RESET
+========================================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:"Poppins",sans-serif;
+    background:#F8FAFC;
+    color:#111827;
+    min-height:100vh;
+    -webkit-font-smoothing:antialiased;
+}
+
+/* ==========================================================
+                        HEADER
+========================================================== */
+
+.address-header{
+
+    position:sticky;
+    top:0;
+
+    width:100%;
+    height:78px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:#FFFFFF;
+
+    border-bottom:1px solid #EEF2F6;
+
+    z-index:999;
+
+    backdrop-filter:blur(18px);
+
+}
+
+.back-btn{
+
+    position:absolute;
+
+    left:54px;
+
+    width:46px;
+    height:46px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:#F3F4F6;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    cursor:pointer;
+
+    transition:
+    background .25s ease,
+    transform .25s ease,
+    box-shadow .25s ease;
+
+}
+
+.back-btn:hover{
+
+    background:#ECEFF3;
+
+    transform:translateX(-2px);
+
+    box-shadow:
+    0 8px 18px rgba(17,24,39,.08);
+
+}
+
+.back-btn:active{
+
+    transform:scale(.94);
+
+}
+
+.back-btn img{
+
+    width:18px;
+    height:18px;
+
+    opacity:.78;
+
+}
+
+.header-logo{
+
+    height:38px;
+
+    object-fit:contain;
+
+    user-select:none;
+
+    pointer-events:none;
+
+}
+
+/* ==========================================================
+                        PAGE
+========================================================== */
+
+.address-page{
+
+    width:min(920px,92%);
+
+    margin:56px auto 90px;
+
+}
+
+/* ==========================================================
+                     PAGE HEADING
+========================================================== */
+
+.page-heading{
+
+    margin-bottom:42px;
+
+}
+
+.page-heading h1{
+
+    font-size:42px;
+
+    font-weight:700;
+
+    color:#111827;
+
+    letter-spacing:-1px;
+
+    line-height:1.1;
+
+}
+
+.page-heading p{
+
+    margin-top:12px;
+
+    font-size:16px;
+
+    color:#6B7280;
+
+    line-height:1.7;
+
+    max-width:560px;
+
+}
+
+/* ==========================================================
+                   SAVED HEADER
+========================================================== */
+
+.saved-addresses{
+
+    width:100%;
+
+}
+
+.saved-header{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    margin-bottom:28px;
+
+}
+
+.saved-title{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+}
+
+.saved-title h2{
+
+    font-size:23px;
+
+    font-weight:700;
+
+    color:#111827;
+
+}
+
+.address-count{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    min-width:54px;
+
+    height:30px;
+
+    padding:0 12px;
+
+    border-radius:999px;
+
+    background:#EEF8EC;
+
+    color:#4FA446;
+
+    font-size:13px;
+
+    font-weight:600;
+
+}
+
+/* ==========================================================
+                  ADD ADDRESS BUTTON
+========================================================== */
+
+.add-address-btn{
+
+    height:48px;
+
+    padding:0 22px;
+
+    border:none;
+
+    border-radius:16px;
+
+    background:#65D852;
+
+    color:#FFFFFF;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:10px;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:
+    transform .25s ease,
+    background .25s ease,
+    box-shadow .25s ease;
+
+    box-shadow:
+    0 14px 30px rgba(101,216,82,.22);
+
+}
+
+.add-address-btn:hover{
+
+    background:#58C245;
+
+    transform:translateY(-2px);
+
+    box-shadow:
+    0 18px 40px rgba(101,216,82,.30);
+
+}
+
+.add-address-btn:active{
+
+    transform:scale(.97);
+
+}
+
+.plus{
+
+    font-size:22px;
+
+    font-weight:500;
+
+    line-height:1;
+
+}
+/* ==========================================================
+                    ADDRESS LIST
+========================================================== */
+
+.addresses-list{
+
+    display:flex;
+    flex-direction:column;
+    gap:22px;
+
+}
+
+/* ==========================================================
+                    ADDRESS CARD
+========================================================== */
+
+.address-card{
+
+    position:relative;
+
+    background:#FFFFFF;
+
+    border:1px solid #E7EDF3;
+
+    border-radius:26px;
+
+    padding:26px;
+
+    overflow:hidden;
+
+    transition:
+    transform .30s cubic-bezier(.22,1,.36,1),
+    box-shadow .30s ease,
+    border-color .30s ease;
+
+}
+
+.address-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+    top:0;
+
+    width:4px;
+    height:100%;
+
+    background:transparent;
+
+    transition:.30s;
+
+}
+
+.address-card:hover{
+
+    transform:translateY(-3px);
+
+    border-color:#D8E3EC;
+
+    box-shadow:
+    0 18px 45px rgba(17,24,39,.08);
+
+}
+
+.default-card{
+
+    border-color:#DCEFD9;
+
+    background:linear-gradient(
+        180deg,
+        #FFFFFF,
+        #FCFFFB
+    );
+
+}
+
+.default-card::before{
+
+    background:#65D852;
+
+}
+
+/* ==========================================================
+                     TOP ROW
+========================================================== */
+
+.address-top{
+
+    display:flex;
+
+    align-items:flex-start;
+
+    gap:18px;
+
+}
+
+/* ==========================================================
+                     HOME ICON
+========================================================== */
+
+.address-icon{
+
+    width:64px;
+    height:64px;
+
+    border-radius:18px;
+
+    background:#EFF8EE;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    flex-shrink:0;
+
+}
+
+.address-icon img{
+
+    width:30px;
+    height:30px;
+
+    object-fit:contain;
+
+    filter:
+    brightness(0)
+    saturate(100%)
+    invert(72%)
+    sepia(35%)
+    saturate(738%)
+    hue-rotate(60deg)
+    brightness(94%)
+    contrast(90%);
+
+}
+
+/* ==========================================================
+                     INFORMATION
+========================================================== */
+
+.address-info{
+
+    flex:1;
+
+}
+
+.address-title-row{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:16px;
+
+}
+
+.address-title-row h3{
+
+    font-size:22px;
+
+    font-weight:700;
+
+    color:#111827;
+
+    line-height:1.2;
+
+}
+
+.address-info p{
+
+    margin-top:10px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    font-size:15px;
+
+    color:#4B5563;
+
+}
+
+.address-line{
+
+    margin-top:8px;
+
+    display:flex;
+
+    align-items:flex-start;
+
+    gap:8px;
+
+    font-size:14px;
+
+    color:#6B7280;
+
+    line-height:1.6;
+
+}
+
+.address-info p img,
+.address-line img{
+
+    width:16px;
+    height:16px;
+
+    margin-top:2px;
+
+    flex-shrink:0;
+
+    filter:
+    brightness(0)
+    saturate(100%)
+    invert(76%)
+    sepia(4%)
+    saturate(177%)
+    hue-rotate(183deg)
+    brightness(88%)
+    contrast(88%);
+
+}
+
+/* ==========================================================
+                    DEFAULT BADGE
+========================================================== */
+
+.default-badge{
+
+    padding:8px 15px;
+
+    border-radius:999px;
+
+    background:#EEF8EC;
+
+    color:#54A54C;
+
+    font-size:13px;
+
+    font-weight:600;
+
+    white-space:nowrap;
+
+}
+
+/* ==========================================================
+                     ACTIONS
+========================================================== */
+
+.address-actions{
+
+    margin-top:24px;
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    flex-wrap:wrap;
+
+    gap:12px;
+
+}
+
+.address-actions button{
+
+    height:44px;
+
+    padding:0 18px;
+
+    border-radius:14px;
+
+    font-size:14px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:
+    transform .25s,
+    background .25s,
+    border-color .25s,
+    color .25s;
+
+}
+
+/* Make Default */
+
+.default-btn{
+
+    border:none;
+
+    background:#65D852;
+
+    color:#FFFFFF;    box-shadow:
+    0 10px 20px rgba(101,216,82,.18);
+
+}
+
+.default-btn:hover{
+
+    background:#58C245;
+
+    transform:translateY(-2px);
+
+}
+
+/* Edit */
+
+.edit-btn{
+
+    background:#FFFFFF;
+
+    color:#374151;
+
+    border:1px solid #D9E2EA;
+
+}
+
+.edit-btn:hover{
+
+    background:#F8FAFC;
+
+    border-color:#C7D4DE;
+
+    transform:translateY(-2px);
+
+}
+
+/* Delete */
+
+.delete-btn{
+
+    background:#FFF6F6;
+
+    color:#E54848;
+
+    border:1px solid #F5D4D4;
+
+}
+
+.delete-btn:hover{
+
+    background:#FDEDED;
+
+    border-color:#EDB9B9;
+
+    transform:translateY(-2px);
+
+}
+
+/* ==========================================================
+                  EMPTY STATE
+========================================================== */
+
+.empty-address{
+
+    background:#FFFFFF;
+
+    border:2px dashed #D8E0E8;
+
+    border-radius:24px;
+
+    padding:60px 30px;
+
+    text-align:center;
+
+    color:#6B7280;
+
+    font-size:15px;
+
+    transition:.30s;
+
+}
+
+.empty-address:hover{
+
+    border-color:#65D852;
+
+    background:#FCFFFB;
+
+}
+/* ==========================================================
+                        OVERLAY
+========================================================== */
+
+.overlay{
+
+    position:fixed;
+    inset:0;
+
+    background:rgba(15,23,42,.38);
+
+    backdrop-filter:blur(10px);
+
+    opacity:0;
+    visibility:hidden;
+
+    transition:
+    opacity .28s ease,
+    visibility .28s ease;
+
+    z-index:1000;
+
+}
+
+.overlay.active{
+
+    opacity:1;
+    visibility:visible;
+
+}
+
+/* ==========================================================
+                        MODAL
+========================================================== */
+
+.address-modal{
+
+    position:fixed;
+
+    left:50%;
+    top:50%;
+
+    transform:
+    translate(-50%,-50%)
+    scale(.94);
+
+    width:540px;
+    max-width:calc(100vw - 30px);
+
+    background:#FFFFFF;
+
+    border-radius:28px;
+
+    padding:34px;
+
+    box-shadow:
+    0 40px 90px rgba(17,24,39,.22);
+
+    opacity:0;
+    visibility:hidden;
+
+    transition:
+    transform .32s cubic-bezier(.22,1,.36,1),
+    opacity .28s ease;
+
+    z-index:1100;
+
+}
+
+.address-modal.active{
+
+    opacity:1;
+    visibility:visible;
+
+    transform:
+    translate(-50%,-50%)
+    scale(1);
+
+}
+
+/* ==========================================================
+                    MODAL HEADER
+========================================================== */
+
+.modal-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:flex-start;
+
+    margin-bottom:28px;
+
+}
+
+.modal-header h2{
+
+    font-size:30px;
+
+    font-weight:700;
+
+    color:#111827;
+
+    line-height:1.1;
+
+}
+
+.modal-subtitle{
+
+    margin-top:10px;
+
+    font-size:15px;
+
+    color:#6B7280;
+
+    line-height:1.6;
+
+}
+
+/* ==========================================================
+                    CLOSE BUTTON
+========================================================== */
+
+.close-modal{
+
+    width:42px;
+    height:42px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:#F3F4F6;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:24px;
+
+    color:#6B7280;
+
+    cursor:pointer;
+
+    transition:
+    background .25s,
+    transform .25s;
+
+}
+
+.close-modal:hover{
+
+    background:#E9EDF2;
+
+    transform:rotate(90deg);
+
+}
+
+/* ==========================================================
+                        FORM
+========================================================== */
+
+#addressForm{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+}
+
+.form-group{
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+.form-group label{
+
+    margin-bottom:8px;
+
+    font-size:14px;
+
+    font-weight:600;
+
+    color:#374151;
+
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea{
+
+    width:100%;
+
+    border:1px solid #E4E8EE;
+
+    background:#F9FAFB;
+
+    border-radius:16px;
+
+    padding:15px 16px;
+
+    font-size:15px;
+
+    color:#111827;
+
+    transition:
+    border-color .25s,
+    background .25s,
+    box-shadow .25s;
+
+}
+
+.form-group textarea{
+
+    resize:none;
+
+    min-height:120px;
+
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus{
+
+    outline:none;
+
+    background:#FFFFFF;
+
+    border-color:#65D852;
+
+}
+
+/* ==========================================================
+                    DEFAULT SWITCH
+========================================================== */
+
+.default-switch-row{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    margin-top:6px;
+
+    padding:16px 18px;
+
+    border-radius:18px;
+
+    background:#F8FAFC;
+
+    border:1px solid #E8EDF3;
+
+}
+
+.default-switch-row span{
+
+    font-size:14px;
+
+    color:#374151;
+
+    font-weight:500;
+
+}
+
+/* ==========================================================
+                        SWITCH
+========================================================== */
+
+.switch{
+
+    position:relative;
+
+    width:52px;
+    height:30px;
+
+}
+
+.switch input{
+
+    display:none;
+
+}
+
+.slider{
+
+    position:absolute;
+
+    inset:0;
+
+    border-radius:999px;
+
+    background:#D1D5DB;
+
+    cursor:pointer;
+
+    transition:.28s;
+
+}
+
+.slider::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:4px;
+    top:4px;
+
+    width:22px;
+    height:22px;
+
+    border-radius:50%;
+
+    background:#FFFFFF;
+
+    transition:.28s;
+
+    box-shadow:
+    0 3px 8px rgba(0,0,0,.15);
+
+}
+
+.switch input:checked + .slider{
+
+    background:#65D852;
+
+}
+
+.switch input:checked + .slider::before{
+
+    transform:translateX(22px);
+
+}
+
+/* ==========================================================
+                    SAVE BUTTON
+========================================================== */
+
+#saveAddressBtn{
+
+    margin-top:10px;
+
+    height:56px;
+
+    border:none;
+
+    border-radius:18px;
+
+    background:#65D852;
+
+    color:#FFFFFF;
+
+    font-size:16px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:
+    background .25s,
+    transform .25s,
+    box-shadow .25s;
+
+    box-shadow:
+    0 16px 34px rgba(101,216,82,.25);
+
+}
+
+#saveAddressBtn:hover{
+
+    background:#58C245;
+
+    transform:translateY(-2px);
+
+    box-shadow:
+    0 20px 42px rgba(101,216,82,.32);
+
+}
+
+#saveAddressBtn:active{
+
+    transform:scale(.98);
+
+}
+
+/* ==========================================================
+                        UTILITIES
+========================================================== */
+
+.hidden{
+
+    display:none;
+
+}
+
+/* ==========================================================
+                    DELETE OVERLAY
+========================================================== */
+
+.delete-overlay{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(15,23,42,.38);
+
+    backdrop-filter:blur(8px);
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transition:.25s ease;
+
+    z-index:1200;
+
+}
+
+.delete-overlay.active{
+
+    opacity:1;
+
+    visibility:visible;
+
+}
+
+/* ==========================================================
+                    DELETE MODAL
+========================================================== */
+
+.delete-modal{
+
+    position:fixed;
+
+    left:50%;
+
+    top:50%;
+
+    transform:
+    translate(-50%,-50%)
+    scale(.92);
+
+    width:420px;
+
+    max-width:calc(100vw - 32px);
+
+    background:#FFFFFF;
+
+    border-radius:28px;
+
+    padding:34px;
+
+    text-align:center;
+
+    box-shadow:
+    0 40px 90px rgba(17,24,39,.20);
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transition:
+    transform .30s cubic-bezier(.22,1,.36,1),
+    opacity .25s ease;
+
+    z-index:1300;
+
+}
+
+.delete-modal.active{
+
+    opacity:1;
+
+    visibility:visible;
+
+    transform:
+    translate(-50%,-50%)
+    scale(1);
+
+}
+
+/* ==========================================================
+                    DELETE ICON
+========================================================== */
+
+.delete-icon{
+
+    width:78px;
+
+    height:78px;
+
+    margin:0 auto 22px;
+
+    border-radius:22px;
+
+    background:#FEF2F2;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+}
+#hostelInput{
+    appearance:none;
+    -webkit-appearance:none;
+
+    background-image:url("../../Assets/Images/Symbols/chevron-down.svg");
+    background-repeat:no-repeat;
+
+    background-position:right 24px center;
+
+    background-size:18px;
+
+    padding-right:60px;
+}
+.delete-icon img{
+
+    width:34px;
+
+    height:34px;
+
+    filter:
+    brightness(0)
+    saturate(100%)
+    invert(47%)
+    sepia(88%)
+    saturate(3266%)
+    hue-rotate(336deg)
+    brightness(95%)
+    contrast(95%);
+
+}
+
+/* ==========================================================
+                    DELETE TEXT
+========================================================== */
+
+.delete-modal h2{
+
+    font-size:28px;
+
+    color:#111827;
+
+    font-weight:700;
+
+}
+
+.delete-modal p{
+
+    margin-top:14px;
+
+    color:#6B7280;
+
+    font-size:15px;
+
+    line-height:1.7;
+
+}
+
+/* ==========================================================
+                    DELETE BUTTONS
+========================================================== */
+
+.delete-actions{
+
+    margin-top:30px;
+
+    display:flex;
+
+    gap:14px;
+
+}
+
+.delete-actions button{
+
+    flex:1;
+
+    height:52px;
+
+    border-radius:16px;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:
+    transform .25s,
+    background .25s,
+    border-color .25s;
+
+}
+
+#cancelDeleteBtn{
+
+    background:#FFFFFF;
+
+    border:1px solid #D8E2EB;
+
+    color:#374151;
+
+}
+
+#cancelDeleteBtn:hover{
+
+    background:#F8FAFC;
+
+}
+
+#confirmDeleteBtn{
+
+    background:#EF4444;
+
+    color:#FFFFFF;
+
+    border:none;
+
+    box-shadow:
+    0 14px 28px rgba(239,68,68,.20);
+
+}
+
+#confirmDeleteBtn:hover{
+
+    background:#DC2626;
+
+    transform:translateY(-2px);
+
+}
+
+/* ==========================================================
+                    MICRO ANIMATIONS
+========================================================== */
+
+.address-card,
+button,
+.address-modal,
+.delete-modal{
+
+    will-change:transform;
+
+}
+
+button:active{
+
+    transform:scale(.97);
+
+}
+
+input,
+select,
+textarea{
+
+    font-family:inherit;
+
+}
+
+/* ==========================================================
+                    RESPONSIVE
+========================================================== */
+
+@media (max-width:1200px){
+
+    .address-page{
+
+        width:min(900px,94%);
+
+    }
+
+}
+
+@media (max-width:900px){
+
+    .address-page{
+
+        width:94%;
+
+    }
+
+    .saved-header{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        gap:18px;
+
+    }
+
+    .address-title-row{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        gap:10px;
+
+    }
+
+    .address-actions{
+
+        justify-content:flex-start;
+
+    }
+
+    .back-btn{
+
+        left:34px;
+
+    }
+
+}
+
+@media (max-width:640px){
+
+    .address-header{
+
+        height:70px;
+
+    }
+
+    .back-btn{
+
+        left:18px;
+
+        width:40px;
+
+        height:40px;
+
+    }
+
+    .header-logo{
+
+        height:34px;
+
+    }
+
+    .address-page{
+
+        width:92%;
+
+        margin:34px auto 60px;
+
+    }
+
+    .page-heading{
+
+        margin-bottom:30px;
+
+    }
+
+    .page-heading h1{
+
+        font-size:32px;
+
+    }
+
+    .page-heading p{
+
+        font-size:14px;
+
+    }
+
+    .saved-title h2{
+
+        font-size:20px;
+
+    }
+
+    .address-card{
+
+        padding:22px;
+
+        border-radius:22px;
+
+    }
+
+    .address-top{
+
+        gap:14px;
+
+    }
+
+    .address-icon{
+
+        width:56px;
+
+        height:56px;
+
+    }
+
+    .address-icon img{
+
+        width:26px;
+
+        height:26px;
+
+    }
+
+    .address-title-row h3{
+
+        font-size:19px;
+
+    }
+
+    .default-badge{
+
+        font-size:12px;
+
+    }
+
+    .address-actions{
+
+        flex-direction:column;
+
+    }
+
+    .address-actions button{
+
+        width:100%;
+
+    }
+
+    .address-modal{
+
+        width:calc(100vw - 20px);
+
+        padding:24px;
+
+        border-radius:22px;
+
+    }
+
+    .modal-header h2{
+
+        font-size:24px;
+
+    }
+
+    .delete-modal{
+
+        width:calc(100vw - 20px);
+
+        padding:24px;
+
+        border-radius:22px;
+
+    }
+
+    .delete-actions{
+
+        flex-direction:column;
+
+    }
+
+}

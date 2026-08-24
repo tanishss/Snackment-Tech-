@@ -1,0 +1,708 @@
+/* ==========================================================Google Font========================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+
+/* ==========================================================CSS Variables========================================================== */
+
+:root {
+    --background: #181A1B;
+    --card: #232629;
+    --card-hover: #2A2D30;
+    --input: #161718;
+    --border: rgba(255, 255, 255, .06);
+    --border-focus: #65D852;
+    --primary: #65D852;
+    --primary-hover: #58C245;
+    --text: #FFFFFF;
+    --text-secondary: #A1A1AA;
+    --text-muted: #71717A;
+    --danger: #EF4444;
+    --radius-sm: 12px;
+    --radius-md: 16px;
+    --radius-lg: 24px;
+    --transition: .25s ease;
+}
+
+
+/* ==========================================================Reset========================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: var(--background);
+    color: var(--text);
+    overflow: hidden;
+}
+
+/* ==========================================================Selection========================================================== */
+
+::selection {
+    background: var(--primary);
+    color: #111;
+}
+
+/* ==========================================================Scrollbar========================================================== */
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #303234;
+    border-radius: 20px;
+}
+
+/* ==========================================================Login Page========================================================== */
+
+.login-page {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+
+/* ==========================================================
+   Background Blur
+========================================================== */
+
+.background-blur {
+
+    position: absolute;
+
+    border-radius: 50%;
+
+    filter: blur(140px);
+
+    opacity: .08;
+
+    z-index: 0;
+
+}
+
+.background-blur-1 {
+
+    width: 320px;
+
+    height: 320px;
+
+    background: #65D852;
+
+    top: -120px;
+
+    left: -120px;
+
+}
+
+.background-blur-2 {
+
+    width: 300px;
+
+    height: 300px;
+
+    background: #65D852;
+
+    bottom: -120px;
+
+    right: -120px;
+
+}
+
+
+/* ==========================================================
+   Container
+========================================================== */
+
+.login-container {
+
+    position: relative;
+
+    z-index: 2;
+
+    width: 100%;
+
+    max-width: 520px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+}
+
+
+/* ==========================================================
+   Branding
+========================================================== */
+
+.branding {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    margin-bottom: 42px;
+
+}
+
+.brand-logo {
+
+    width: 210px;
+
+    user-select: none;
+
+}
+
+.brand-title {
+
+    margin-top: 34px;
+
+    font-size: 44px;
+
+    font-weight: 700;
+
+    letter-spacing: -1px;
+
+}
+
+.brand-description {
+
+    margin-top: 12px;
+
+    color: var(--text-secondary);
+
+    font-size: 18px;
+
+}
+
+
+/* ==========================================================
+   Login Card
+========================================================== */
+
+.login-card {
+
+    width: 100%;
+
+    background: var(--card);
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius-lg);
+
+    padding: 42px;
+
+}
+
+
+/* ==========================================================
+   Form
+========================================================== */
+
+.phone-form,
+
+.otp-form {
+
+    display: flex;
+
+    flex-direction: column;
+
+}
+
+
+/* hidden */
+
+.hidden {
+
+    display: none;
+
+}
+
+/* ==========================================================
+   Labels
+========================================================== */
+
+.input-label {
+
+    display: block;
+
+    margin-bottom: 14px;
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+    color: var(--text);
+
+}
+
+
+/* ==========================================================
+   Phone Input
+========================================================== */
+
+.phone-input-container {
+
+    display: flex;
+
+    align-items: center;
+
+    width: 100%;
+
+    height: 64px;
+
+    padding: 0 22px;
+
+    background: var(--input);
+
+    border: 1px solid transparent;
+
+    border-radius: var(--radius-md);
+
+    transition: var(--transition);
+
+}
+
+.phone-input-container:focus-within {
+
+    border-color: var(--border-focus);
+
+    box-shadow: 0 0 0 4px rgba(101, 216, 82, .08);
+
+}
+
+.country-code {
+
+    margin-right: 18px;
+
+    font-size: 17px;
+
+    font-weight: 600;
+
+    color: var(--text-secondary);
+
+    user-select: none;
+
+}
+
+.phone-input-container input {
+
+    flex: 1;
+
+    width: 100%;
+
+    height: 100%;
+
+    border: none;
+
+    outline: none;
+
+    background: transparent;
+
+    color: var(--text);
+
+    font-size: 17px;
+
+    font-weight: 500;
+
+    letter-spacing: .4px;
+
+}
+
+.phone-input-container input::placeholder {
+
+    color: var(--text-muted);
+
+}
+
+
+/* ==========================================================
+   OTP
+========================================================== */
+
+.otp-title {
+
+    text-align: center;
+
+    font-size: 30px;
+
+    font-weight: 700;
+
+    margin-bottom: 10px;
+
+}
+
+.otp-description {
+
+    text-align: center;
+
+    color: var(--text-secondary);
+
+    font-size: 15px;
+
+    line-height: 24px;
+
+}
+
+.masked-phone-number {
+
+    display: block;
+
+    text-align: center;
+
+    margin-top: 8px;
+
+    margin-bottom: 34px;
+
+    color: var(--primary);
+
+    font-weight: 600;
+
+    font-size: 16px;
+
+}
+
+
+/* ==========================================================
+   OTP Boxes
+========================================================== */
+
+.otp-input-wrapper {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 12px;
+
+    margin-bottom: 24px;
+
+}
+
+.otp-input {
+
+    width: 58px;
+
+    height: 58px;
+
+    border: none;
+
+    outline: none;
+
+    border-radius: 14px;
+
+    background: var(--input);
+
+    color: var(--text);
+
+    font-size: 22px;
+
+    font-weight: 700;
+
+    text-align: center;
+
+    transition: var(--transition);
+
+}
+
+.otp-input:focus {
+
+    border: 1px solid var(--primary);
+
+    box-shadow: 0 0 0 4px rgba(101, 216, 82, .08);
+
+}
+
+.otp-input:hover {
+
+    background: #1d1f20;
+
+}
+
+
+/* ==========================================================
+   Buttons
+========================================================== */
+
+.primary-button {
+
+    width: 100%;
+
+    height: 60px;
+
+    margin-top: 28px;
+
+    border: none;
+
+    border-radius: var(--radius-md);
+
+    background: var(--primary);
+
+    color: #111;
+
+    font-size: 16px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: var(--transition);
+
+}
+
+.primary-button:hover {
+
+    background: var(--primary-hover);
+
+    transform: translateY(-2px);
+
+}
+
+.primary-button:active {
+
+    transform: scale(.98);
+
+}
+
+.secondary-button {
+
+    margin-top: 18px;
+
+    background: none;
+
+    border: none;
+
+    color: var(--text-secondary);
+
+    font-size: 15px;
+
+    cursor: pointer;
+
+    transition: var(--transition);
+
+}
+
+.secondary-button:hover {
+
+    color: var(--text);
+
+}
+
+
+/* ==========================================================
+   OTP Footer
+========================================================== */
+
+.otp-footer {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 6px;
+
+    margin-top: 4px;
+
+    color: var(--text-secondary);
+
+    font-size: 14px;
+
+}
+
+#resend-otp {
+
+    background: none;
+
+    border: none;
+
+    color: var(--primary);
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+}
+
+#resend-otp:disabled {
+
+    color: var(--text-muted);
+
+    cursor: not-allowed;
+
+}
+
+
+/* ==========================================================
+   Error
+========================================================== */
+
+.error-message {
+
+    margin-top: 14px;
+
+    color: var(--danger);
+
+    font-size: 14px;
+
+    line-height: 22px;
+
+}
+
+
+/* ==========================================================
+   Loading
+========================================================== */
+
+.loading-state {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 24px 0;
+
+}
+
+.loader {
+
+    width: 42px;
+
+    height: 42px;
+
+    border: 3px solid rgba(255, 255, 255, .08);
+
+    border-top: 3px solid var(--primary);
+
+    border-radius: 50%;
+
+    animation: spin .9s linear infinite;
+
+}
+
+.loading-state p {
+
+    margin-top: 20px;
+
+    color: var(--text-secondary);
+
+    font-size: 15px;
+
+}
+
+/* ==========================================================
+   Hidden Loading State
+========================================================== */
+
+.loading-state.hidden{
+
+    display:none;
+
+}
+
+/* ==========================================================
+   Footer
+========================================================== */
+
+.login-footer {
+
+    margin-top: 30px;
+
+}
+
+.login-footer p {
+
+    color: var(--text-muted);
+
+    font-size: 14px;
+
+    letter-spacing: .5px;
+
+}
+
+
+/* ==========================================================
+   Animation
+========================================================== */
+
+@keyframes spin {
+
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+
+}
+
+
+/* ==========================================================
+   Responsive
+========================================================== */
+
+@media (max-width:640px) {
+
+    .login-container {
+
+        width: 92%;
+
+    }
+
+    .login-card {
+
+        padding: 28px;
+
+    }
+
+    .brand-logo {
+
+        width: 170px;
+
+    }
+
+    .brand-title {
+
+        font-size: 34px;
+
+    }
+
+    .brand-description {
+
+        font-size: 16px;
+
+    }
+
+    .otp-input {
+
+        width: 48px;
+
+        height: 48px;
+
+        font-size: 18px;
+
+    }
+
+}

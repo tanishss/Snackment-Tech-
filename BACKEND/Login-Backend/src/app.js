@@ -11,14 +11,15 @@ const couponRoutes = require("./routes/couponRoutes");
 const orderRoutes = require("./routes/orderRoutes");
 const adminRoutes = require("./routes/admin.routes");
 const adminDashboardRoutes = require("./routes/adminDashboard.routes");
-
+const analyticsRoutes = require("./routes/analytics.routes");
+const productRoutes = require("./routes/product.routes");
 
 const app = express();
 
 
 /* Middlewares */
 app.use(cors());
-app.use(express.json());
+app.use(express.json({ limit: "10mb" }));
 
 
 /* Database */
@@ -35,12 +36,12 @@ app.use("/api/coupon", couponRoutes);
 app.use("/api/orders", orderRoutes);
 app.use("/api/admin", adminRoutes);
 app.use("/api/admin/dashboard", adminDashboardRoutes);
-
+app.use("/api/admin/analytics", analyticsRoutes);
+app.use("/api/admin/products", productRoutes);
 
 /* Test route */
 app.get('/', (req, res) => {
   res.send('Login backend is running 🚀');
 });
-
 
 module.exports = app;

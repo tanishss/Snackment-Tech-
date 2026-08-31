@@ -386,7 +386,51 @@ exports.getOrders = async (req, res) => {
     }
 
 };
+// ==========================================================
+// ADMIN — GET ALL ORDERS
+// ==========================================================
 
+exports.getAllOrdersForAdmin = async (req, res) => {
+
+    try {
+
+        const orders =
+            await Order.find()
+                .populate(
+                    "user",
+                    "name phone email"
+                )
+                .sort({
+                    createdAt: -1
+                });
+
+        res.json({
+
+            success: true,
+
+            orders
+
+        });
+
+    } catch (err) {
+
+        console.error(
+            "Admin Get All Orders Error:",
+            err
+        );
+
+        res.status(500).json({
+
+            success: false,
+
+            message:
+                "Failed to fetch all orders."
+
+        });
+
+    }
+
+};
 // ==========================================================
 // GET SINGLE ORDER
 // ==========================================================
@@ -422,6 +466,88 @@ exports.getOrderById = async (req, res) => {
         res.status(500).json({
 
             message: "Failed to fetch order."
+
+        });
+
+    }
+
+};
+
+// ==========================================================
+// ADMIN — UPDATE ORDER STATUS
+// ==========================================================
+
+exports.updateOrderStatusForAdmin = async (req, res) => {
+
+    try {
+
+        const { status } = req.body;
+
+        const allowedStatuses = [
+            "PENDING",
+            "PACKING",
+            "READY_FOR_PICKUP",
+            "OUT_FOR_DELIVERY",
+            "DELIVERED",
+            "CANCELLED"
+        ];
+
+        if (!allowedStatuses.includes(status)) {
+
+            return res.status(400).json({
+                success: false,
+                message: "Invalid order status."
+            });
+
+        }
+
+        const order =
+            await Order.findOneAndUpdate(
+                {
+                    orderId:
+                        req.params.orderId
+                },
+                {
+                    orderStatus: status
+                },
+                {
+                    new: true
+                }
+            );
+
+        if (!order) {
+
+            return res.status(404).json({
+                success: false,
+                message: "Order not found."
+            });
+
+        }
+
+        res.json({
+
+            success: true,
+
+            message:
+                "Order status updated successfully.",
+
+            order
+
+        });
+
+    } catch (error) {
+
+        console.error(
+            "Admin Update Order Status Error:",
+            error
+        );
+
+        res.status(500).json({
+
+            success: false,
+
+            message:
+                "Failed to update order status."
 
         });
 

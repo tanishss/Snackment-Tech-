@@ -1,6 +1,7 @@
 const FREE_DELIVERY_LIMIT = 199;
 const DELIVERY_FEE = 10;
 
+
 function calculateBill(
     subtotal,
     coupon,
@@ -9,40 +10,60 @@ function calculateBill(
 
     let discount = 0;
 
+
     if (coupon) {
 
-        if (coupon.discountType === "flat") {
+        if (
+            coupon.discountType === "flat"
+        ) {
 
-            discount = coupon.discountValue;
+            discount =
+                coupon.discountValue;
 
         }
 
-        else if (coupon.discountType === "percent") {
+        else if (
+            coupon.discountType === "percentage"
+        ) {
 
             discount = Math.floor(
-                subtotal * coupon.discountValue / 100
+                subtotal *
+                coupon.discountValue /
+                100
             );
 
         }
 
     }
 
+
     let delivery = 0;
 
-if (deliveryType === "room") {
 
-    delivery =
-        subtotal >= FREE_DELIVERY_LIMIT
-            ? 0
-            : DELIVERY_FEE;
+    if (
+        deliveryType === "room"
+    ) {
 
-}
+        delivery =
+            subtotal >= FREE_DELIVERY_LIMIT
+                ? 0
+                : DELIVERY_FEE;
 
-    let total = subtotal - discount + delivery;
+    }
+
+
+    let total =
+        subtotal -
+        discount +
+        delivery;
+
 
     if (total < 0) {
+
         total = 0;
+
     }
+
 
     return {
 
@@ -58,4 +79,6 @@ if (deliveryType === "room") {
 
 }
 
-module.exports = calculateBill;
+
+module.exports =
+    calculateBill;

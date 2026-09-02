@@ -1,10 +1,11 @@
 const mongoose = require("mongoose");
 
+
 const couponSchema = new mongoose.Schema({
 
-    /* ==========================================================
-       BASIC COUPON INFORMATION
-    ========================================================== */
+    /* =====================================================
+       COUPON CODE
+    ====================================================== */
 
     code: {
         type: String,
@@ -13,6 +14,11 @@ const couponSchema = new mongoose.Schema({
         uppercase: true,
         trim: true
     },
+
+
+    /* =====================================================
+       DISPLAY INFORMATION
+    ====================================================== */
 
     title: {
         type: String,
@@ -27,23 +33,27 @@ const couponSchema = new mongoose.Schema({
     },
 
 
-    /* ==========================================================
-       DISCOUNT
-    ========================================================== */
+    /* =====================================================
+       ORDER CONDITION
+    ====================================================== */
 
     minOrder: {
         type: Number,
         required: true,
-        min: 0
+        min: 0,
+        default: 0
     },
+
+
+    /* =====================================================
+       DISCOUNT
+    ====================================================== */
 
     discountType: {
         type: String,
-        enum: [
-            "flat",
-            "percentage"
-        ],
-        default: "flat"
+        enum: ["flat", "percentage"],
+        default: "flat",
+        required: true
     },
 
     discountValue: {
@@ -53,13 +63,15 @@ const couponSchema = new mongoose.Schema({
     },
 
 
-    /* ==========================================================
-       STATUS
-    ========================================================== */
+    /* =====================================================
+       COUPON VISIBILITY
+    ====================================================== */
 
-    isActive: {
-        type: Boolean,
-        default: true
+    couponType: {
+        type: String,
+        enum: ["public", "private"],
+        default: "public",
+        required: true
     },
 
     showOnSite: {
@@ -68,45 +80,15 @@ const couponSchema = new mongoose.Schema({
     },
 
 
-    /* ==========================================================
-       EXPIRY
-    ========================================================== */
-
-    expiry: {
-        type: Date,
-        default: null
-    },
-
-
-    /* ==========================================================
-       COUPON TYPE
-       ----------------------------------------------------------
-       public
-           → visible on website
-
-       user_specific
-           → hidden from website and assigned to
-             selected users
-    ========================================================== */
-
-    couponType: {
-    type: String,
-    enum: [
-        "public",
-        "private"
-    ],
-    default: "public"
-},
-
-
-    /* ==========================================================
-       USAGE LIMIT
-    ========================================================== */
+    /* =====================================================
+       USAGE
+    ====================================================== */
 
     usageLimit: {
         type: Number,
-        default: null,
-        min: 1
+        required: true,
+        min: 1,
+        default: 1
     },
 
     usedCount: {
@@ -115,46 +97,35 @@ const couponSchema = new mongoose.Schema({
         min: 0
     },
 
-
-    /* ==========================================================
-       PER CUSTOMER LIMIT
-       ----------------------------------------------------------
-       Example:
-
-       perCustomerLimit: 1
-
-       means one customer can use this coupon only once.
-    ========================================================== */
-
     perCustomerLimit: {
         type: Number,
-        default: null,
+        default: 1,
         min: 1
     },
 
 
-    /* ==========================================================
-       USER-SPECIFIC ASSIGNMENT
-       ----------------------------------------------------------
-       Only used when couponType = user_specific.
-    ========================================================== */
+    /* =====================================================
+       STATUS
+    ====================================================== */
 
-    assignedUsers: [
-        {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "User"
-        }
-    ]
+    isActive: {
+        type: Boolean,
+        default: true
+    },
+
+
+    /* =====================================================
+       EXPIRY
+    ====================================================== */
+
+    expiry: {
+        type: Date
+    }
 
 }, {
-
     timestamps: true
-
 });
 
 
 module.exports =
-    mongoose.model(
-        "Coupon",
-        couponSchema
-    );
+    mongoose.model("Coupon", couponSchema);

@@ -1,0 +1,616 @@
+<!-- =========================================================
+     SNACKMENT ADMIN
+     ANALYTICS MODULE
+========================================================= -->
+
+<div class="analytics-page" id="analytics-page">
+
+    <!-- =====================================================
+         PAGE HEADER
+    ====================================================== -->
+
+    <header class="analytics-page-header">
+
+        <div class="analytics-page-title-block">
+
+            <h1 class="analytics-page-title">
+                Analytics
+            </h1>
+
+            <p class="analytics-page-subtitle">
+                Operational insights for Snackment
+            </p>
+
+        </div>
+
+    </header>
+
+
+    <!-- =====================================================
+         OVERVIEW STATISTICS
+    ====================================================== -->
+
+    <section class="analytics-stats-grid" aria-label="Analytics overview">
+
+
+        <!-- =================================================
+             TOTAL REVENUE
+        ================================================== -->
+
+        <article class="analytics-stat-card">
+
+            <div class="analytics-stat-label">
+                Total Revenue
+            </div>
+
+            <div
+                class="analytics-stat-value analytics-stat-value-green"
+                id="analytics-total-revenue"
+            >
+                ₹3,63,900
+            </div>
+
+            <div class="analytics-stat-change analytics-stat-change-positive">
+                +22%
+            </div>
+
+        </article>
+
+
+        <!-- =================================================
+             TOTAL ORDERS
+        ================================================== -->
+
+        <article class="analytics-stat-card">
+
+            <div class="analytics-stat-label">
+                Total Orders
+            </div>
+
+            <div
+                class="analytics-stat-value analytics-stat-value-blue"
+                id="analytics-total-orders"
+            >
+                4,218
+            </div>
+
+            <div class="analytics-stat-change analytics-stat-change-positive">
+                +17%
+            </div>
+
+        </article>
+
+
+        <!-- =================================================
+             AVERAGE ORDER VALUE
+        ================================================== -->
+
+        <article class="analytics-stat-card">
+
+            <div class="analytics-stat-label">
+                Avg Order Value
+            </div>
+
+            <div
+                class="analytics-stat-value analytics-stat-value-orange"
+                id="analytics-average-order-value"
+            >
+                ₹182
+            </div>
+
+            <div class="analytics-stat-change analytics-stat-change-positive">
+                +4%
+            </div>
+
+        </article>
+
+
+        <!-- =================================================
+             REPEAT RATE
+        ================================================== -->
+
+        <article class="analytics-stat-card">
+
+            <div class="analytics-stat-label">
+                Repeat Rate
+            </div>
+
+            <div
+                class="analytics-stat-value analytics-stat-value-green"
+                id="analytics-repeat-rate"
+            >
+                68%
+            </div>
+
+            <div class="analytics-stat-change analytics-stat-change-positive">
+                +9%
+            </div>
+
+        </article>
+
+    </section>
+
+
+    <!-- =====================================================
+         MAIN ANALYTICS GRID
+    ====================================================== -->
+
+    <section class="analytics-charts-grid">
+
+
+        <!-- =================================================
+             MONTHLY REVENUE
+        ================================================== -->
+
+        <article class="analytics-chart-card analytics-chart-card-large">
+
+            <div class="analytics-chart-header">
+
+                <div>
+
+                    <h2 class="analytics-chart-title">
+                        Monthly Revenue
+                    </h2>
+
+                    <p class="analytics-chart-subtitle">
+                        Last 6 months
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="analytics-chart-container">
+
+                <canvas
+                    id="monthly-revenue-chart"
+                    class="analytics-chart-canvas"
+                    aria-label="Monthly revenue chart"
+                ></canvas>
+
+            </div>
+
+        </article>
+
+
+        <!-- =================================================
+             PEAK ORDER HOURS
+        ================================================== -->
+
+        <article class="analytics-chart-card analytics-chart-card-large">
+
+            <div class="analytics-chart-header">
+
+                <div>
+
+                    <h2 class="analytics-chart-title">
+                        Peak Order Hours
+                    </h2>
+
+                    <p class="analytics-chart-subtitle">
+                        Daily average
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="analytics-chart-container">
+
+                <canvas
+                    id="peak-order-hours-chart"
+                    class="analytics-chart-canvas"
+                    aria-label="Peak order hours chart"
+                ></canvas>
+
+            </div>
+
+        </article>
+
+    </section>
+
+
+    <!-- =====================================================
+         LOWER ANALYTICS GRID
+    ====================================================== -->
+
+    <section class="analytics-lower-grid">
+
+
+        <!-- =================================================
+             CUSTOMER GROWTH
+        ================================================== -->
+
+        <article class="analytics-chart-card analytics-customer-growth-card">
+
+            <div class="analytics-chart-header">
+
+                <div>
+
+                    <h2 class="analytics-chart-title">
+                        Customer Growth
+                    </h2>
+
+                    <p class="analytics-chart-subtitle">
+                        Weekly total
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="analytics-chart-container analytics-customer-growth-chart-container">
+
+                <canvas
+                    id="customer-growth-chart"
+                    class="analytics-chart-canvas"
+                    aria-label="Customer growth chart"
+                ></canvas>
+
+            </div>
+
+        </article>
+
+
+        <!-- =================================================
+             CATEGORY DISTRIBUTION
+        ================================================== -->
+
+        <article class="analytics-chart-card analytics-category-card">
+
+            <div class="analytics-chart-header">
+
+                <div>
+
+                    <h2 class="analytics-chart-title">
+                        By Category
+                    </h2>
+
+                    <p class="analytics-chart-subtitle">
+                        Order share
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="analytics-category-chart-wrapper">
+
+                <canvas
+                    id="category-chart"
+                    class="analytics-category-canvas"
+                    aria-label="Order share by category chart"
+                ></canvas>
+
+            </div>
+
+
+            <!-- =================================================
+                 CATEGORY LEGEND
+            ================================================== -->
+
+            <div
+                class="analytics-category-legend"
+                id="analytics-category-legend"
+            >
+
+                <!-- Snacks -->
+
+                <div class="analytics-category-legend-item">
+
+                    <div class="analytics-category-legend-name">
+
+                        <span
+                            class="analytics-category-dot analytics-category-dot-snacks"
+                            aria-hidden="true"
+                        ></span>
+
+                        <span>
+                            Snacks
+                        </span>
+
+                    </div>
+
+                    <strong>
+                        38%
+                    </strong>
+
+                </div>
+
+
+                <!-- Beverages -->
+
+                <div class="analytics-category-legend-item">
+
+                    <div class="analytics-category-legend-name">
+
+                        <span
+                            class="analytics-category-dot analytics-category-dot-beverages"
+                            aria-hidden="true"
+                        ></span>
+
+                        <span>
+                            Beverages
+                        </span>
+
+                    </div>
+
+                    <strong>
+                        24%
+                    </strong>
+
+                </div>
+
+
+                <!-- Instant Food -->
+
+                <div class="analytics-category-legend-item">
+
+                    <div class="analytics-category-legend-name">
+
+                        <span
+                            class="analytics-category-dot analytics-category-dot-instant-food"
+                            aria-hidden="true"
+                        ></span>
+
+                        <span>
+                            Instant Food
+                        </span>
+
+                    </div>
+
+                    <strong>
+                        18%
+                    </strong>
+
+                </div>
+
+
+                <!-- Chocolate -->
+
+                <div class="analytics-category-legend-item">
+
+                    <div class="analytics-category-legend-name">
+
+                        <span
+                            class="analytics-category-dot analytics-category-dot-chocolate"
+                            aria-hidden="true"
+                        ></span>
+
+                        <span>
+                            Chocolate
+                        </span>
+
+                    </div>
+
+                    <strong>
+                        12%
+                    </strong>
+
+                </div>
+
+
+                <!-- Biscuits -->
+
+                <div class="analytics-category-legend-item">
+
+                    <div class="analytics-category-legend-name">
+
+                        <span
+                            class="analytics-category-dot analytics-category-dot-biscuits"
+                            aria-hidden="true"
+                        ></span>
+
+                        <span>
+                            Biscuits
+                        </span>
+
+                    </div>
+
+                    <strong>
+                        8%
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- =================================================
+             BEST SELLING PRODUCTS
+        ================================================== -->
+
+        <article class="analytics-chart-card analytics-best-products-card">
+
+            <div class="analytics-chart-header">
+
+                <div>
+
+                    <h2 class="analytics-chart-title">
+                        Best Selling Products
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div
+                class="analytics-best-products-list"
+                id="analytics-best-products-list"
+            >
+
+
+                <!-- =================================================
+                     PRODUCT 1
+                ================================================== -->
+
+                <div class="analytics-best-product-item">
+
+                    <div class="analytics-best-product-info">
+
+                        <h3 class="analytics-best-product-name">
+                            Lays Classic
+                        </h3>
+
+                        <p class="analytics-best-product-meta">
+                            1420 units sold
+                        </p>
+
+                    </div>
+
+                    <strong class="analytics-best-product-revenue">
+                        ₹25,560
+                    </strong>
+
+                </div>
+
+
+                <!-- =================================================
+                     PRODUCT 2
+                ================================================== -->
+
+                <div class="analytics-best-product-item">
+
+                    <div class="analytics-best-product-info">
+
+                        <h3 class="analytics-best-product-name">
+                            Maggi Noodles
+                        </h3>
+
+                        <p class="analytics-best-product-meta">
+                            1180 units sold
+                        </p>
+
+                    </div>
+
+                    <strong class="analytics-best-product-revenue">
+                        ₹16,520
+                    </strong>
+
+                </div>
+
+
+                <!-- =================================================
+                     PRODUCT 3
+                ================================================== -->
+
+                <div class="analytics-best-product-item">
+
+                    <div class="analytics-best-product-info">
+
+                        <h3 class="analytics-best-product-name">
+                            Kurkure Masala
+                        </h3>
+
+                        <p class="analytics-best-product-meta">
+                            1040 units sold
+                        </p>
+
+                    </div>
+
+                    <strong class="analytics-best-product-revenue">
+                        ₹18,720
+                    </strong>
+
+                </div>
+
+
+                <!-- =================================================
+                     PRODUCT 4
+                ================================================== -->
+
+                <div class="analytics-best-product-item">
+
+                    <div class="analytics-best-product-info">
+
+                        <h3 class="analytics-best-product-name">
+                            Red Bull 250ml
+                        </h3>
+
+                        <p class="analytics-best-product-meta">
+                            840 units sold
+                        </p>
+
+                    </div>
+
+                    <strong class="analytics-best-product-revenue">
+                        ₹100,800
+                    </strong>
+
+                </div>
+
+
+                <!-- =================================================
+                     PRODUCT 5
+                ================================================== -->
+
+                <div class="analytics-best-product-item">
+
+                    <div class="analytics-best-product-info">
+
+                        <h3 class="analytics-best-product-name">
+                            Dairy Milk Silk
+                        </h3>
+
+                        <p class="analytics-best-product-meta">
+                            720 units sold
+                        </p>
+
+                    </div>
+
+                    <strong class="analytics-best-product-revenue">
+                        ₹64,080
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </article>
+
+    </section>
+
+
+    <!-- =====================================================
+         ANALYTICS EMPTY / ERROR STATE
+         JS CAN USE THIS WHEN DATA FAILS
+    ====================================================== -->
+
+    <div
+        class="analytics-error-state hidden"
+        id="analytics-error-state"
+        role="alert"
+    >
+
+        <div class="analytics-error-state-content">
+
+            <h3>
+                Unable to load analytics
+            </h3>
+
+            <p>
+                Something went wrong while loading analytics data.
+                Please try again.
+            </p>
+
+            <button
+                type="button"
+                id="analytics-retry-button"
+                class="analytics-retry-button"
+            >
+                Try Again
+            </button>
+
+        </div>
+
+    </div>
+
+
+</div>

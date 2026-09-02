@@ -46,7 +46,7 @@ let currentPhone = "";
    Allow Numbers Only
 ========================================================== */
 
-phoneInput.addEventListener("input", function(){
+phoneInput.addEventListener("input", function () {
 
     this.value =
         this.value.replace(/\D/g, "");
@@ -58,7 +58,7 @@ phoneInput.addEventListener("input", function(){
    Phone Continue
 ========================================================== */
 
-phoneForm.addEventListener("submit", async function(event){
+phoneForm.addEventListener("submit", async function (event) {
 
     event.preventDefault();
 
@@ -72,7 +72,7 @@ phoneForm.addEventListener("submit", async function(event){
        Validate Phone Length
     -------------------------------------------------- */
 
-    if(phone.length !== 10){
+    if (phone.length !== 10) {
 
         phoneError.textContent =
             "Please enter a valid 10-digit phone number.";
@@ -130,7 +130,7 @@ phoneForm.addEventListener("submit", async function(event){
            Handle Backend Error
         -------------------------------------------------- */
 
-        if(!response.ok){
+        if (!response.ok) {
 
             phoneError.textContent =
                 data.message ||
@@ -175,7 +175,7 @@ phoneForm.addEventListener("submit", async function(event){
            Clear Previous OTP
         -------------------------------------------------- */
 
-        otpInputs.forEach(function(input){
+        otpInputs.forEach(function (input) {
 
             input.value = "";
 
@@ -195,7 +195,7 @@ phoneForm.addEventListener("submit", async function(event){
 
         startTimer();
 
-    } catch(error){
+    } catch (error) {
 
         console.error(
             "Send OTP Error:",
@@ -223,18 +223,18 @@ phoneForm.addEventListener("submit", async function(event){
    OTP Input
 ========================================================== */
 
-otpInputs.forEach(function(input, index){
+otpInputs.forEach(function (input, index) {
 
-    input.addEventListener("input", function(){
+    input.addEventListener("input", function () {
 
         this.value =
             this.value.replace(/\D/g, "");
 
 
-        if(
+        if (
             this.value &&
             index < otpInputs.length - 1
-        ){
+        ) {
 
             otpInputs[index + 1].focus();
 
@@ -249,15 +249,15 @@ otpInputs.forEach(function(input, index){
    OTP Backspace
 ========================================================== */
 
-otpInputs.forEach(function(input, index){
+otpInputs.forEach(function (input, index) {
 
-    input.addEventListener("keydown", function(event){
+    input.addEventListener("keydown", function (event) {
 
-        if(
+        if (
             event.key === "Backspace" &&
             this.value === "" &&
             index > 0
-        ){
+        ) {
 
             otpInputs[index - 1].focus();
 
@@ -272,7 +272,7 @@ otpInputs.forEach(function(input, index){
    OTP Paste
 ========================================================== */
 
-otpInputs[0].addEventListener("paste", function(event){
+otpInputs[0].addEventListener("paste", function (event) {
 
     event.preventDefault();
 
@@ -283,14 +283,14 @@ otpInputs[0].addEventListener("paste", function(event){
             .replace(/\D/g, "");
 
 
-    if(data.length !== 6){
+    if (data.length !== 6) {
 
         return;
 
     }
 
 
-    otpInputs.forEach(function(input, index){
+    otpInputs.forEach(function (input, index) {
 
         input.value =
             data[index];
@@ -307,7 +307,7 @@ otpInputs[0].addEventListener("paste", function(event){
    Verify OTP
 ========================================================== */
 
-otpForm.addEventListener("submit", async function(event){
+otpForm.addEventListener("submit", async function (event) {
 
     event.preventDefault();
 
@@ -321,7 +321,7 @@ otpForm.addEventListener("submit", async function(event){
     let otp = "";
 
 
-    otpInputs.forEach(function(input){
+    otpInputs.forEach(function (input) {
 
         otp += input.value;
 
@@ -332,7 +332,7 @@ otpForm.addEventListener("submit", async function(event){
        Validate OTP Length
     -------------------------------------------------- */
 
-    if(otp.length !== 6){
+    if (otp.length !== 6) {
 
         otpError.textContent =
             "Please enter the complete OTP.";
@@ -390,7 +390,7 @@ otpForm.addEventListener("submit", async function(event){
            Handle Verification Error
         -------------------------------------------------- */
 
-        if(!response.ok){
+        if (!response.ok) {
 
             otpError.textContent =
                 data.message ||
@@ -432,14 +432,14 @@ otpForm.addEventListener("submit", async function(event){
            Redirect To Admin Dashboard
         -------------------------------------------------- */
 
-        setTimeout(function(){
+        setTimeout(function () {
 
             window.location.href =
-                "index.html";
+                "../ADMIN/admin/admin.html";
 
         }, 1200);
 
-    } catch(error){
+    } catch (error) {
 
         console.error(
             "Verify OTP Error:",
@@ -467,7 +467,7 @@ otpForm.addEventListener("submit", async function(event){
    Change Phone Number
 ========================================================== */
 
-changeNumber.addEventListener("click", function(){
+changeNumber.addEventListener("click", function () {
 
     clearInterval(timer);
 
@@ -489,7 +489,7 @@ changeNumber.addEventListener("click", function(){
 let timer;
 
 
-function startTimer(){
+function startTimer() {
 
     clearInterval(timer);
 
@@ -503,7 +503,7 @@ function startTimer(){
         "00:30";
 
 
-    timer = setInterval(function(){
+    timer = setInterval(function () {
 
         seconds--;
 
@@ -524,7 +524,7 @@ function startTimer(){
             `${minute}:${second}`;
 
 
-        if(seconds <= 0){
+        if (seconds <= 0) {
 
             clearInterval(timer);
 
@@ -547,16 +547,16 @@ function startTimer(){
    Resend OTP
 ========================================================== */
 
-resendButton.addEventListener("click", async function(){
+resendButton.addEventListener("click", async function () {
 
-    if(this.disabled){
+    if (this.disabled) {
 
         return;
 
     }
 
 
-    if(!currentPhone){
+    if (!currentPhone) {
 
         return;
 
@@ -596,7 +596,7 @@ resendButton.addEventListener("click", async function(){
             await response.json();
 
 
-        if(!response.ok){
+        if (!response.ok) {
 
             otpError.textContent =
                 data.message ||
@@ -620,7 +620,7 @@ resendButton.addEventListener("click", async function(){
 
         startTimer();
 
-    } catch(error){
+    } catch (error) {
 
         console.error(
             "Resend OTP Error:",
@@ -648,7 +648,7 @@ resendButton.addEventListener("click", async function(){
    Initial Focus
 ========================================================== */
 
-window.addEventListener("load", function(){
+window.addEventListener("load", function () {
 
     phoneInput.focus();
 

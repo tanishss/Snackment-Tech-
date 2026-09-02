@@ -1,0 +1,1425 @@
+/* =========================================================
+   SNACKMENT ADMIN
+   CUSTOMERS MODULE
+   ---------------------------------------------------------
+   File:
+   ADMIN/admin/modules/customers/customers.css
+
+   IMPORTANT:
+   - All selectors are scoped to .customers-page where possible.
+   - Do NOT add global styles here.
+   - This prevents Customers CSS from affecting:
+       Products
+       Orders
+       Dashboard
+       Sidebar
+       Header
+       Other admin modules
+========================================================= */
+
+
+/* =========================================================
+   1. CUSTOMERS PAGE ROOT
+========================================================= */
+
+.customers-page {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+
+    padding: 42px 38px 48px;
+
+    color: #f5f5f5;
+
+    font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Helvetica,
+        Arial,
+        sans-serif;
+
+    animation: customers-page-enter 180ms ease-out;
+}
+
+
+/* =========================================================
+   PAGE ENTRY ANIMATION
+========================================================= */
+
+@keyframes customers-page-enter {
+
+    from {
+        opacity: 0;
+        transform: translateY(4px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+/* =========================================================
+   2. PAGE HEADER
+========================================================= */
+
+.customers-page-header {
+    width: 100%;
+    margin: 0 0 30px;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+.customers-page-title-block {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    margin: 0;
+    padding: 0;
+}
+
+
+.customers-page-title {
+    margin: 0;
+
+    font-size: 30px;
+    line-height: 1.2;
+    font-weight: 700;
+    letter-spacing: -0.6px;
+
+    color: #f4f4f4;
+}
+
+
+.customers-page-subtitle {
+    margin: 7px 0 0;
+
+    font-size: 15px;
+    line-height: 1.5;
+    font-weight: 400;
+
+    color: #8d8f94;
+}
+
+
+/* =========================================================
+   3. STATISTICS GRID
+========================================================= */
+
+.customers-stats-grid {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+    gap: 16px;
+
+    margin: 0 0 26px;
+    padding: 0;
+
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   4. STAT CARD
+========================================================= */
+
+.customers-stat-card {
+    position: relative;
+
+    min-width: 0;
+    min-height: 104px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 22px 21px;
+
+    box-sizing: border-box;
+
+    background:
+        #202224;
+
+    border: 1px solid #303236;
+
+    border-radius: 16px;
+
+    overflow: hidden;
+
+    transition:
+        border-color 160ms ease,
+        background-color 160ms ease,
+        transform 160ms ease;
+}
+
+
+.customers-stat-card:hover {
+    background: #222426;
+    border-color: #383a3e;
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   SUBTLE TOP ACCENT
+
+   Pure CSS. No SVG/image dependency.
+========================================================= */
+
+.customers-stat-card::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 2px;
+
+    opacity: 0;
+
+    transition: opacity 160ms ease;
+}
+
+
+.customers-stat-card:hover::before {
+    opacity: 1;
+}
+
+
+.customers-stat-card-total::before {
+    background: #4ade3f;
+}
+
+
+.customers-stat-card-active::before {
+    background: #4388ff;
+}
+
+
+.customers-stat-card-new::before {
+    background: #2dcc68;
+}
+
+
+.customers-stat-card-average::before {
+    background: #f59e0b;
+}
+
+
+/* =========================================================
+   STAT CONTENT
+========================================================= */
+
+.customers-stat-content {
+    width: 100%;
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    margin: 0;
+    padding: 0;
+}
+
+
+.customers-stat-label {
+    margin: 0 0 11px;
+
+    font-size: 14px;
+    line-height: 1.3;
+    font-weight: 400;
+
+    color: #85878c;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    max-width: 100%;
+}
+
+
+.customers-stat-value {
+    margin: 0;
+
+    font-size: 27px;
+    line-height: 1;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   STAT VALUE COLORS
+========================================================= */
+
+.customers-stat-value-green {
+    color: #55df4a;
+}
+
+
+.customers-stat-value-blue {
+    color: #438cff;
+}
+
+
+.customers-stat-value-green-alt {
+    color: #2dcc68;
+}
+
+
+.customers-stat-value-orange {
+    color: #f5a315;
+}
+
+
+/* =========================================================
+   5. CUSTOMERS TABLE CARD
+========================================================= */
+
+.customers-table-card {
+    width: 100%;
+    min-width: 0;
+
+    margin: 0;
+    padding: 0;
+
+    box-sizing: border-box;
+
+    background: #202224;
+
+    border: 1px solid #303236;
+
+    border-radius: 18px;
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   6. TABLE SCROLL WRAPPER
+
+   Important for smaller screens.
+
+   The table itself stays wide enough while the wrapper
+   becomes horizontally scrollable.
+========================================================= */
+
+.customers-table-wrapper {
+    width: 100%;
+    min-width: 0;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    scrollbar-width: thin;
+    scrollbar-color: #3a3c40 transparent;
+}
+
+
+/* WebKit scrollbar */
+
+.customers-table-wrapper::-webkit-scrollbar {
+    height: 7px;
+}
+
+
+.customers-table-wrapper::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+
+.customers-table-wrapper::-webkit-scrollbar-thumb {
+    background: #3a3c40;
+    border-radius: 999px;
+}
+
+
+.customers-table-wrapper::-webkit-scrollbar-thumb:hover {
+    background: #484b50;
+}
+
+
+/* =========================================================
+   7. TABLE
+========================================================= */
+
+.customers-table {
+    width: 100%;
+    min-width: 930px;
+
+    border-collapse: separate;
+    border-spacing: 0;
+
+    table-layout: fixed;
+
+    margin: 0;
+    padding: 0;
+
+    background: transparent;
+}
+
+
+/* =========================================================
+   8. COLUMN WIDTHS
+
+   These are intentionally explicit so the layout doesn't
+   randomly resize when names/phone numbers change.
+========================================================= */
+
+.customers-column-customer {
+    width: 25%;
+}
+
+
+.customers-column-room {
+    width: 9%;
+}
+
+
+.customers-column-phone {
+    width: 15%;
+}
+
+
+.customers-column-orders {
+    width: 12%;
+}
+
+
+.customers-column-spent {
+    width: 13%;
+}
+
+
+.customers-column-last-order {
+    width: 12%;
+}
+
+
+.customers-column-status {
+    width: 14%;
+}
+
+
+/* =========================================================
+   9. TABLE HEADER
+========================================================= */
+
+.customers-table-head {
+    background: #242628;
+}
+
+
+.customers-table-head tr {
+    height: 51px;
+}
+
+
+.customers-table-head th {
+    height: 51px;
+
+    padding: 0 18px;
+
+    box-sizing: border-box;
+
+    border-bottom: 1px solid #303236;
+
+    text-align: left;
+    vertical-align: middle;
+
+    font-size: 12px;
+    line-height: 1;
+    font-weight: 600;
+
+    letter-spacing: 0.65px;
+    text-transform: uppercase;
+
+    color: #7f8186;
+
+    white-space: nowrap;
+}
+
+
+/* First column gets a little more breathing room */
+
+.customers-table-head th:first-child {
+    padding-left: 18px;
+}
+
+
+/* Last column */
+
+.customers-table-head th:last-child {
+    padding-right: 20px;
+}
+
+
+/* =========================================================
+   10. TABLE BODY
+========================================================= */
+
+.customers-table-body {
+    margin: 0;
+    padding: 0;
+}
+
+
+.customers-table-body .customers-table-row {
+    height: 73px;
+
+    background: #202224;
+
+    transition:
+        background-color 140ms ease;
+}
+
+
+/* =========================================================
+   TABLE ROW HOVER
+========================================================= */
+
+.customers-table-body .customers-table-row:hover {
+    background: #252729;
+}
+
+
+/* =========================================================
+   11. TABLE CELLS
+========================================================= */
+
+.customers-table-body .customers-cell {
+    height: 73px;
+
+    padding: 0 18px;
+
+    box-sizing: border-box;
+
+    border-bottom: 1px solid #2d3033;
+
+    vertical-align: middle;
+
+    font-size: 14px;
+    line-height: 1.4;
+
+    color: #b5b7bc;
+}
+
+
+/* Remove bottom border from final visible row */
+
+.customers-table-body
+.customers-table-row:last-child
+.customers-cell {
+    border-bottom: none;
+}
+
+
+/* =========================================================
+   12. CUSTOMER INFO
+========================================================= */
+
+.customers-customer-info {
+    display: flex;
+    align-items: center;
+
+    min-width: 0;
+
+    gap: 13px;
+}
+
+
+.customers-customer-details {
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+}
+
+
+.customers-customer-name {
+    margin: 0;
+
+    color: #f0f0f1;
+
+    font-size: 15px;
+    line-height: 1.35;
+    font-weight: 500;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+/* =========================================================
+   13. CUSTOMER AVATAR
+========================================================= */
+
+.customers-avatar {
+    flex: 0 0 auto;
+
+    width: 40px;
+    height: 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    font-size: 13px;
+    line-height: 1;
+    font-weight: 700;
+
+    user-select: none;
+
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   AVATAR COLORS
+========================================================= */
+
+.customers-avatar-green {
+    color: #55df4a;
+    background: rgba(65, 145, 55, 0.22);
+}
+
+
+.customers-avatar-blue {
+    color: #438cff;
+    background: rgba(48, 104, 190, 0.24);
+}
+
+
+.customers-avatar-orange {
+    color: #f0a51a;
+    background: rgba(155, 104, 30, 0.24);
+}
+
+
+.customers-avatar-red {
+    color: #f04444;
+    background: rgba(170, 54, 54, 0.23);
+}
+
+
+.customers-avatar-purple {
+    color: #985cff;
+    background: rgba(106, 62, 176, 0.25);
+}
+
+
+.customers-avatar-pink {
+    color: #f04da8;
+    background: rgba(166, 50, 115, 0.24);
+}
+
+
+.customers-avatar-teal {
+    color: #17c6bd;
+    background: rgba(32, 119, 119, 0.24);
+}
+
+
+.customers-avatar-orange-alt {
+    color: #f28a24;
+    background: rgba(152, 79, 28, 0.25);
+}
+
+
+/* =========================================================
+   14. ROOM
+========================================================= */
+
+.customers-room {
+    display: inline-block;
+
+    color: #a3a5aa;
+
+    font-size: 14px;
+    font-weight: 400;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   15. PHONE
+========================================================= */
+
+.customers-phone {
+    display: inline-block;
+
+    color: #a3a5aa;
+
+    font-size: 14px;
+    font-weight: 400;
+
+    letter-spacing: 0.1px;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   16. TOTAL ORDERS
+========================================================= */
+
+.customers-orders-count {
+    display: inline-block;
+
+    color: #eeeeef;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   17. TOTAL SPENT
+========================================================= */
+
+.customers-spent {
+    display: inline-block;
+
+    color: #55df4a;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   18. LAST ORDER
+========================================================= */
+
+.customers-last-order {
+    display: inline-block;
+
+    color: #85878d;
+
+    font-size: 14px;
+    font-weight: 400;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   19. STATUS
+========================================================= */
+
+.customers-status {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 61px;
+    min-height: 24px;
+
+    padding: 4px 11px;
+
+    box-sizing: border-box;
+
+    border-radius: 999px;
+
+    font-size: 12px;
+    line-height: 1;
+    font-weight: 500;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   ACTIVE STATUS
+========================================================= */
+
+.customers-status-active {
+    color: #39dc6a;
+
+    background:
+        rgba(39, 177, 93, 0.16);
+}
+
+
+/* =========================================================
+   INACTIVE STATUS
+========================================================= */
+
+.customers-status-inactive {
+    color: #92959b;
+
+    background:
+        rgba(112, 114, 119, 0.20);
+}
+
+
+/* =========================================================
+   20. EMPTY STATE
+========================================================= */
+
+.customers-empty-state {
+    margin: 0;
+    padding: 0;
+}
+
+
+.customers-empty-state.hidden {
+    display: none;
+}
+
+
+.customers-empty-cell {
+    height: 320px;
+
+    padding: 40px 20px;
+
+    box-sizing: border-box;
+
+    text-align: center;
+    vertical-align: middle;
+
+    border-bottom: none;
+}
+
+
+.customers-empty-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+}
+
+
+.customers-empty-icon {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 13px;
+
+    border: 1px solid #37393d;
+    border-radius: 50%;
+
+    color: #777a80;
+
+    font-size: 20px;
+    line-height: 1;
+}
+
+
+.customers-empty-title {
+    margin: 0;
+
+    color: #e5e6e7;
+
+    font-size: 16px;
+    line-height: 1.4;
+    font-weight: 600;
+}
+
+
+.customers-empty-text {
+    margin: 7px 0 0;
+
+    color: #777a80;
+
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   21. HIDDEN UTILITY
+
+   JS can safely toggle this class.
+========================================================= */
+
+.customers-page .hidden {
+    display: none !important;
+}
+
+
+/* =========================================================
+   22. FOCUS STATES
+
+   Keyboard accessibility without changing normal UI.
+========================================================= */
+
+.customers-page :focus-visible {
+    outline: 2px solid rgba(74, 222, 63, 0.70);
+    outline-offset: 2px;
+}
+
+
+/* =========================================================
+   23. TABLE ROW KEYBOARD/INTERACTION PREP
+
+   This doesn't make rows clickable yet.
+   It only ensures future JS interaction won't look broken.
+========================================================= */
+
+.customers-table-body
+.customers-table-row[data-customer-id] {
+    position: relative;
+}
+
+/* =========================================================
+   CUSTOMERS PAGINATION
+========================================================= */
+
+.customers-pagination {
+    width: 100%;
+
+    min-height: 64px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 18px;
+
+    box-sizing: border-box;
+
+    background: #202224;
+
+    border-top: 1px solid #2d3033;
+}
+
+
+/* =========================================================
+   PAGINATION INFO
+========================================================= */
+
+.customers-pagination-info {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+
+    color: #85878d;
+
+    font-size: 13px;
+    line-height: 1.4;
+    font-weight: 400;
+
+    white-space: nowrap;
+}
+
+
+.customers-pagination-info strong {
+    color: #bfc1c5;
+
+    font-weight: 500;
+}
+
+
+/* =========================================================
+   PAGINATION CONTROLS
+========================================================= */
+
+.customers-pagination-controls {
+    display: flex;
+    align-items: center;
+
+    gap: 7px;
+}
+
+
+/* =========================================================
+   PAGINATION BUTTON
+========================================================= */
+
+.customers-pagination-button {
+    width: 34px;
+    height: 34px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+
+    box-sizing: border-box;
+
+    border: 1px solid #34373b;
+
+    border-radius: 8px;
+
+    background: #252729;
+
+    color: #a7a9ae;
+
+    font-family: inherit;
+
+    font-size: 22px;
+    line-height: 1;
+
+    cursor: pointer;
+
+    transition:
+        background-color 140ms ease,
+        border-color 140ms ease,
+        color 140ms ease,
+        opacity 140ms ease;
+}
+
+
+.customers-pagination-button:hover:not(:disabled) {
+    background: #2b2d30;
+
+    border-color: #44474c;
+
+    color: #f0f0f1;
+}
+
+
+.customers-pagination-button:active:not(:disabled) {
+    transform: translateY(1px);
+}
+
+
+.customers-pagination-button:disabled {
+    opacity: 0.35;
+
+    cursor: not-allowed;
+}
+
+
+/* =========================================================
+   PAGINATION ARROW ALIGNMENT
+========================================================= */
+
+.customers-pagination-button span {
+    display: block;
+
+    margin-top: -2px;
+}
+
+
+/* =========================================================
+   FOCUS
+========================================================= */
+
+.customers-pagination-button:focus-visible {
+    outline: 2px solid rgba(74, 222, 63, 0.7);
+
+    outline-offset: 2px;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .customers-pagination {
+        min-height: 60px;
+
+        padding:
+            0 14px;
+    }
+
+
+    .customers-pagination-info {
+        font-size: 12px;
+    }
+
+
+    .customers-pagination-button {
+        width: 32px;
+        height: 32px;
+    }
+
+}
+/* =========================================================
+   24. LARGE DESKTOP
+========================================================= */
+
+@media (min-width: 1600px) {
+
+    .customers-page {
+        padding-left: 38px;
+        padding-right: 38px;
+    }
+
+
+    .customers-stats-grid {
+        gap: 17px;
+    }
+
+
+    .customers-stat-card {
+        min-height: 108px;
+        padding-left: 22px;
+        padding-right: 22px;
+    }
+
+
+    .customers-stat-value {
+        font-size: 28px;
+    }
+
+
+    .customers-table-head th {
+        padding-left: 19px;
+        padding-right: 19px;
+    }
+
+
+    .customers-table-body .customers-cell {
+        padding-left: 19px;
+        padding-right: 19px;
+    }
+
+}
+
+
+/* =========================================================
+   25. MEDIUM DESKTOP / LAPTOP
+========================================================= */
+
+@media (max-width: 1250px) {
+
+    .customers-page {
+        padding: 34px 28px 42px;
+    }
+
+
+    .customers-stats-grid {
+        gap: 13px;
+    }
+
+
+    .customers-stat-card {
+        min-height: 100px;
+
+        padding:
+            19px 18px;
+    }
+
+
+    .customers-stat-label {
+        font-size: 13px;
+    }
+
+
+    .customers-stat-value {
+        font-size: 25px;
+    }
+
+
+    .customers-table {
+        min-width: 900px;
+    }
+
+}
+
+
+/* =========================================================
+   26. TABLET
+========================================================= */
+
+@media (max-width: 1000px) {
+
+    .customers-page {
+        padding: 30px 22px 36px;
+    }
+
+
+    .customers-page-title {
+        font-size: 28px;
+    }
+
+
+    .customers-stats-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap: 14px;
+
+        margin-bottom: 22px;
+    }
+
+
+    .customers-stat-card {
+        min-height: 98px;
+    }
+
+
+    .customers-table-card {
+        border-radius: 15px;
+    }
+
+
+    .customers-table {
+        min-width: 900px;
+    }
+
+}
+
+
+/* =========================================================
+   27. SMALL TABLET / LARGE MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .customers-page {
+        padding: 25px 16px 32px;
+    }
+
+
+    .customers-page-header {
+        margin-bottom: 24px;
+    }
+
+
+    .customers-page-title {
+        font-size: 25px;
+        letter-spacing: -0.4px;
+    }
+
+
+    .customers-page-subtitle {
+        margin-top: 6px;
+        font-size: 14px;
+    }
+
+
+    .customers-stats-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap: 11px;
+
+        margin-bottom: 18px;
+    }
+
+
+    .customers-stat-card {
+        min-height: 91px;
+
+        padding:
+            17px 16px;
+
+        border-radius: 13px;
+    }
+
+
+    .customers-stat-label {
+        margin-bottom: 9px;
+
+        font-size: 12px;
+    }
+
+
+    .customers-stat-value {
+        font-size: 23px;
+    }
+
+
+    .customers-table-card {
+        border-radius: 13px;
+    }
+
+
+    .customers-table {
+        min-width: 880px;
+    }
+
+
+    .customers-table-head th {
+        height: 48px;
+
+        padding-left: 15px;
+        padding-right: 15px;
+
+        font-size: 11px;
+    }
+
+
+    .customers-table-body .customers-cell {
+        height: 69px;
+
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+
+    .customers-avatar {
+        width: 37px;
+        height: 37px;
+
+        font-size: 12px;
+    }
+
+
+    .customers-customer-info {
+        gap: 11px;
+    }
+
+
+    .customers-customer-name {
+        font-size: 14px;
+    }
+
+}
+
+
+/* =========================================================
+   28. MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+
+    .customers-page {
+        padding:
+            22px 12px 28px;
+    }
+
+
+    .customers-page-title {
+        font-size: 23px;
+    }
+
+
+    .customers-page-subtitle {
+        font-size: 13px;
+    }
+
+
+    .customers-stats-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap: 9px;
+    }
+
+
+    .customers-stat-card {
+        min-height: 86px;
+
+        padding:
+            15px 14px;
+
+        border-radius: 12px;
+    }
+
+
+    .customers-stat-label {
+        margin-bottom: 8px;
+
+        font-size: 11px;
+    }
+
+
+    .customers-stat-value {
+        font-size: 21px;
+    }
+
+
+    .customers-table-card {
+        border-radius: 12px;
+    }
+
+
+    .customers-table {
+        min-width: 850px;
+    }
+
+}
+
+
+/* =========================================================
+   29. VERY SMALL MOBILE
+========================================================= */
+
+@media (max-width: 360px) {
+
+    .customers-page {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+
+    .customers-stats-grid {
+        gap: 8px;
+    }
+
+
+    .customers-stat-card {
+        padding:
+            14px 12px;
+    }
+
+
+    .customers-stat-label {
+        font-size: 10px;
+    }
+
+
+    .customers-stat-value {
+        font-size: 19px;
+    }
+
+}
+
+
+/* =========================================================
+   30. REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .customers-page {
+        animation: none;
+    }
+
+
+    .customers-stat-card {
+        transition: none;
+    }
+
+
+    .customers-table-body .customers-table-row {
+        transition: none;
+    }
+
+}
+
+
+/* =========================================================
+   END CUSTOMERS CSS
+========================================================= */

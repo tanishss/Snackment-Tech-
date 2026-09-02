@@ -1,0 +1,1125 @@
+<!-- =========================================================
+     SNACKMENT ADMIN
+     CUSTOMERS MODULE
+     
+     File:
+     ADMIN/admin/modules/customers/customers.html
+
+     IMPORTANT:
+     - No inline SVG in this module.
+     - This file contains ONLY the Customers page/module.
+     - Admin shell/header/sidebar remain controlled by admin.html.
+     - IDs/classes below are intentionally stable for customers.js.
+========================================================= -->
+
+
+<section class="customers-page" id="customers-page">
+
+    <!-- =====================================================
+         PAGE HEADER
+    ====================================================== -->
+
+    <header class="customers-page-header">
+
+        <div class="customers-page-title-block">
+
+            <h1 class="customers-page-title">
+                Customers
+            </h1>
+
+            <p class="customers-page-subtitle" id="customers-count-text">
+                8 registered customers
+            </p>
+
+        </div>
+
+    </header>
+
+
+    <!-- =====================================================
+         CUSTOMER STATISTICS
+    ====================================================== -->
+
+    <section
+        class="customers-stats-grid"
+        id="customers-stats"
+        aria-label="Customer statistics"
+    >
+
+
+        <!-- =================================================
+             TOTAL CUSTOMERS
+        ================================================== -->
+
+        <article class="customers-stat-card customers-stat-card-total">
+
+            <div class="customers-stat-content">
+
+                <p class="customers-stat-label">
+                    Total Customers
+                </p>
+
+                <p
+                    class="customers-stat-value customers-stat-value-green"
+                    id="stat-total-customers"
+                >
+                    1,247
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <!-- =================================================
+             ACTIVE TODAY
+        ================================================== -->
+
+        <article class="customers-stat-card customers-stat-card-active">
+
+            <div class="customers-stat-content">
+
+                <p class="customers-stat-label">
+                    Active Today
+                </p>
+
+                <p
+                    class="customers-stat-value customers-stat-value-blue"
+                    id="stat-active-today"
+                >
+                    284
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <!-- =================================================
+             NEW THIS WEEK
+        ================================================== -->
+
+        <article class="customers-stat-card customers-stat-card-new">
+
+            <div class="customers-stat-content">
+
+                <p class="customers-stat-label">
+                    New This Week
+                </p>
+
+                <p
+                    class="customers-stat-value customers-stat-value-green-alt"
+                    id="stat-new-this-week"
+                >
+                    38
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <!-- =================================================
+             AVERAGE ORDER VALUE
+        ================================================== -->
+
+        <article class="customers-stat-card customers-stat-card-average">
+
+            <div class="customers-stat-content">
+
+                <p class="customers-stat-label">
+                    Avg. Order Value
+                </p>
+
+                <p
+                    class="customers-stat-value customers-stat-value-orange"
+                    id="stat-average-order-value"
+                >
+                    ₹182
+                </p>
+
+            </div>
+
+        </article>
+
+
+    </section>
+
+
+    <!-- =====================================================
+         CUSTOMERS TABLE CARD
+    ====================================================== -->
+
+    <section
+        class="customers-table-card"
+        id="customers-table-card"
+        aria-label="Customers list"
+    >
+
+
+        <!-- =================================================
+             TABLE WRAPPER
+
+             Keeping this wrapper separate allows horizontal
+             scrolling on smaller screens without breaking
+             the entire page.
+        ================================================== -->
+
+        <div class="customers-table-wrapper">
+
+
+            <!-- =============================================
+                 CUSTOMERS TABLE
+            ============================================== -->
+
+            <table
+                class="customers-table"
+                id="customers-table"
+            >
+
+
+                <!-- =========================================
+                     TABLE HEAD
+                ========================================== -->
+
+                <thead class="customers-table-head">
+
+                    <tr>
+
+                        <!-- Customer -->
+
+                        <th
+                            scope="col"
+                            class="customers-column-customer"
+                        >
+                            Customer
+                        </th>
+
+
+                        <!-- Room -->
+
+                        <th
+                            scope="col"
+                            class="customers-column-room"
+                        >
+                            Room
+                        </th>
+
+
+                        <!-- Phone -->
+
+                        <th
+                            scope="col"
+                            class="customers-column-phone"
+                        >
+                            Phone
+                        </th>
+
+
+                        <!-- Total Orders -->
+
+                        <th
+                            scope="col"
+                            class="customers-column-orders"
+                        >
+                            Total Orders
+                        </th>
+
+
+                        <!-- Total Spent -->
+
+                        <th
+                            scope="col"
+                            class="customers-column-spent"
+                        >
+                            Total Spent
+                        </th>
+
+
+                        <!-- Last Order -->
+
+                        <th
+                            scope="col"
+                            class="customers-column-last-order"
+                        >
+                            Last Order
+                        </th>
+
+
+                        <!-- Status -->
+
+                        <th
+                            scope="col"
+                            class="customers-column-status"
+                        >
+                            Status
+                        </th>
+
+
+                    </tr>
+
+                </thead>
+
+
+                <!-- =========================================
+                     TABLE BODY
+
+                     JS will eventually populate this
+                     dynamically.
+
+                     For testing, the initial rows are kept
+                     directly in HTML.
+                ========================================== -->
+
+                <tbody
+                    class="customers-table-body"
+                    id="customers-table-body"
+                >
+
+
+                    <!-- =====================================
+                         CUSTOMER #1
+                    ====================================== -->
+
+                    <tr
+                        class="customers-table-row"
+                        data-customer-id="customer-001"
+                    >
+
+                        <!-- Customer -->
+
+                        <td class="customers-cell customers-cell-customer">
+
+                            <div class="customers-customer-info">
+
+                                <div
+                                    class="customers-avatar customers-avatar-green"
+                                    aria-hidden="true"
+                                >
+                                    AM
+                                </div>
+
+                                <div class="customers-customer-details">
+
+                                    <p class="customers-customer-name">
+                                        Arjun Mehta
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                        </td>
+
+
+                        <!-- Room -->
+
+                        <td class="customers-cell customers-cell-room">
+                            <span class="customers-room">
+                                A-204
+                            </span>
+                        </td>
+
+
+                        <!-- Phone -->
+
+                        <td class="customers-cell customers-cell-phone">
+                            <span class="customers-phone">
+                                9876543210
+                            </span>
+                        </td>
+
+
+                        <!-- Total Orders -->
+
+                        <td class="customers-cell customers-cell-orders">
+
+                            <span class="customers-orders-count">
+                                48
+                            </span>
+
+                        </td>
+
+
+                        <!-- Total Spent -->
+
+                        <td class="customers-cell customers-cell-spent">
+
+                            <span class="customers-spent">
+                                ₹4,320
+                            </span>
+
+                        </td>
+
+
+                        <!-- Last Order -->
+
+                        <td class="customers-cell customers-cell-last-order">
+
+                            <span class="customers-last-order">
+                                2m ago
+                            </span>
+
+                        </td>
+
+
+                        <!-- Status -->
+
+                        <td class="customers-cell customers-cell-status">
+
+                            <span
+                                class="customers-status customers-status-active"
+                                data-status="active"
+                            >
+                                Active
+                            </span>
+
+                        </td>
+
+                    </tr>
+
+
+                    <!-- =====================================
+                         CUSTOMER #2
+                    ====================================== -->
+
+                    <tr
+                        class="customers-table-row"
+                        data-customer-id="customer-002"
+                    >
+
+                        <td class="customers-cell customers-cell-customer">
+
+                            <div class="customers-customer-info">
+
+                                <div
+                                    class="customers-avatar customers-avatar-blue"
+                                    aria-hidden="true"
+                                >
+                                    RS
+                                </div>
+
+                                <div class="customers-customer-details">
+
+                                    <p class="customers-customer-name">
+                                        Riya Sharma
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                        </td>
+
+
+                        <td class="customers-cell customers-cell-room">
+
+                            <span class="customers-room">
+                                B-108
+                            </span>
+
+                        </td>
+
+
+                        <td class="customers-cell customers-cell-phone">
+
+                            <span class="customers-phone">
+                                9812345678
+                            </span>
+
+                        </td>
+
+
+                        <td class="customers-cell customers-cell-orders">
+
+                            <span class="customers-orders-count">
+                                36
+                            </span>
+
+                        </td>
+
+
+                        <td class="customers-cell customers-cell-spent">
+
+                            <span class="customers-spent">
+                                ₹3,180
+                            </span>
+
+                        </td>
+
+
+                        <td class="customers-cell customers-cell-last-order">
+
+                            <span class="customers-last-order">
+                                8m ago
+                            </span>
+
+                        </td>
+
+
+                        <td class="customers-cell customers-cell-status">
+
+                            <span
+                                class="customers-status customers-status-active"
+                                data-status="active"
+                            >
+                                Active
+                            </span>
+
+                        </td>
+
+                    </tr>
+
+
+                    <!-- =====================================
+                         CUSTOMER #3
+                    ====================================== -->
+
+                    <tr
+                        class="customers-table-row"
+                        data-customer-id="customer-003"
+                    >
+
+                        <td class="customers-cell customers-cell-customer">
+
+                            <div class="customers-customer-info">
+
+                                <div
+                                    class="customers-avatar customers-avatar-orange"
+                                    aria-hidden="true"
+                                >
+                                    KS
+                                </div>
+
+                                <div class="customers-customer-details">
+
+                                    <p class="customers-customer-name">
+                                        Karan Singh
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                        </td>
+
+
+                        <td class="customers-cell customers-cell-room">
+
+                            <span class="customers-room">
+                                C-312
+                            </span>
+
+                        </td>
+
+
+                        <td class="customers-cell customers-cell-phone">
+
+                            <span class="customers-phone">
+                                9765432109
+                            </span>
+
+                        </td>
+
+
+                        <td class="customers-cell customers-cell-orders">
+
+                            <span class="customers-orders-count">
+                                22
+                            </span>
+
+                        </td>
+
+
+                        <td class="customers-cell customers-cell-spent">
+
+                            <span class="customers-spent">
+                                ₹1,940
+                            </span>
+
+                        </td>
+
+
+                        <td class="customers-cell customers-cell-last-order">
+
+                            <span class="customers-last-order">
+                                15m ago
+                            </span>
+
+                        </td>
+
+
+                        <td class="customers-cell customers-cell-status">
+
+                            <span
+                                class="customers-status customers-status-active"
+                                data-status="active"
+                            >
+                                Active
+                            </span>
+
+                        </td>
+
+                    </tr>
+
+
+                    <!-- =====================================
+                         CUSTOMER #4
+                    ====================================== -->
+
+                    <tr
+                        class="customers-table-row"
+                        data-customer-id="customer-004"
+                    >
+
+                        <td class="customers-cell customers-cell-customer">
+
+                            <div class="customers-customer-info">
+
+                                <div
+                                    class="customers-avatar customers-avatar-red"
+                                    aria-hidden="true"
+                                >
+                                    PN
+                                </div>
+
+                                <div class="customers-customer-details">
+
+                                    <p class="customers-customer-name">
+                                        Priya Nair
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                        </td>
+
+
+                        <td class="customers-cell customers-cell-room">
+
+                            <span class="customers-room">
+                                A-101
+                            </span>
+
+                        </td>
+
+
+                        <td class="customers-cell customers-cell-phone">
+
+                            <span class="customers-phone">
+                                9654321098
+                            </span>
+
+                        </td>
+
+
+                        <td class="customers-cell customers-cell-orders">
+
+                            <span class="customers-orders-count">
+                                19
+                            </span>
+
+                        </td>
+
+
+                        <td class="customers-cell customers-cell-spent">
+
+                            <span class="customers-spent">
+                                ₹1,680
+                            </span>
+
+                        </td>
+
+
+                        <td class="customers-cell customers-cell-last-order">
+
+                            <span class="customers-last-order">
+                                22m ago
+                            </span>
+
+                        </td>
+
+
+                        <td class="customers-cell customers-cell-status">
+
+                            <span
+                                class="customers-status customers-status-active"
+                                data-status="active"
+                            >
+                                Active
+                            </span>
+
+                        </td>
+
+                    </tr>
+
+
+                    <!-- =====================================
+                         CUSTOMER #5
+                    ====================================== -->
+
+                    <tr
+                        class="customers-table-row"
+                        data-customer-id="customer-005"
+                    >
+
+                        <td class="customers-cell customers-cell-customer">
+
+                            <div class="customers-customer-info">
+
+                                <div
+                                    class="customers-avatar customers-avatar-purple"
+                                    aria-hidden="true"
+                                >
+                                    DP
+                                </div>
+
+                                <div class="customers-customer-details">
+
+                                    <p class="customers-customer-name">
+                                        Dev Patel
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                        </td>
+
+
+                        <td class="customers-cell customers-cell-room">
+
+                            <span class="customers-room">
+                                D-205
+                            </span>
+
+                        </td>
+
+
+                        <td class="customers-cell customers-cell-phone">
+
+                            <span class="customers-phone">
+                                9543210987
+                            </span>
+
+                        </td>
+
+
+                        <td class="customers-cell customers-cell-orders">
+
+                            <span class="customers-orders-count">
+                                11
+                            </span>
+
+                        </td>
+
+
+                        <td class="customers-cell customers-cell-spent">
+
+                            <span class="customers-spent">
+                                ₹890
+                            </span>
+
+                        </td>
+
+
+                        <td class="customers-cell customers-cell-last-order">
+
+                            <span class="customers-last-order">
+                                38m ago
+                            </span>
+
+                        </td>
+
+
+                        <td class="customers-cell customers-cell-status">
+
+                            <span
+                                class="customers-status customers-status-inactive"
+                                data-status="inactive"
+                            >
+                                Inactive
+                            </span>
+
+                        </td>
+
+                    </tr>
+
+
+                    <!-- =====================================
+                         CUSTOMER #6
+                    ====================================== -->
+
+                    <tr
+                        class="customers-table-row"
+                        data-customer-id="customer-006"
+                    >
+
+                        <td class="customers-cell customers-cell-customer">
+
+                            <div class="customers-customer-info">
+
+                                <div
+                                    class="customers-avatar customers-avatar-pink"
+                                    aria-hidden="true"
+                                >
+                                    AB
+                                </div>
+
+                                <div class="customers-customer-details">
+
+                                    <p class="customers-customer-name">
+                                        Ananya Bose
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                        </td>
+
+
+                        <td class="customers-cell customers-cell-room">
+
+                            <span class="customers-room">
+                                B-220
+                            </span>
+
+                        </td>
+
+
+                        <td class="customers-cell customers-cell-phone">
+
+                            <span class="customers-phone">
+                                9432109876
+                            </span>
+
+                        </td>
+
+
+                        <td class="customers-cell customers-cell-orders">
+
+                            <span class="customers-orders-count">
+                                67
+                            </span>
+
+                        </td>
+
+
+                        <td class="customers-cell customers-cell-spent">
+
+                            <span class="customers-spent">
+                                ₹6,240
+                            </span>
+
+                        </td>
+
+
+                        <td class="customers-cell customers-cell-last-order">
+
+                            <span class="customers-last-order">
+                                1h ago
+                            </span>
+
+                        </td>
+
+
+                        <td class="customers-cell customers-cell-status">
+
+                            <span
+                                class="customers-status customers-status-active"
+                                data-status="active"
+                            >
+                                Active
+                            </span>
+
+                        </td>
+
+                    </tr>
+
+
+                    <!-- =====================================
+                         CUSTOMER #7
+                    ====================================== -->
+
+                    <tr
+                        class="customers-table-row"
+                        data-customer-id="customer-007"
+                    >
+
+                        <td class="customers-cell customers-cell-customer">
+
+                            <div class="customers-customer-info">
+
+                                <div
+                                    class="customers-avatar customers-avatar-teal"
+                                    aria-hidden="true"
+                                >
+                                    VR
+                                </div>
+
+                                <div class="customers-customer-details">
+
+                                    <p class="customers-customer-name">
+                                        Vikram Reddy
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                        </td>
+
+
+                        <td class="customers-cell customers-cell-room">
+
+                            <span class="customers-room">
+                                C-115
+                            </span>
+
+                        </td>
+
+
+                        <td class="customers-cell customers-cell-phone">
+
+                            <span class="customers-phone">
+                                9321098765
+                            </span>
+
+                        </td>
+
+
+                        <td class="customers-cell customers-cell-orders">
+
+                            <span class="customers-orders-count">
+                                29
+                            </span>
+
+                        </td>
+
+
+                        <td class="customers-cell customers-cell-spent">
+
+                            <span class="customers-spent">
+                                ₹2,560
+                            </span>
+
+                        </td>
+
+
+                        <td class="customers-cell customers-cell-last-order">
+
+                            <span class="customers-last-order">
+                                1.5h ago
+                            </span>
+
+                        </td>
+
+
+                        <td class="customers-cell customers-cell-status">
+
+                            <span
+                                class="customers-status customers-status-active"
+                                data-status="active"
+                            >
+                                Active
+                            </span>
+
+                        </td>
+
+                    </tr>
+
+
+                    <!-- =====================================
+                         CUSTOMER #8
+                    ====================================== -->
+
+                    <tr
+                        class="customers-table-row"
+                        data-customer-id="customer-008"
+                    >
+
+                        <td class="customers-cell customers-cell-customer">
+
+                            <div class="customers-customer-info">
+
+                                <div
+                                    class="customers-avatar customers-avatar-orange-alt"
+                                    aria-hidden="true"
+                                >
+                                    SK
+                                </div>
+
+                                <div class="customers-customer-details">
+
+                                    <p class="customers-customer-name">
+                                        Sneha Kapoor
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                        </td>
+
+
+                        <td class="customers-cell customers-cell-room">
+
+                            <span class="customers-room">
+                                A-309
+                            </span>
+
+                        </td>
+
+
+                        <td class="customers-cell customers-cell-phone">
+
+                            <span class="customers-phone">
+                                9210987654
+                            </span>
+
+                        </td>
+
+
+                        <td class="customers-cell customers-cell-orders">
+
+                            <span class="customers-orders-count">
+                                15
+                            </span>
+
+                        </td>
+
+
+                        <td class="customers-cell customers-cell-spent">
+
+                            <span class="customers-spent">
+                                ₹1,320
+                            </span>
+
+                        </td>
+
+
+                        <td class="customers-cell customers-cell-last-order">
+
+                            <span class="customers-last-order">
+                                2h ago
+                            </span>
+
+                        </td>
+
+
+                        <td class="customers-cell customers-cell-status">
+
+                            <span
+                                class="customers-status customers-status-active"
+                                data-status="active"
+                            >
+                                Active
+                            </span>
+
+                        </td>
+
+                    </tr>
+
+
+                </tbody>
+
+
+                <!-- =========================================
+                     EMPTY STATE
+
+                     Hidden initially.
+
+                     JS can remove the "hidden" class when
+                     search/filter returns zero customers.
+                ========================================== -->
+
+                <tbody
+                    class="customers-empty-state hidden"
+                    id="customers-empty-state"
+                >
+
+                    <tr>
+
+                        <td
+                            colspan="7"
+                            class="customers-empty-cell"
+                        >
+
+                            <div class="customers-empty-content">
+
+                                <div
+                                    class="customers-empty-icon"
+                                    aria-hidden="true"
+                                >
+                                    —
+                                </div>
+
+                                <h3 class="customers-empty-title">
+                                    No customers found
+                                </h3>
+
+                                <p class="customers-empty-text">
+                                    Try changing your search or filter.
+                                </p>
+
+                            </div>
+
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+
+            </table>
+
+
+        </div>
+
+
+    </section>
+    <!-- =====================================================
+     CUSTOMERS PAGINATION
+====================================================== -->
+
+<footer class="customers-pagination" id="customers-pagination">
+
+    <div class="customers-pagination-info">
+        Showing
+        <strong id="customers-pagination-start">1</strong>
+        –
+        <strong id="customers-pagination-end">8</strong>
+        of
+        <strong id="customers-pagination-total">12</strong>
+        customers
+    </div>
+
+
+    <div class="customers-pagination-controls">
+
+        <button
+            type="button"
+            class="customers-pagination-button"
+            id="customers-pagination-prev"
+            aria-label="Previous customers"
+        >
+            <span aria-hidden="true">‹</span>
+        </button>
+
+
+        <button
+            type="button"
+            class="customers-pagination-button"
+            id="customers-pagination-next"
+            aria-label="Next customers"
+        >
+            <span aria-hidden="true">›</span>
+        </button>
+
+    </div>
+
+</footer>
+
+</section>

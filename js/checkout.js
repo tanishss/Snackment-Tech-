@@ -744,12 +744,27 @@ removeCouponBtn.addEventListener("click", async () => {
 
 couponInput.addEventListener("input", () => {
 
-  if (couponInput.value.trim() === "") {
+    const value =
+        couponInput.value.trim();
 
-    applyBtn.disabled = true;
-    applyBtn.classList.remove("enabled");
+    if (!value) {
 
-  }
+        selectedCoupon = "";
+
+        applyBtn.disabled = true;
+        applyBtn.classList.remove("enabled");
+
+        return;
+    }
+
+    selectedCoupon =
+        value.toUpperCase();
+
+    couponInput.value =
+        selectedCoupon;
+
+    applyBtn.disabled = false;
+    applyBtn.classList.add("enabled");
 
 });
 async function refreshCheckout() {

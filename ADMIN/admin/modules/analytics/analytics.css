@@ -1,0 +1,1035 @@
+/* =========================================================
+   SNACKMENT ADMIN
+   ANALYTICS MODULE
+   ========================================================= */
+
+
+/* =========================================================
+   1. ROOT / PAGE
+   ========================================================= */
+
+.analytics-page {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+
+    padding: 34px 36px 48px;
+
+    color: #f2f3f4;
+    background: transparent;
+
+    font-family: inherit;
+}
+
+
+/* =========================================================
+   2. GLOBAL BOX SIZING
+   ========================================================= */
+
+.analytics-page *,
+.analytics-page *::before,
+.analytics-page *::after {
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   3. UTILITY
+   ========================================================= */
+
+.analytics-page .hidden {
+    display: none !important;
+}
+
+
+/* =========================================================
+   4. PAGE HEADER
+   ========================================================= */
+
+.analytics-page-header {
+    width: 100%;
+    margin: 0 0 30px;
+}
+
+.analytics-page-title-block {
+    min-width: 0;
+}
+
+.analytics-page-title {
+    margin: 0;
+
+    font-size: 30px;
+    line-height: 1.15;
+    font-weight: 700;
+    letter-spacing: -0.7px;
+
+    color: #f3f4f5;
+}
+
+.analytics-page-subtitle {
+    margin: 9px 0 0;
+
+    font-size: 16px;
+    line-height: 1.4;
+    font-weight: 400;
+
+    color: #85898f;
+}
+
+
+/* =========================================================
+   5. OVERVIEW STATISTICS GRID
+   ========================================================= */
+
+.analytics-stats-grid {
+    width: 100%;
+
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+
+    gap: 16px;
+
+    margin-bottom: 26px;
+}
+
+
+/* =========================================================
+   6. STAT CARD
+   ========================================================= */
+
+.analytics-stat-card {
+    min-width: 0;
+    min-height: 134px;
+
+    padding: 24px 24px 22px;
+
+    border: 1px solid #303438;
+    border-radius: 17px;
+
+    background: #222527;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+
+    overflow: hidden;
+
+    transition:
+        border-color 160ms ease,
+        transform 160ms ease,
+        background-color 160ms ease;
+}
+
+.analytics-stat-card:hover {
+    border-color: #3a3e42;
+    background: #242729;
+}
+
+
+/* =========================================================
+   7. STAT LABEL
+   ========================================================= */
+
+.analytics-stat-label {
+    margin: 0;
+
+    font-size: 14px;
+    line-height: 1.3;
+    font-weight: 500;
+
+    color: #777c82;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    max-width: 100%;
+}
+
+
+/* =========================================================
+   8. STAT VALUE
+   ========================================================= */
+
+.analytics-stat-value {
+    margin-top: 11px;
+
+    font-size: 28px;
+    line-height: 1.15;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+
+    white-space: nowrap;
+}
+
+.analytics-stat-value-green {
+    color: #59d94f;
+}
+
+.analytics-stat-value-blue {
+    color: #3f8df7;
+}
+
+.analytics-stat-value-orange {
+    color: #f2a51b;
+}
+
+
+/* =========================================================
+   9. STAT CHANGE
+   ========================================================= */
+
+.analytics-stat-change {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-top: 11px;
+
+    min-height: 24px;
+    padding: 3px 9px;
+
+    border-radius: 999px;
+
+    font-size: 12px;
+    line-height: 1;
+    font-weight: 600;
+}
+
+.analytics-stat-change-positive {
+    color: #27c96a;
+    background: rgba(39, 201, 106, 0.12);
+}
+
+
+/* =========================================================
+   10. TOP CHARTS GRID
+   ========================================================= */
+
+.analytics-charts-grid {
+    width: 100%;
+
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 16px;
+
+    margin-bottom: 18px;
+}
+
+
+/* =========================================================
+   11. CHART CARD
+   ========================================================= */
+
+.analytics-chart-card {
+    min-width: 0;
+
+    border: 1px solid #303438;
+    border-radius: 18px;
+
+    background: #222527;
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   12. TOP CHART CARD
+   ========================================================= */
+
+.analytics-chart-card-large {
+    min-height: 340px;
+
+    padding: 27px 28px 20px;
+}
+
+
+/* =========================================================
+   13. CHART HEADER
+   ========================================================= */
+
+.analytics-chart-header {
+    width: 100%;
+
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    min-width: 0;
+}
+
+.analytics-chart-title {
+    margin: 0;
+
+    font-size: 17px;
+    line-height: 1.3;
+    font-weight: 650;
+    letter-spacing: -0.15px;
+
+    color: #f0f1f2;
+}
+
+.analytics-chart-subtitle {
+    margin: 7px 0 0;
+
+    font-size: 14px;
+    line-height: 1.35;
+    font-weight: 400;
+
+    color: #777c82;
+}
+
+
+/* =========================================================
+   14. CHART CONTAINER
+   ========================================================= */
+
+.analytics-chart-container {
+    position: relative;
+
+    width: 100%;
+    height: 245px;
+
+    margin-top: 17px;
+
+    min-width: 0;
+}
+
+
+/* =========================================================
+   15. CANVAS
+   ========================================================= */
+
+.analytics-chart-canvas {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    max-width: 100%;
+
+    user-select: none;
+}
+
+
+/* =========================================================
+   16. LOWER GRID
+   ========================================================= */
+
+.analytics-lower-grid {
+    width: 100%;
+
+    display: grid;
+
+    /*
+       Customer Growth = wider
+       Category        = medium
+       Best Products   = wider
+    */
+    grid-template-columns:
+        minmax(0, 1.25fr)
+        minmax(260px, 0.78fr)
+        minmax(0, 1.18fr);
+
+    gap: 16px;
+}
+
+
+/* =========================================================
+   17. LOWER CARD BASE
+   ========================================================= */
+
+.analytics-lower-grid .analytics-chart-card {
+    min-height: 435px;
+
+    padding: 27px 28px 25px;
+}
+
+
+/* =========================================================
+   18. CUSTOMER GROWTH
+   ========================================================= */
+
+.analytics-customer-growth-card {
+    min-width: 0;
+}
+
+.analytics-customer-growth-chart-container {
+    height: 315px;
+
+    margin-top: 15px;
+}
+
+
+/* =========================================================
+   19. CATEGORY CARD
+   ========================================================= */
+
+.analytics-category-card {
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.analytics-category-chart-wrapper {
+    position: relative;
+
+    width: 100%;
+    height: 225px;
+
+    margin-top: 12px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.analytics-category-canvas {
+    display: block;
+
+    width: 215px;
+    height: 215px;
+
+    max-width: 100%;
+}
+
+
+/* =========================================================
+   20. CATEGORY LEGEND
+   ========================================================= */
+
+.analytics-category-legend {
+    width: 100%;
+
+    margin-top: 3px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 12px;
+}
+
+.analytics-category-legend-item {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    min-width: 0;
+
+    font-size: 13px;
+    line-height: 1.3;
+
+    color: #979ba0;
+}
+
+.analytics-category-legend-name {
+    min-width: 0;
+
+    display: flex;
+    align-items: center;
+
+    gap: 9px;
+}
+
+.analytics-category-legend-name span:last-child {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.analytics-category-legend-item strong {
+    flex: 0 0 auto;
+
+    font-size: 14px;
+    line-height: 1;
+
+    font-weight: 600;
+
+    color: #d8dadd;
+}
+
+
+/* =========================================================
+   21. CATEGORY DOTS
+   ========================================================= */
+
+.analytics-category-dot {
+    width: 8px;
+    height: 8px;
+
+    flex: 0 0 8px;
+
+    border-radius: 50%;
+}
+
+
+/*
+   These are intentionally simple CSS dots.
+   No SVG is used.
+*/
+
+.analytics-category-dot-snacks {
+    background: #61d957;
+}
+
+.analytics-category-dot-beverages {
+    background: #3e86ee;
+}
+
+.analytics-category-dot-instant-food {
+    background: #e99a16;
+}
+
+.analytics-category-dot-chocolate {
+    background: #e14d92;
+}
+
+.analytics-category-dot-biscuits {
+    background: #8655e8;
+}
+
+
+/* =========================================================
+   22. BEST SELLING PRODUCTS
+   ========================================================= */
+
+.analytics-best-products-card {
+    min-width: 0;
+}
+
+.analytics-best-products-list {
+    width: 100%;
+
+    margin-top: 18px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* =========================================================
+   23. BEST PRODUCT ITEM
+   ========================================================= */
+
+.analytics-best-product-item {
+    width: 100%;
+    min-width: 0;
+
+    min-height: 74px;
+
+    padding: 15px 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 18px;
+
+    border-bottom: 1px solid #303438;
+}
+
+.analytics-best-product-item:first-child {
+    padding-top: 8px;
+}
+
+.analytics-best-product-item:last-child {
+    border-bottom: none;
+}
+
+
+/* =========================================================
+   24. PRODUCT INFO
+   ========================================================= */
+
+.analytics-best-product-info {
+    min-width: 0;
+
+    flex: 1 1 auto;
+}
+
+.analytics-best-product-name {
+    margin: 0;
+
+    font-size: 15px;
+    line-height: 1.35;
+    font-weight: 550;
+
+    color: #ededee;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.analytics-best-product-meta {
+    margin: 5px 0 0;
+
+    font-size: 12px;
+    line-height: 1.3;
+    font-weight: 400;
+
+    color: #73777c;
+}
+
+
+/* =========================================================
+   25. PRODUCT REVENUE
+   ========================================================= */
+
+.analytics-best-product-revenue {
+    flex: 0 0 auto;
+
+    font-size: 14px;
+    line-height: 1.3;
+    font-weight: 650;
+
+    color: #59d94f;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   26. ERROR STATE
+   ========================================================= */
+
+.analytics-error-state {
+    width: 100%;
+
+    margin-top: 20px;
+
+    padding: 32px;
+
+    border: 1px solid #453033;
+    border-radius: 16px;
+
+    background: #251f20;
+
+    text-align: center;
+}
+
+.analytics-error-state-content {
+    max-width: 420px;
+
+    margin: 0 auto;
+}
+
+.analytics-error-state h3 {
+    margin: 0;
+
+    font-size: 17px;
+    line-height: 1.3;
+    font-weight: 650;
+
+    color: #f0f1f2;
+}
+
+.analytics-error-state p {
+    margin: 9px 0 0;
+
+    font-size: 14px;
+    line-height: 1.5;
+
+    color: #92969b;
+}
+
+.analytics-retry-button {
+    margin-top: 18px;
+
+    min-height: 40px;
+    padding: 0 18px;
+
+    border: 1px solid #3d4145;
+    border-radius: 9px;
+
+    background: #2a2d30;
+    color: #e9eaeb;
+
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background-color 150ms ease,
+        border-color 150ms ease;
+}
+
+.analytics-retry-button:hover {
+    background: #303438;
+    border-color: #4a4e52;
+}
+
+.analytics-retry-button:focus-visible {
+    outline: 2px solid #59d94f;
+    outline-offset: 2px;
+}
+
+
+/* =========================================================
+   27. FOCUS SAFETY
+   ========================================================= */
+
+.analytics-page button:focus-visible,
+.analytics-page canvas:focus-visible {
+    outline: 2px solid #59d94f;
+    outline-offset: 2px;
+}
+
+
+/* =========================================================
+   28. LARGE DESKTOP
+   ========================================================= */
+
+@media (min-width: 1500px) {
+
+    .analytics-page {
+        padding-left: 38px;
+        padding-right: 38px;
+        padding-top: 36px;
+    }
+
+    .analytics-stat-card {
+        min-height: 138px;
+        padding: 25px 24px 23px;
+    }
+
+    .analytics-stat-value {
+        font-size: 29px;
+    }
+
+    .analytics-chart-card-large {
+        min-height: 350px;
+    }
+
+    .analytics-chart-container {
+        height: 252px;
+    }
+
+    .analytics-lower-grid .analytics-chart-card {
+        min-height: 445px;
+    }
+
+    .analytics-customer-growth-chart-container {
+        height: 325px;
+    }
+}
+
+
+/* =========================================================
+   29. STANDARD LAPTOP
+   ========================================================= */
+
+@media (max-width: 1200px) {
+
+    .analytics-page {
+        padding: 30px 28px 42px;
+    }
+
+    .analytics-stats-grid {
+        gap: 13px;
+    }
+
+    .analytics-stat-card {
+        min-height: 128px;
+        padding: 21px 20px;
+    }
+
+    .analytics-stat-value {
+        font-size: 25px;
+    }
+
+    .analytics-charts-grid {
+        gap: 13px;
+    }
+
+    .analytics-chart-card-large {
+        padding: 24px 24px 18px;
+    }
+
+    .analytics-chart-container {
+        height: 225px;
+    }
+
+    .analytics-lower-grid {
+        grid-template-columns:
+            minmax(0, 1.1fr)
+            minmax(230px, 0.8fr)
+            minmax(0, 1.05fr);
+
+        gap: 13px;
+    }
+
+    .analytics-lower-grid .analytics-chart-card {
+        padding: 24px 23px 22px;
+    }
+
+    .analytics-customer-growth-chart-container {
+        height: 295px;
+    }
+
+    .analytics-category-chart-wrapper {
+        height: 205px;
+    }
+
+    .analytics-category-canvas {
+        width: 195px;
+        height: 195px;
+    }
+}
+
+
+/* =========================================================
+   30. TABLET / SMALL LAPTOP
+   ========================================================= */
+
+@media (max-width: 980px) {
+
+    .analytics-page {
+        padding: 26px 22px 38px;
+    }
+
+    .analytics-page-title {
+        font-size: 27px;
+    }
+
+    .analytics-page-subtitle {
+        font-size: 15px;
+    }
+
+
+    /* Statistics become 2 x 2 */
+
+    .analytics-stats-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 13px;
+    }
+
+
+    /* Top charts stack */
+
+    .analytics-charts-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .analytics-chart-card-large {
+        min-height: 330px;
+    }
+
+
+    /* Lower section becomes 2 columns */
+
+    .analytics-lower-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+
+    .analytics-best-products-card {
+        grid-column: 1 / -1;
+    }
+}
+
+
+/* =========================================================
+   31. MOBILE
+   ========================================================= */
+
+@media (max-width: 680px) {
+
+    .analytics-page {
+        padding: 22px 16px 32px;
+    }
+
+    .analytics-page-header {
+        margin-bottom: 24px;
+    }
+
+    .analytics-page-title {
+        font-size: 25px;
+        letter-spacing: -0.5px;
+    }
+
+    .analytics-page-subtitle {
+        margin-top: 7px;
+        font-size: 14px;
+    }
+
+
+    /* Stats one column */
+
+    .analytics-stats-grid {
+        grid-template-columns: 1fr;
+        gap: 11px;
+
+        margin-bottom: 16px;
+    }
+
+    .analytics-stat-card {
+        min-height: 116px;
+
+        padding: 20px;
+    }
+
+    .analytics-stat-value {
+        margin-top: 9px;
+        font-size: 25px;
+    }
+
+
+    /* Charts */
+
+    .analytics-charts-grid {
+        gap: 12px;
+        margin-bottom: 12px;
+    }
+
+    .analytics-chart-card-large {
+        min-height: 315px;
+
+        padding: 22px 19px 17px;
+
+        border-radius: 15px;
+    }
+
+    .analytics-chart-title {
+        font-size: 16px;
+    }
+
+    .analytics-chart-subtitle {
+        margin-top: 6px;
+        font-size: 13px;
+    }
+
+    .analytics-chart-container {
+        height: 220px;
+        margin-top: 14px;
+    }
+
+
+    /* Lower cards */
+
+    .analytics-lower-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .analytics-lower-grid .analytics-chart-card {
+        min-height: auto;
+
+        padding: 22px 19px 21px;
+
+        border-radius: 15px;
+    }
+
+    .analytics-customer-growth-chart-container {
+        height: 250px;
+    }
+
+
+    /* Category */
+
+    .analytics-category-chart-wrapper {
+        height: 205px;
+        margin-top: 10px;
+    }
+
+    .analytics-category-canvas {
+        width: 190px;
+        height: 190px;
+    }
+
+    .analytics-category-legend {
+        gap: 11px;
+        margin-top: 2px;
+    }
+
+
+    /* Best products */
+
+    .analytics-best-products-list {
+        margin-top: 14px;
+    }
+
+    .analytics-best-product-item {
+        min-height: 69px;
+        padding: 13px 0;
+
+        gap: 12px;
+    }
+
+    .analytics-best-product-name {
+        font-size: 14px;
+    }
+
+    .analytics-best-product-meta {
+        font-size: 11px;
+    }
+
+    .analytics-best-product-revenue {
+        font-size: 13px;
+    }
+}
+
+
+/* =========================================================
+   32. VERY SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 420px) {
+
+    .analytics-page {
+        padding-left: 13px;
+        padding-right: 13px;
+    }
+
+    .analytics-stat-card {
+        padding: 18px;
+    }
+
+    .analytics-stat-value {
+        font-size: 23px;
+    }
+
+    .analytics-chart-card-large,
+    .analytics-lower-grid .analytics-chart-card {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .analytics-chart-container {
+        height: 200px;
+    }
+
+    .analytics-customer-growth-chart-container {
+        height: 220px;
+    }
+
+    .analytics-category-chart-wrapper {
+        height: 185px;
+    }
+
+    .analytics-category-canvas {
+        width: 170px;
+        height: 170px;
+    }
+}
+
+
+/* =========================================================
+   33. REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .analytics-stat-card,
+    .analytics-retry-button {
+        transition: none;
+    }
+}

@@ -1,0 +1,807 @@
+<section class="products-page" id="products-page">
+
+    <!-- =========================================================
+         PAGE HEADER
+    ========================================================== -->
+
+    <header class="products-page-header">
+
+        <div class="products-page-heading">
+
+            <div class="products-page-title-row">
+
+                <h1 class="products-page-title">
+                    Products
+                </h1>
+
+                <span class="products-count-badge" id="products-count">
+                    0
+                </span>
+
+            </div>
+
+            <p class="products-page-description">
+                Manage your products, pricing, stock and availability.
+            </p>
+
+        </div>
+
+        <button type="button" class="products-add-button" id="open-add-product" aria-label="Add a new product">
+
+            <svg class="products-add-button-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M12 5V19" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                <path d="M5 12H19" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+            </svg>
+
+            <span>
+                Add Product
+            </span>
+
+        </button>
+
+    </header>
+
+
+    <!-- =========================================================
+         FILTER / SEARCH BAR
+    ========================================================== -->
+
+    <section class="products-toolbar" aria-label="Product filters">
+
+        <div class="products-search-wrapper">
+
+            <svg class="products-search-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <circle cx="11" cy="11" r="6.5" stroke="currentColor" stroke-width="1.7" />
+                <path d="M16 16L21 21" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
+            </svg>
+
+            <input type="search" id="product-search" class="products-search-input" placeholder="Search products..."
+                autocomplete="off" aria-label="Search products">
+
+            <button type="button" id="clear-product-search" class="products-search-clear hidden"
+                aria-label="Clear search" title="Clear search">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M7 7L17 17" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
+                    <path d="M17 7L7 17" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
+                </svg>
+            </button>
+
+        </div>
+
+
+        <div class="products-filter-group">
+
+            <label class="products-filter-label" for="category-filter">
+                Category
+            </label>
+
+            <select id="category-filter" class="products-filter-select">
+
+                <option value="all">
+                    All Categories
+                </option>
+
+                <option value="snacks">
+                    Snacks
+                </option>
+
+                <option value="instant-food">
+                    Instant Food
+                </option>
+
+                <option value="chocolate">
+                    Chocolate
+                </option>
+
+                <option value="beverages">
+                    Beverages
+                </option>
+
+                <option value="biscuits">
+                    Biscuits
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div class="products-filter-group">
+
+            <label class="products-filter-label" for="stock-filter">
+                Stock
+            </label>
+
+            <select id="stock-filter" class="products-filter-select">
+
+                <option value="all">
+                    All Stock
+                </option>
+
+                <option value="in-stock">
+                    In Stock
+                </option>
+
+                <option value="out-of-stock">
+                    Out of Stock
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <button type="button" class="products-clear-filters" id="clear-product-filters">
+            Clear Filters
+        </button>
+
+    </section>
+
+
+    <!-- =========================================================
+         ACTIVE FILTER SUMMARY
+    ========================================================== -->
+
+    <div class="products-filter-summary hidden" id="products-filter-summary" aria-live="polite">
+
+        <span id="products-filter-result-count">
+            0 products found
+        </span>
+
+    </div>
+
+
+    <!-- =========================================================
+         PRODUCTS TABLE CARD
+    ========================================================== -->
+
+    <section class="products-table-card">
+
+        <!-- =====================================================
+             TABLE HEADER
+        ====================================================== -->
+
+        <div class="products-table-header">
+
+            <div>
+
+                <h2 class="products-table-title">
+                    All Products
+                </h2>
+
+                <p class="products-table-description">
+                    View and manage your complete product inventory.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- =====================================================
+             LOADING STATE
+        ====================================================== -->
+
+        <div class="products-loading-state hidden" id="products-loading-state" aria-live="polite">
+
+            <div class="products-loader"></div>
+
+            <p>
+                Loading products...
+            </p>
+
+        </div>
+
+
+        <!-- =====================================================
+             TABLE
+        ====================================================== -->
+
+        <div class="products-table-wrapper" id="products-table-wrapper">
+
+            <table class="products-table" id="products-table">
+
+                <thead>
+
+                    <tr>
+
+                        <th scope="col">
+                            Product
+                        </th>
+
+                        <th scope="col">
+                            Category
+                        </th>
+
+                        <th scope="col">
+                            MRP
+                        </th>
+
+                        <th scope="col">
+                            Price
+                        </th>
+
+                        <th scope="col">
+                            Stock
+                        </th>
+
+                        <th scope="col">
+                            Status
+                        </th>
+
+                        <th scope="col">
+                            Featured
+                        </th>
+
+                        <th scope="col" class="products-actions-column">
+                            Actions
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="products-table-body">
+                    <!-- Product rows rendered by JavaScript -->
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+        <!-- =====================================================
+             EMPTY STATE
+        ====================================================== -->
+
+        <div class="products-empty-state hidden" id="products-empty-state" aria-live="polite">
+
+            <div class="products-empty-icon">
+
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path
+                        d="M6 3H18C19.1046 3 20 3.89543 20 5V19C20 20.1046 19.1046 21 18 21H6C4.89543 21 4 20.1046 4 19V5C4 3.89543 4.89543 3 6 3Z"
+                        stroke="currentColor" stroke-width="1.6" />
+                    <path d="M8 8H16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+                    <path d="M8 12H16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+                    <path d="M8 16H13" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+                </svg>
+
+            </div>
+
+            <h3>
+                No products found
+            </h3>
+
+            <p>
+                Try changing your search or filters.
+            </p>
+
+            <button type="button" class="products-empty-clear-button" id="empty-state-clear">
+                Clear Filters
+            </button>
+
+        </div>
+
+
+        <!-- =====================================================
+             PAGINATION
+        ====================================================== -->
+
+        <footer class="products-pagination">
+
+            <p class="products-pagination-info" aria-live="polite">
+                Showing
+                <strong id="products-showing-start">0</strong>
+                –
+                <strong id="products-showing-end">0</strong>
+                of
+                <strong id="products-total-count">0</strong>
+                products
+            </p>
+
+            <div class="products-pagination-controls" id="products-pagination-controls">
+
+                <button type="button" class="products-pagination-button" id="products-prev-page"
+                    aria-label="Previous page" disabled>
+
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M15 6L9 12L15 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+
+                </button>
+
+
+                <div class="products-page-number-list" id="products-page-number-list">
+                    <!-- Page numbers rendered by JavaScript -->
+                </div>
+
+
+                <button type="button" class="products-pagination-button" id="products-next-page" aria-label="Next page"
+                    disabled>
+
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M9 6L15 12L9 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+
+                </button>
+
+            </div>
+
+        </footer>
+
+    </section>
+
+
+    <!-- =========================================================
+         ADD / EDIT PRODUCT MODAL
+    ========================================================== -->
+
+    <div class="product-modal hidden" id="product-modal" aria-hidden="true">
+
+        <div class="product-modal-overlay" id="product-modal-overlay"></div>
+
+
+        <div class="product-modal-card" role="dialog" aria-modal="true" aria-labelledby="product-modal-title"
+            aria-describedby="product-modal-description">
+
+            <!-- =================================================
+                 MODAL HEADER
+            ================================================== -->
+
+            <header class="product-modal-header">
+
+                <div class="product-modal-heading">
+
+                    <h2 id="product-modal-title">
+                        Add New Product
+                    </h2>
+
+                    <p id="product-modal-description">
+                        Add a new product to your inventory.
+                    </p>
+
+                </div>
+
+                <button type="button" class="product-modal-close" id="close-product-modal"
+                    aria-label="Close product form">
+
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M7 7L17 17" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+                        <path d="M17 7L7 17" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+                    </svg>
+
+                </button>
+
+            </header>
+
+
+            <!-- =================================================
+                 PRODUCT FORM
+            ================================================== -->
+
+            <form id="product-form" class="product-form" autocomplete="off" novalidate>
+
+                <input type="hidden" id="product-id" name="productId">
+
+
+                <!-- =============================================
+                     PRODUCT IMAGE
+                ============================================== -->
+
+                <section class="product-form-section">
+
+                    <div class="product-form-section-heading">
+
+                        <h3>
+                            Product Image
+                        </h3>
+
+                        <p>
+                            Upload a clear product image for the catalog.
+                        </p>
+
+                    </div>
+
+
+                    <div class="product-image-upload" id="product-image-upload" tabindex="0" role="button"
+                        aria-label="Upload product image">
+
+                        <input type="file" id="product-image" name="productImage"
+                            accept="image/jpeg,image/png,image/webp" hidden>
+
+
+                        <!-- =====================================
+                             EMPTY UPLOAD STATE
+                        ====================================== -->
+
+                        <div class="product-upload-empty" id="product-upload-empty">
+
+                            <div class="product-upload-icon">
+
+                                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                    <path d="M12 16V4" stroke="currentColor" stroke-width="1.8"
+                                        stroke-linecap="round" />
+                                    <path d="M7 9L12 4L17 9" stroke="currentColor" stroke-width="1.8"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M5 20H19" stroke="currentColor" stroke-width="1.8"
+                                        stroke-linecap="round" />
+                                </svg>
+
+                            </div>
+
+                            <h4>
+                                Drop product image here
+                            </h4>
+
+                            <p>
+                                or
+                                <span>
+                                    browse from your device
+                                </span>
+                            </p>
+
+                            <small>
+                                JPG, PNG or WebP · Maximum 5 MB
+                            </small>
+
+                            <small class="product-image-recommendation">
+                                Recommended: 800 × 800 px · Square image
+                            </small>
+
+                        </div>
+
+
+                        <!-- =====================================
+                             IMAGE PREVIEW
+                        ====================================== -->
+
+                        <div class="product-upload-preview hidden" id="product-upload-preview">
+
+                            <div class="product-image-preview-wrapper">
+
+                                <img src="" alt="Product preview" id="product-image-preview"
+                                    class="product-image-preview">
+
+                            </div>
+
+                            <div class="product-upload-preview-actions">
+
+                                <button type="button" class="product-image-change-button" id="change-product-image">
+                                    Change Image
+                                </button>
+
+                                <button type="button" class="product-image-remove-button" id="remove-product-image">
+                                    Remove
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <p class="product-form-help" id="product-image-help">
+                        Use a square product image with the product clearly visible
+                        against a clean background.
+                    </p>
+
+                    <p class="product-form-error hidden" id="product-image-error" aria-live="polite"></p>
+
+                </section>
+
+
+                <!-- =============================================
+                     GENERAL INFORMATION
+                ============================================== -->
+
+                <section class="product-form-section">
+
+                    <div class="product-form-section-heading">
+
+                        <h3>
+                            Product Information
+                        </h3>
+
+                        <p>
+                            Enter the basic details of the product.
+                        </p>
+
+                    </div>
+
+
+                    <div class="product-form-grid">
+
+                        <!-- Product Name -->
+
+                        <div class="product-form-group product-form-group-full">
+
+                            <label for="product-name" class="product-form-label">
+                                Product Name
+                                <span aria-hidden="true">*</span>
+                            </label>
+
+                            <input type="text" id="product-name" name="productName" class="product-form-input"
+                                placeholder="e.g. Lays Classic Salted" maxlength="100" required>
+
+                            <p class="product-form-error hidden" id="product-name-error" aria-live="polite"></p>
+
+                        </div>
+
+
+                        <!-- Category -->
+
+                        <div class="product-form-group">
+
+                            <label for="product-category" class="product-form-label">
+                                Category
+                                <span aria-hidden="true">*</span>
+                            </label>
+
+                            <select id="product-category" name="category" class="product-form-input product-form-select"
+                                required>
+
+                                <option value="" selected disabled>
+                                    Select category
+                                </option>
+
+                                <option value="snacks">
+                                    Snacks
+                                </option>
+
+                                <option value="instant-food">
+                                    Instant Food
+                                </option>
+
+                                <option value="chocolate">
+                                    Chocolate
+                                </option>
+
+                                <option value="beverages">
+                                    Beverages
+                                </option>
+
+                                <option value="biscuits">
+                                    Biscuits
+                                </option>
+
+                            </select>
+
+                            <p class="product-form-error hidden" id="product-category-error" aria-live="polite"></p>
+
+                        </div>
+
+
+                        <!-- Featured -->
+
+                        <div class="product-form-group product-featured-group">
+
+                            <label class="product-form-label">
+                                Featured Product
+                            </label>
+
+                            <label class="product-featured-toggle" for="product-featured">
+
+                                <input type="checkbox" id="product-featured" name="featured">
+
+                                <span class="product-featured-toggle-track" aria-hidden="true">
+                                    <span class="product-featured-toggle-thumb"></span>
+                                </span>
+
+                                <span class="product-featured-toggle-text">
+                                    Show as featured
+                                </span>
+
+                            </label>
+
+                        </div>
+
+
+                        <!-- MRP -->
+
+                        <div class="product-form-group">
+
+                            <label for="product-mrp" class="product-form-label">
+                                MRP
+                                <span aria-hidden="true">*</span>
+                            </label>
+
+                            <div class="product-number-input">
+
+                                <span>
+                                    ₹
+                                </span>
+
+                                <input type="number" id="product-mrp" name="mrp" class="product-form-number"
+                                    placeholder="0" min="0" step="0.01" inputmode="decimal" required>
+
+                            </div>
+
+                            <p class="product-form-error hidden" id="product-mrp-error" aria-live="polite"></p>
+
+                        </div>
+
+
+                        <!-- Selling Price -->
+
+                        <div class="product-form-group">
+
+                            <label for="product-price" class="product-form-label">
+                                Selling Price
+                                <span aria-hidden="true">*</span>
+                            </label>
+
+                            <div class="product-number-input">
+
+                                <span>
+                                    ₹
+                                </span>
+
+                                <input type="number" id="product-price" name="price" class="product-form-number"
+                                    placeholder="0" min="0" step="0.01" inputmode="decimal" required>
+
+                            </div>
+
+                            <p class="product-form-help">
+                                Customer-facing selling price.
+                            </p>
+
+                            <p class="product-form-error hidden" id="product-price-error" aria-live="polite"></p>
+
+                        </div>
+
+
+                        <!-- Stock -->
+
+                        <div class="product-form-group">
+
+                            <label for="product-stock" class="product-form-label">
+                                Stock Quantity
+                                <span aria-hidden="true">*</span>
+                            </label>
+
+                            <input type="number" id="product-stock" name="stock" class="product-form-input"
+                                placeholder="0" min="0" step="1" inputmode="numeric" required>
+
+                            <p class="product-form-help">
+                                Enter the currently available quantity.
+                            </p>
+
+                            <p class="product-form-error hidden" id="product-stock-error" aria-live="polite"></p>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =============================================
+                     FORM ERROR
+                ============================================== -->
+                <p class="product-form-general-error hidden" id="product-form-error" aria-live="polite"></p>
+
+            </form>
+
+
+            <!-- =================================================
+     MODAL FOOTER
+================================================== -->
+
+            <footer class="product-modal-footer">
+
+                <button type="button" class="product-modal-cancel-button" id="cancel-product-modal">
+                    Cancel
+                </button>
+
+                <button type="submit" class="product-modal-submit-button" id="submit-product-form" form="product-form">
+
+                    <span id="product-submit-text">
+                        Add Product
+                    </span>
+
+                    <span class="product-submit-loader hidden" id="product-submit-loader" aria-hidden="true"></span>
+
+                </button>
+
+            </footer>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================================================
+         DELETE CONFIRMATION MODAL
+    ========================================================== -->
+
+    <div class="product-delete-modal hidden" id="product-delete-modal" aria-hidden="true">
+
+        <div class="product-delete-overlay" id="product-delete-overlay"></div>
+
+
+        <div class="product-delete-card" role="dialog" aria-modal="true" aria-labelledby="product-delete-title">
+
+            <div class="product-delete-icon">
+
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M4 7H20" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
+                    <path d="M10 11V17" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
+                    <path d="M14 11V17" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
+                    <path d="M6 7L7 20H17L18 7" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" />
+                    <path d="M9 7V4H15V7" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" />
+                </svg>
+
+            </div>
+
+
+            <div class="product-delete-content">
+
+                <h2 id="product-delete-title">
+                    Delete Product?
+                </h2>
+
+                <p>
+                    Are you sure you want to delete
+                    <strong id="delete-product-name"></strong>?
+                    This action cannot be undone.
+                </p>
+
+            </div>
+
+
+            <div class="product-delete-actions">
+
+                <button type="button" class="product-delete-cancel-button" id="cancel-product-delete">
+                    Cancel
+                </button>
+
+                <button type="button" class="product-delete-confirm-button" id="confirm-product-delete">
+                    Delete Product
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================================================
+         TOAST NOTIFICATION
+    ========================================================== -->
+
+    <div class="products-toast hidden" id="products-toast" role="status" aria-live="polite">
+
+        <div class="products-toast-icon" id="products-toast-icon" aria-hidden="true">
+            ✓
+        </div>
+
+        <div class="products-toast-content">
+
+            <strong id="products-toast-title">
+                Success
+            </strong>
+
+            <p id="products-toast-message">
+                Product updated successfully.
+            </p>
+
+        </div>
+
+        <button type="button" class="products-toast-close" id="products-toast-close" aria-label="Close notification">
+
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M7 7L17 17" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
+                <path d="M17 7L7 17" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
+            </svg>
+
+        </button>
+
+    </div>
+
+</section>
+</body>

@@ -1,0 +1,670 @@
+<section class="orders-page" id="orders-page">
+
+    <!-- =========================================================
+         PAGE HEADER
+    ========================================================== -->
+
+    <header class="orders-page-header">
+
+        <div class="orders-page-heading">
+
+            <h1 class="orders-page-title">
+                Orders
+            </h1>
+
+            <p class="orders-page-subtitle" id="orders-today-summary">
+                0 total orders today
+            </p>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================================================
+         ORDER STATUS FILTERS
+    ========================================================== -->
+
+    <nav
+        class="orders-status-tabs"
+        id="orders-status-tabs"
+        aria-label="Order status filters"
+    >
+
+        <button
+            type="button"
+            class="orders-status-tab active"
+            data-status="all"
+            aria-selected="true"
+        >
+            <span>All</span>
+            <span
+                class="orders-status-count"
+                id="orders-count-all"
+            >
+                0
+            </span>
+        </button>
+
+        <button
+            type="button"
+            class="orders-status-tab"
+            data-status="pending"
+            aria-selected="false"
+        >
+            <span>Pending</span>
+            <span
+                class="orders-status-count"
+                id="orders-count-pending"
+            >
+                0
+            </span>
+        </button>
+
+        <button
+            type="button"
+            class="orders-status-tab"
+            data-status="preparing"
+            aria-selected="false"
+        >
+            <span>Preparing</span>
+            <span
+                class="orders-status-count"
+                id="orders-count-preparing"
+            >
+                0
+            </span>
+        </button>
+
+        <button
+            type="button"
+            class="orders-status-tab"
+            data-status="ready"
+            aria-selected="false"
+        >
+            <span>Ready</span>
+            <span
+                class="orders-status-count"
+                id="orders-count-ready"
+            >
+                0
+            </span>
+        </button>
+
+        <button
+            type="button"
+            class="orders-status-tab"
+            data-status="delivered"
+            aria-selected="false"
+        >
+            <span>Delivered</span>
+            <span
+                class="orders-status-count"
+                id="orders-count-delivered"
+            >
+                0
+            </span>
+        </button>
+
+        <button
+            type="button"
+            class="orders-status-tab"
+            data-status="cancelled"
+            aria-selected="false"
+        >
+            <span>Cancelled</span>
+            <span
+                class="orders-status-count"
+                id="orders-count-cancelled"
+            >
+                0
+            </span>
+        </button>
+
+    </nav>
+
+
+    <!-- =========================================================
+         SEARCH
+    ========================================================== -->
+
+    <section class="orders-toolbar">
+
+        <div class="orders-search-wrapper">
+
+            <svg
+                class="orders-search-icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                aria-hidden="true"
+            >
+                <circle
+                    cx="11"
+                    cy="11"
+                    r="6.5"
+                    stroke="currentColor"
+                    stroke-width="1.7"
+                />
+
+                <path
+                    d="M16 16L21 21"
+                    stroke="currentColor"
+                    stroke-width="1.7"
+                    stroke-linecap="round"
+                />
+            </svg>
+
+            <input
+                type="search"
+                id="orders-search"
+                class="orders-search-input"
+                placeholder="Search by order ID or customer name..."
+                autocomplete="off"
+                aria-label="Search orders"
+            >
+
+            <button
+                type="button"
+                id="clear-orders-search"
+                class="orders-search-clear hidden"
+                aria-label="Clear order search"
+                title="Clear search"
+            >
+
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    aria-hidden="true"
+                >
+                    <path
+                        d="M7 7L17 17"
+                        stroke="currentColor"
+                        stroke-width="1.7"
+                        stroke-linecap="round"
+                    />
+
+                    <path
+                        d="M17 7L7 17"
+                        stroke="currentColor"
+                        stroke-width="1.7"
+                        stroke-linecap="round"
+                    />
+                </svg>
+
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================================
+         FILTER RESULT SUMMARY
+    ========================================================== -->
+
+    <div
+        class="orders-filter-summary hidden"
+        id="orders-filter-summary"
+        aria-live="polite"
+    >
+        <span id="orders-filter-result-count">
+            0 orders found
+        </span>
+    </div>
+
+
+    <!-- =========================================================
+         ORDERS TABLE CARD
+    ========================================================== -->
+
+    <section class="orders-table-card">
+
+        <!-- =====================================================
+             TABLE HEADER
+        ====================================================== -->
+
+        <header class="orders-table-header">
+
+            <div class="orders-table-heading">
+
+                <h2 class="orders-table-title">
+                    All Orders
+                </h2>
+
+                <p class="orders-table-description">
+                    View and manage customer orders.
+                </p>
+
+            </div>
+
+        </header>
+
+
+        <!-- =====================================================
+             LOADING STATE
+        ====================================================== -->
+
+        <div
+            class="orders-loading-state hidden"
+            id="orders-loading-state"
+            aria-live="polite"
+        >
+
+            <div
+                class="orders-loader"
+                aria-hidden="true"
+            ></div>
+
+            <p>
+                Loading orders...
+            </p>
+
+        </div>
+
+
+        <!-- =====================================================
+             TABLE WRAPPER
+        ====================================================== -->
+
+        <div
+            class="orders-table-wrapper"
+            id="orders-table-wrapper"
+        >
+
+            <table
+                class="orders-table"
+                id="orders-table"
+            >
+
+                <thead>
+
+                    <tr>
+
+                        <th scope="col">
+                            Order
+                        </th>
+
+                        <th scope="col">
+                            Customer
+                        </th>
+
+                        <th scope="col">
+                            Items
+                        </th>
+
+                        <th scope="col">
+                            Total
+                        </th>
+
+                        <th scope="col">
+                            Payment
+                        </th>
+
+                        <th scope="col">
+                            Status
+                        </th>
+
+                        <th scope="col">
+                            Time
+                        </th>
+
+                        <th
+                            scope="col"
+                            class="orders-actions-column"
+                        >
+                            Action
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="orders-table-body">
+                    <!-- Order rows rendered by JavaScript -->
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+        <!-- =====================================================
+             EMPTY STATE
+        ====================================================== -->
+
+        <div
+            class="orders-empty-state hidden"
+            id="orders-empty-state"
+            aria-live="polite"
+        >
+
+            <div
+                class="orders-empty-icon"
+                aria-hidden="true"
+            >
+
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                >
+
+                    <path
+                        d="M5 7.5L12 4L19 7.5V16.5L12 20L5 16.5V7.5Z"
+                        stroke="currentColor"
+                        stroke-width="1.6"
+                        stroke-linejoin="round"
+                    />
+
+                    <path
+                        d="M5 7.5L12 11L19 7.5"
+                        stroke="currentColor"
+                        stroke-width="1.6"
+                        stroke-linejoin="round"
+                    />
+
+                    <path
+                        d="M12 11V20"
+                        stroke="currentColor"
+                        stroke-width="1.6"
+                    />
+
+                </svg>
+
+            </div>
+
+            <h3 id="orders-empty-title">
+                No orders found
+            </h3>
+
+            <p id="orders-empty-description">
+                Try changing your search or selected status.
+            </p>
+
+            <button
+                type="button"
+                class="orders-empty-clear-button"
+                id="clear-orders-filters"
+            >
+                Clear Filters
+            </button>
+
+        </div>
+
+
+        <!-- =====================================================
+             PAGINATION
+        ====================================================== -->
+
+        <footer class="orders-pagination">
+
+            <p
+                class="orders-pagination-info"
+                aria-live="polite"
+            >
+
+                Showing
+
+                <strong id="orders-showing-start">
+                    0
+                </strong>
+
+                –
+
+                <strong id="orders-showing-end">
+                    0
+                </strong>
+
+                of
+
+                <strong id="orders-total-count">
+                    0
+                </strong>
+
+                orders
+
+            </p>
+
+
+            <div
+                class="orders-pagination-controls"
+                id="orders-pagination-controls"
+            >
+
+                <button
+                    type="button"
+                    class="orders-pagination-button"
+                    id="orders-prev-page"
+                    aria-label="Previous page"
+                    disabled
+                >
+
+                    <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        aria-hidden="true"
+                    >
+
+                        <path
+                            d="M15 6L9 12L15 18"
+                            stroke="currentColor"
+                            stroke-width="1.8"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        />
+
+                    </svg>
+
+                </button>
+
+
+                <div
+                    class="orders-page-number-list"
+                    id="orders-page-number-list"
+                >
+                    <!-- Page numbers rendered by JavaScript -->
+                </div>
+
+
+                <button
+                    type="button"
+                    class="orders-pagination-button"
+                    id="orders-next-page"
+                    aria-label="Next page"
+                    disabled
+                >
+
+                    <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        aria-hidden="true"
+                    >
+
+                        <path
+                            d="M9 6L15 12L9 18"
+                            stroke="currentColor"
+                            stroke-width="1.8"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        />
+
+                    </svg>
+
+                </button>
+
+            </div>
+
+        </footer>
+
+    </section>
+
+
+    <!-- =========================================================
+         ORDER DETAILS MODAL
+         
+         View functionality is intentionally kept as a shell for now.
+         JS will populate the details later.
+    ========================================================== -->
+
+    <div
+        class="order-details-modal hidden"
+        id="order-details-modal"
+        aria-hidden="true"
+    >
+
+        <div
+            class="order-details-overlay"
+            id="order-details-overlay"
+        ></div>
+
+
+        <div
+            class="order-details-card"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="order-details-title"
+        >
+
+            <header class="order-details-header">
+
+                <div class="order-details-heading">
+
+                    <h2 id="order-details-title">
+                        Order Details
+                    </h2>
+
+                    <p id="order-details-subtitle">
+                        Order information
+                    </p>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="order-details-close"
+                    id="close-order-details"
+                    aria-label="Close order details"
+                >
+
+                    <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        aria-hidden="true"
+                    >
+
+                        <path
+                            d="M7 7L17 17"
+                            stroke="currentColor"
+                            stroke-width="1.8"
+                            stroke-linecap="round"
+                        />
+
+                        <path
+                            d="M17 7L7 17"
+                            stroke="currentColor"
+                            stroke-width="1.8"
+                            stroke-linecap="round"
+                        />
+
+                    </svg>
+
+                </button>
+
+            </header>
+
+
+            <div
+                class="order-details-content"
+                id="order-details-content"
+            >
+
+                <!--
+                    Order details will be rendered here later.
+                -->
+
+            </div>
+
+
+            <footer class="order-details-footer">
+
+                <button
+                    type="button"
+                    class="order-details-close-button"
+                    id="close-order-details-footer"
+                >
+                    Close
+                </button>
+
+            </footer>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================================================
+         TOAST
+    ========================================================== -->
+
+    <div
+        class="orders-toast hidden"
+        id="orders-toast"
+        role="status"
+        aria-live="polite"
+    >
+
+        <div
+            class="orders-toast-icon"
+            id="orders-toast-icon"
+            aria-hidden="true"
+        >
+            ✓
+        </div>
+
+        <div class="orders-toast-content">
+
+            <strong id="orders-toast-title">
+                Success
+            </strong>
+
+            <p id="orders-toast-message">
+                Order updated successfully.
+            </p>
+
+        </div>
+
+
+        <button
+            type="button"
+            class="orders-toast-close"
+            id="orders-toast-close"
+            aria-label="Close notification"
+        >
+
+            <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                aria-hidden="true"
+            >
+
+                <path
+                    d="M7 7L17 17"
+                    stroke="currentColor"
+                    stroke-width="1.7"
+                    stroke-linecap="round"
+                />
+
+                <path
+                    d="M17 7L7 17"
+                    stroke="currentColor"
+                    stroke-width="1.7"
+                    stroke-linecap="round"
+                />
+
+            </svg>
+
+        </button>
+
+    </div>
+
+</section>

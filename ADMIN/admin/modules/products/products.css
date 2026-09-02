@@ -1,0 +1,2956 @@
+/* =========================================================
+   SNACKMENT ADMIN
+   PRODUCTS MODULE
+   FINAL PRODUCTS.CSS
+   ---------------------------------------------------------
+   Designed specifically for:
+
+   products.html
+   products.js
+
+   IMPORTANT:
+   - This file is a COMPLETE replacement.
+   - Do NOT keep the previous products.css below/above it.
+   - All selectors are scoped to the Products module where
+     possible so global admin CSS cannot break the form.
+========================================================= */
+
+
+/* =========================================================
+   01. PRODUCTS MODULE RESET
+========================================================= */
+
+#products-page,
+#products-page *,
+#products-page *::before,
+#products-page *::after {
+    box-sizing: border-box;
+}
+
+#products-page {
+    width: 100%;
+    min-width: 0;
+    color: #e8e8e9;
+}
+
+#products-page button,
+#products-page input,
+#products-page select {
+    font: inherit;
+}
+
+#products-page button {
+    -webkit-tap-highlight-color: transparent;
+}
+
+#products-page img {
+    display: block;
+    max-width: 100%;
+}
+
+#products-page h1,
+#products-page h2,
+#products-page h3,
+#products-page h4,
+#products-page p {
+    margin-top: 0;
+}
+
+#products-page button:focus-visible,
+#products-page input:focus-visible,
+#products-page select:focus-visible {
+    outline: 2px solid #65d852;
+    outline-offset: 2px;
+}
+
+
+/* =========================================================
+   02. PRODUCTS PAGE
+========================================================= */
+
+.products-page {
+    width: 100%;
+    min-width: 0;
+    padding: 30px 30px 40px;
+}
+
+
+/* =========================================================
+   03. PAGE HEADER
+========================================================= */
+
+.products-page-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 24px;
+
+    width: 100%;
+    margin-bottom: 24px;
+}
+
+.products-page-heading {
+    min-width: 0;
+}
+
+.products-page-title-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.products-page-title {
+    margin: 0;
+
+    color: #f1f1f2;
+
+    font-size: 28px;
+    line-height: 1.2;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+.products-count-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 28px;
+    height: 24px;
+
+    padding: 0 8px;
+
+    border: 1px solid rgba(101, 216, 82, 0.22);
+    border-radius: 999px;
+
+    background: rgba(101, 216, 82, 0.09);
+    color: #65d852;
+
+    font-size: 12px;
+    line-height: 1;
+    font-weight: 700;
+}
+
+.products-page-description {
+    margin: 7px 0 0;
+
+    color: #73767a;
+
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   04. ADD PRODUCT BUTTON
+========================================================= */
+
+.products-add-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    flex: 0 0 auto;
+
+    min-height: 42px;
+
+    padding: 0 17px;
+
+    border: 1px solid rgba(101, 216, 82, 0.22);
+    border-radius: 9px;
+
+    background: #65d852;
+    color: #071008;
+
+    font-size: 13px;
+    line-height: 1;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.18s ease,
+        transform 0.18s ease,
+        box-shadow 0.18s ease;
+}
+
+.products-add-button:hover {
+    background: #72df61;
+
+    box-shadow:
+        0 8px 22px rgba(101, 216, 82, 0.14);
+
+    transform: translateY(-1px);
+}
+
+.products-add-button:active {
+    transform: translateY(0);
+}
+
+.products-add-button-icon {
+    width: 16px;
+    height: 16px;
+}
+
+
+/* =========================================================
+   05. PRODUCTS TOOLBAR
+========================================================= */
+
+.products-toolbar {
+    display: grid;
+    grid-template-columns: minmax(280px, 1fr) 150px 150px auto;
+
+    align-items: end;
+
+    gap: 14px;
+
+    width: 100%;
+
+    padding: 17px;
+
+    border: 1px solid #292c2e;
+    border-radius: 13px;
+
+    background: #202224;
+}
+
+.products-search-wrapper {
+    position: relative;
+
+    min-width: 0;
+}
+
+.products-search-icon {
+    position: absolute;
+
+    left: 14px;
+    top: 50%;
+
+    width: 17px;
+    height: 17px;
+
+    color: #686b70;
+
+    transform: translateY(-50%);
+
+    pointer-events: none;
+}
+
+.products-search-input {
+    width: 100%;
+    height: 42px;
+
+    padding: 0 40px 0 40px;
+
+    border: 1px solid #292c2e;
+    border-radius: 9px;
+
+    background: #151718;
+    color: #e8e8e9;
+
+    font-size: 12px;
+
+    outline: none;
+
+    transition:
+        border-color 0.18s ease,
+        box-shadow 0.18s ease;
+}
+
+.products-search-input::placeholder {
+    color: #626568;
+}
+
+.products-search-input:hover {
+    border-color: #34383a;
+}
+
+.products-search-input:focus {
+    border-color: rgba(101, 216, 82, 0.55);
+
+    box-shadow:
+        0 0 0 3px rgba(101, 216, 82, 0.08);
+}
+
+.products-search-clear {
+    position: absolute;
+
+    right: 9px;
+    top: 50%;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 27px;
+    height: 27px;
+
+    padding: 0;
+
+    border: 0;
+    border-radius: 7px;
+
+    background: transparent;
+    color: #707378;
+
+    cursor: pointer;
+
+    transform: translateY(-50%);
+
+    transition:
+        background-color 0.18s ease,
+        color 0.18s ease;
+}
+
+.products-search-clear:hover {
+    background: #292c2e;
+    color: #d5d6d7;
+}
+
+.products-search-clear svg {
+    width: 14px;
+    height: 14px;
+}
+
+
+/* =========================================================
+   06. FILTER GROUPS
+========================================================= */
+
+.products-filter-group {
+    min-width: 0;
+}
+
+.products-filter-label {
+    display: block;
+
+    margin: 0 0 7px;
+
+    color: #85888c;
+
+    font-size: 10px;
+    line-height: 1;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.products-filter-select {
+    width: 100%;
+    height: 42px;
+
+    padding: 0 34px 0 13px;
+
+    border: 1px solid #292c2e;
+    border-radius: 9px;
+
+    background-color: #151718;
+    color: #dfe0e1;
+
+    font-size: 12px;
+
+    outline: none;
+
+    cursor: pointer;
+
+    transition:
+        border-color 0.18s ease,
+        box-shadow 0.18s ease;
+}
+
+.products-filter-select:hover {
+    border-color: #383b3e;
+}
+
+.products-filter-select:focus {
+    border-color: rgba(101, 216, 82, 0.55);
+
+    box-shadow:
+        0 0 0 3px rgba(101, 216, 82, 0.08);
+}
+
+.products-filter-select option {
+    background: #181a1b;
+    color: #e8e8e9;
+}
+
+
+/* =========================================================
+   07. CLEAR FILTERS
+========================================================= */
+
+.products-clear-filters {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 42px;
+
+    padding: 0 15px;
+
+    border: 1px solid #333638;
+    border-radius: 9px;
+
+    background: #202224;
+    color: #a8aaad;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        border-color 0.18s ease,
+        color 0.18s ease,
+        background-color 0.18s ease;
+}
+
+.products-clear-filters:hover {
+    border-color: #46494c;
+    background: #292c2e;
+    color: #e3e4e5;
+}
+
+
+/* =========================================================
+   08. FILTER SUMMARY
+========================================================= */
+
+.products-filter-summary {
+    display: flex;
+    align-items: center;
+
+    min-height: 34px;
+
+    margin: 8px 0 0;
+
+    padding: 0 4px;
+
+    color: #777a7e;
+
+    font-size: 11px;
+    line-height: 1;
+}
+
+
+/* =========================================================
+   09. PRODUCTS TABLE CARD
+========================================================= */
+
+.products-table-card {
+    width: 100%;
+    min-width: 0;
+
+    margin-top: 14px;
+
+    overflow: hidden;
+
+    border: 1px solid #292c2e;
+    border-radius: 13px;
+
+    background: #202224;
+}
+
+.products-table-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    min-height: 84px;
+
+    padding: 20px 21px;
+
+    border-bottom: 1px solid #2b2e30;
+}
+
+.products-table-title {
+    margin: 0;
+
+    color: #e9eaeb;
+
+    font-size: 17px;
+    line-height: 1.25;
+    font-weight: 700;
+}
+
+.products-table-description {
+    margin: 5px 0 0;
+
+    color: #707378;
+
+    font-size: 11px;
+    line-height: 1.45;
+}
+
+
+/* =========================================================
+   10. LOADING STATE
+========================================================= */
+
+.products-loading-state {
+    min-height: 150px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+
+    color: #777a7e;
+}
+
+.products-loading-state p {
+    margin: 0;
+
+    font-size: 11px;
+}
+
+.products-loader {
+    width: 32px;
+    height: 32px;
+
+    border: 3px solid #34383a;
+    border-top-color: #65d852;
+
+    border-radius: 50%;
+
+    animation:
+        products-spin 0.8s linear infinite;
+}
+
+@keyframes products-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* =========================================================
+   11. PRODUCTS TABLE
+========================================================= */
+
+.products-table-wrapper {
+    width: 100%;
+
+    overflow-x: auto;
+    overflow-y: visible;
+
+    scrollbar-width: thin;
+    scrollbar-color: #383b3e transparent;
+}
+
+.products-table-wrapper::-webkit-scrollbar {
+    height: 7px;
+}
+
+.products-table-wrapper::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.products-table-wrapper::-webkit-scrollbar-thumb {
+    background: #383b3e;
+    border-radius: 999px;
+}
+
+.products-table {
+    width: 100%;
+    min-width: 900px;
+
+    border-collapse: collapse;
+    border-spacing: 0;
+
+    table-layout: auto;
+}
+
+.products-table thead {
+    background: #1b1d1f;
+}
+
+.products-table th {
+    height: 45px;
+
+    padding: 0 16px;
+
+    border-bottom: 1px solid #2c2f31;
+
+    color: #707378;
+
+    font-size: 9px;
+    line-height: 1;
+    font-weight: 700;
+    letter-spacing: 0.09em;
+    text-align: left;
+    text-transform: uppercase;
+
+    white-space: nowrap;
+}
+
+.products-table td {
+    height: 68px;
+
+    padding: 10px 16px;
+
+    border-bottom: 1px solid #2b2e30;
+
+    color: #d9dadb;
+
+    font-size: 11px;
+    line-height: 1.35;
+
+    vertical-align: middle;
+
+    white-space: nowrap;
+}
+
+.products-table tbody tr {
+    transition:
+        background-color 0.15s ease;
+}
+
+.products-table tbody tr:hover {
+    background: rgba(255, 255, 255, 0.018);
+}
+
+.products-table tbody tr:last-child td {
+    border-bottom: 0;
+}
+
+
+/* =========================================================
+   12. TABLE PRODUCT CELL
+========================================================= */
+
+.product-table-product {
+    display: flex;
+    align-items: center;
+
+    min-width: 230px;
+
+    gap: 11px;
+}
+
+.product-table-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 40px;
+    height: 40px;
+
+    flex: 0 0 40px;
+
+    overflow: hidden;
+
+    border: 1px solid #303335;
+    border-radius: 8px;
+
+    background: #17191a;
+}
+
+.product-table-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+.product-table-product-info {
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 3px;
+}
+
+.product-table-product-info strong {
+    display: block;
+
+    overflow: hidden;
+
+    max-width: 220px;
+
+    color: #e4e5e6;
+
+    font-size: 11px;
+    line-height: 1.25;
+    font-weight: 700;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.product-table-product-info span {
+    display: block;
+
+    color: #626568;
+
+    font-size: 9px;
+    line-height: 1.2;
+}
+
+
+/* =========================================================
+   13. CATEGORY BADGE
+========================================================= */
+
+.product-category-badge {
+    display: inline-flex;
+    align-items: center;
+
+    min-height: 25px;
+
+    padding: 0 9px;
+
+    border: 1px solid #34373a;
+    border-radius: 7px;
+
+    background: #282a2c;
+    color: #9b9ea2;
+
+    font-size: 9px;
+    line-height: 1;
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   14. STOCK / STATUS BADGES
+========================================================= */
+
+.product-stock-badge {
+    display: inline-flex;
+    align-items: center;
+
+    color: #aeb0b3;
+
+    font-size: 10px;
+    font-weight: 500;
+}
+
+.product-stock-badge.in-stock {
+    color: #aeb0b3;
+}
+
+.product-stock-badge.out-of-stock {
+    color: #f06a6a;
+}
+
+.product-status-badge {
+    display: inline-flex;
+    align-items: center;
+
+    font-size: 10px;
+    line-height: 1;
+    font-weight: 600;
+}
+
+.product-status-badge.in-stock {
+    color: #d5d6d7;
+}
+
+.product-status-badge.out-of-stock {
+    color: #f06a6a;
+}
+
+
+/* =========================================================
+   15. FEATURED BADGES
+========================================================= */
+
+.product-featured-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 25px;
+
+    padding: 0 9px;
+
+    border: 1px solid rgba(101, 216, 82, 0.2);
+    border-radius: 999px;
+
+    background: rgba(101, 216, 82, 0.08);
+    color: #65d852;
+
+    font-size: 9px;
+    line-height: 1;
+    font-weight: 700;
+}
+
+.product-not-featured {
+    color: #575a5d;
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   16. TABLE ACTIONS
+========================================================= */
+
+.products-actions-column {
+    text-align: right !important;
+}
+
+.product-row-actions {
+    display: inline-flex;
+    align-items: center;
+
+    gap: 5px;
+}
+
+.product-action-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 38px;
+    height: 29px;
+
+    padding: 0 8px;
+
+    border: 1px solid #34373a;
+    border-radius: 7px;
+
+    background: #202224;
+    color: #9da0a3;
+
+    font-size: 9px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.16s ease,
+        border-color 0.16s ease,
+        color 0.16s ease;
+}
+
+.product-action-button:hover {
+    border-color: #4a4d50;
+    background: #292c2e;
+    color: #e1e2e3;
+}
+
+.product-action-button.danger:hover {
+    border-color: rgba(239, 92, 92, 0.35);
+    background: rgba(239, 92, 92, 0.08);
+    color: #f27b7b;
+}
+
+
+/* =========================================================
+   17. EMPTY STATE
+========================================================= */
+
+.products-empty-state {
+    min-height: 220px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    padding: 40px 20px;
+
+    text-align: center;
+}
+
+.products-empty-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 48px;
+    height: 48px;
+
+    margin-bottom: 13px;
+
+    border: 1px solid #333638;
+    border-radius: 12px;
+
+    background: #181a1b;
+    color: #686b70;
+}
+
+.products-empty-icon svg {
+    width: 22px;
+    height: 22px;
+}
+
+.products-empty-state h3 {
+    margin: 0;
+
+    color: #d9dadb;
+
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.products-empty-state p {
+    margin: 6px 0 14px;
+
+    color: #6f7276;
+
+    font-size: 11px;
+}
+
+.products-empty-clear-button {
+    min-height: 34px;
+
+    padding: 0 13px;
+
+    border: 1px solid #34373a;
+    border-radius: 8px;
+
+    background: #202224;
+    color: #a4a7aa;
+
+    font-size: 10px;
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+.products-empty-clear-button:hover {
+    background: #292c2e;
+    color: #e0e1e2;
+}
+
+
+/* =========================================================
+   18. PAGINATION
+========================================================= */
+
+.products-pagination {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    min-height: 58px;
+
+    padding: 0 17px;
+
+    border-top: 1px solid #2b2e30;
+}
+
+.products-pagination-info {
+    margin: 0;
+
+    color: #696c70;
+
+    font-size: 10px;
+}
+
+.products-pagination-info strong {
+    color: #aeb0b3;
+    font-weight: 600;
+}
+
+.products-pagination-controls {
+    display: flex;
+    align-items: center;
+
+    gap: 4px;
+}
+
+.products-pagination-button,
+.products-pagination-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 29px;
+    height: 29px;
+
+    padding: 0;
+
+    border: 1px solid #34373a;
+    border-radius: 7px;
+
+    background: #202224;
+    color: #8c8f93;
+
+    font-size: 10px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.16s ease,
+        border-color 0.16s ease,
+        color 0.16s ease;
+}
+
+.products-pagination-button svg {
+    width: 14px;
+    height: 14px;
+}
+
+.products-pagination-button:hover:not(:disabled),
+.products-pagination-number:hover {
+    border-color: #46494c;
+    background: #292c2e;
+    color: #dfe0e1;
+}
+
+.products-pagination-button:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+}
+
+.products-pagination-number.active {
+    border-color: rgba(101, 216, 82, 0.35);
+
+    background: rgba(101, 216, 82, 0.10);
+    color: #65d852;
+}
+
+
+/* =========================================================
+   19. PRODUCT MODAL
+========================================================= */
+
+/*
+   IMPORTANT ARCHITECTURE
+
+   Modal
+      ↓
+   Card
+      ↓
+   Header      fixed
+   Form        scrollable
+   Footer      fixed
+
+   This prevents the form from being squeezed into a
+   zero-height area.
+*/
+
+.product-modal {
+    position: fixed;
+    inset: 0;
+
+    z-index: 10000;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: 100%;
+
+    padding: 24px;
+
+    overflow: hidden;
+
+    background: rgba(0, 0, 0, 0.72);
+
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+
+/*
+   JavaScript controls visibility through .hidden.
+   Keep this scoped so another global modal cannot affect it.
+*/
+
+#products-page .product-modal.hidden {
+    display: none !important;
+}
+
+
+/* =========================================================
+   20. MODAL OVERLAY
+========================================================= */
+
+.product-modal-overlay {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background: transparent;
+
+    cursor: default;
+}
+
+
+/* =========================================================
+   21. MODAL CARD
+========================================================= */
+
+.product-modal-card {
+    position: relative;
+
+    z-index: 1;
+
+    display: flex !important;
+    flex-direction: column !important;
+
+    width: min(920px, calc(100vw - 48px));
+    max-width: 920px;
+
+    height: min(820px, calc(100vh - 48px));
+    max-height: calc(100vh - 48px);
+
+    min-height: 0;
+
+    overflow: hidden;
+
+    border: 1px solid #35383a;
+    border-radius: 18px;
+
+    background: #202224;
+
+    box-shadow:
+        0 24px 70px rgba(0, 0, 0, 0.55),
+        0 8px 28px rgba(0, 0, 0, 0.35);
+
+    animation: product-modal-enter 0.20s ease-out;
+}
+
+@keyframes product-modal-enter {
+    from {
+        opacity: 0;
+        transform: translateY(10px) scale(0.985);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+
+/* =========================================================
+   22. MODAL HEADER
+========================================================= */
+
+.product-modal-header {
+    position: relative;
+
+    z-index: 2;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    flex: 0 0 auto;
+
+    min-height: 88px;
+
+    padding: 20px 25px;
+
+    border-bottom: 1px solid #303336;
+
+    background: #202224;
+}
+
+.product-modal-heading {
+    min-width: 0;
+}
+
+.product-modal-heading h2 {
+    margin: 0;
+
+    color: #f0f1f2;
+
+    font-size: 20px;
+    line-height: 1.25;
+    font-weight: 700;
+    letter-spacing: -0.015em;
+}
+
+.product-modal-heading p {
+    margin: 6px 0 0;
+
+    color: #73767a;
+
+    font-size: 11px;
+    line-height: 1.4;
+}
+
+.product-modal-close {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    flex: 0 0 auto;
+
+    width: 38px;
+    height: 38px;
+
+    padding: 0;
+
+    border: 1px solid #36393b;
+    border-radius: 9px;
+
+    background: #202224;
+    color: #8f9296;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.16s ease,
+        border-color 0.16s ease,
+        color 0.16s ease,
+        transform 0.16s ease;
+}
+
+.product-modal-close:hover {
+    border-color: #45484b;
+    background: #292c2e;
+    color: #e0e1e2;
+
+    transform: translateY(-1px);
+}
+
+.product-modal-close:active {
+    transform: translateY(0);
+}
+
+.product-modal-close svg {
+    width: 16px;
+    height: 16px;
+}
+
+
+/* =========================================================
+   23. PRODUCT FORM — CRITICAL LAYOUT
+========================================================= */
+
+/*
+   DO NOT change this to display:block.
+
+   The form itself owns the scroll.
+   Header and footer stay visible.
+*/
+
+#products-page .product-modal-card > .product-form {
+    display: block !important;
+
+    position: relative;
+
+    flex: 1 1 auto !important;
+
+    width: 100%;
+    min-width: 0;
+    min-height: 0;
+
+    height: auto;
+
+    margin: 0;
+
+    padding: 0 25px;
+
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    visibility: visible !important;
+    opacity: 1 !important;
+
+    color: #e8e8e9;
+
+    scrollbar-width: thin;
+    scrollbar-color: #3b3e40 transparent;
+}
+
+#products-page .product-modal-card > .product-form::-webkit-scrollbar {
+    width: 7px;
+}
+
+#products-page .product-modal-card > .product-form::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+#products-page .product-modal-card > .product-form::-webkit-scrollbar-thumb {
+    background: #3b3e40;
+    border-radius: 999px;
+}
+
+#products-page .product-modal-card > .product-form::-webkit-scrollbar-thumb:hover {
+    background: #4b4e51;
+}
+
+
+/* =========================================================
+   24. FORM SECTION
+========================================================= */
+
+#products-page .product-form-section {
+    display: block !important;
+
+    width: 100%;
+    min-width: 0;
+
+    margin: 0;
+    padding: 26px 0 28px;
+
+    visibility: visible !important;
+    opacity: 1 !important;
+
+    border: 0;
+}
+
+#products-page .product-form-section + .product-form-section {
+    border-top: 1px solid #303336;
+}
+
+
+/* =========================================================
+   25. FORM SECTION HEADING
+========================================================= */
+
+#products-page .product-form-section-heading {
+    display: block !important;
+
+    width: 100%;
+
+    margin: 0 0 18px;
+
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+#products-page .product-form-section-heading h3 {
+    display: block !important;
+
+    margin: 0;
+
+    color: #e9eaeb;
+
+    font-size: 15px;
+    line-height: 1.3;
+    font-weight: 700;
+}
+
+#products-page .product-form-section-heading p {
+    display: block !important;
+
+    margin: 5px 0 0;
+
+    color: #717479;
+
+    font-size: 11px;
+    line-height: 1.45;
+}
+
+
+/* =========================================================
+   26. IMAGE UPLOAD
+========================================================= */
+
+#products-page .product-image-upload {
+    position: relative;
+
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    min-height: 245px;
+
+    padding: 22px;
+
+    border: 1px dashed #3c4140;
+    border-radius: 14px;
+
+    background: #181a1b;
+
+    color: #dfe0e1;
+
+    cursor: pointer;
+
+    transition:
+        border-color 0.18s ease,
+        background-color 0.18s ease,
+        box-shadow 0.18s ease;
+}
+
+#products-page .product-image-upload:hover {
+    border-color: rgba(101, 216, 82, 0.45);
+
+    background: #1a1d1e;
+}
+
+#products-page .product-image-upload:focus-visible {
+    border-color: #65d852;
+
+    box-shadow:
+        0 0 0 3px rgba(101, 216, 82, 0.08);
+}
+
+#products-page .product-image-upload.drag-over {
+    border-color: #65d852;
+
+    background:
+        rgba(101, 216, 82, 0.055);
+
+    box-shadow:
+        inset 0 0 0 1px rgba(101, 216, 82, 0.12);
+}
+
+
+/* =========================================================
+   27. IMAGE EMPTY STATE
+========================================================= */
+
+#products-page .product-upload-empty {
+    display: flex !important;
+
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    min-height: 190px;
+
+    text-align: center;
+
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+#products-page .product-upload-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 50px;
+    height: 50px;
+
+    margin-bottom: 14px;
+
+    border: 1px solid rgba(101, 216, 82, 0.20);
+    border-radius: 12px;
+
+    background: rgba(101, 216, 82, 0.055);
+    color: #65d852;
+}
+
+#products-page .product-upload-icon svg {
+    width: 23px;
+    height: 23px;
+}
+
+#products-page .product-upload-empty h4 {
+    margin: 0;
+
+    color: #dfe0e1;
+
+    font-size: 13px;
+    line-height: 1.3;
+    font-weight: 700;
+}
+
+#products-page .product-upload-empty p {
+    margin: 6px 0 0;
+
+    color: #686b70;
+
+    font-size: 11px;
+    line-height: 1.4;
+}
+
+#products-page .product-upload-empty p span {
+    color: #65d852;
+    font-weight: 600;
+}
+
+#products-page .product-upload-empty small {
+    display: block;
+
+    margin-top: 8px;
+
+    color: #5f6266;
+
+    font-size: 9px;
+    line-height: 1.35;
+}
+
+#products-page .product-upload-empty .product-image-recommendation {
+    margin-top: 4px;
+
+    color: #777a7e;
+
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   28. IMAGE PREVIEW
+========================================================= */
+
+#products-page .product-upload-preview {
+    display: flex !important;
+
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    min-height: 200px;
+
+    gap: 16px;
+
+    padding: 22px;
+
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+#products-page .product-image-preview-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 150px;
+    height: 150px;
+
+    overflow: hidden;
+
+    border: 1px solid #404346;
+    border-radius: 14px;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 8px 22px rgba(0, 0, 0, 0.20);
+}
+
+#products-page .product-image-preview {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+
+    background: #ffffff;
+}
+
+#products-page .product-upload-preview-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 9px;
+}
+
+#products-page .product-image-change-button,
+#products-page .product-image-remove-button {
+    min-height: 36px;
+
+    padding: 0 14px;
+
+    border-radius: 8px;
+
+    font-size: 10px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.16s ease,
+        border-color 0.16s ease,
+        color 0.16s ease;
+}
+
+#products-page .product-image-change-button {
+    border: 1px solid rgba(101, 216, 82, 0.30);
+
+    background: rgba(101, 216, 82, 0.06);
+    color: #65d852;
+}
+
+#products-page .product-image-change-button:hover {
+    border-color: rgba(101, 216, 82, 0.55);
+
+    background: rgba(101, 216, 82, 0.11);
+}
+
+#products-page .product-image-remove-button {
+    border: 1px solid rgba(239, 92, 92, 0.30);
+
+    background: rgba(239, 92, 92, 0.055);
+    color: #ed7777;
+}
+
+#products-page .product-image-remove-button:hover {
+    border-color: rgba(239, 92, 92, 0.50);
+
+    background: rgba(239, 92, 92, 0.10);
+}
+
+
+/* =========================================================
+   29. IMAGE HELP / ERROR
+========================================================= */
+
+#products-page .product-form-help {
+    display: block !important;
+
+    margin: 9px 0 0;
+
+    color: #5f6266;
+
+    font-size: 9px;
+    line-height: 1.5;
+
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+#products-page .product-form-error {
+    display: block;
+
+    margin: 6px 0 0;
+
+    color: #f27777;
+
+    font-size: 10px;
+    line-height: 1.35;
+}
+
+
+/* =========================================================
+   30. PRODUCT INFORMATION GRID
+   ---------------------------------------------------------
+   THIS IS ONE OF THE CRITICAL FIXES.
+========================================================= */
+
+#products-page .product-form-grid {
+    display: grid !important;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        minmax(0, 1fr);
+
+    gap: 19px 18px;
+
+    width: 100%;
+    min-width: 0;
+
+    margin: 0;
+
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+
+/*
+   Full-width product name.
+*/
+
+#products-page .product-form-group-full {
+    grid-column: 1 / -1;
+}
+
+
+/* =========================================================
+   31. FORM GROUP
+   ---------------------------------------------------------
+   NO global `.form-group` selector here.
+   Only the exact Products class is styled.
+========================================================= */
+
+#products-page .product-form-group {
+    display: flex !important;
+
+    flex-direction: column !important;
+    align-items: stretch !important;
+
+    width: 100%;
+    min-width: 0;
+    min-height: 0;
+
+    margin: 0;
+    padding: 0;
+
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+
+/* =========================================================
+   32. FORM LABEL
+========================================================= */
+
+#products-page .product-form-label {
+    display: block !important;
+
+    margin: 0 0 7px;
+
+    color: #cfd0d2;
+
+    font-size: 10px;
+    line-height: 1.3;
+    font-weight: 700;
+
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+#products-page .product-form-label > span {
+    color: #65d852;
+}
+
+
+/* =========================================================
+   33. TEXT / SELECT INPUTS
+========================================================= */
+
+#products-page .product-form-input {
+    display: block !important;
+
+    width: 100%;
+    min-width: 0;
+    height: 42px;
+
+    padding: 0 12px;
+
+    border: 1px solid #36393b;
+    border-radius: 9px;
+
+    background: #151718;
+    color: #e3e4e5;
+
+    font-size: 11px;
+    line-height: 42px;
+
+    outline: none;
+
+    transition:
+        border-color 0.18s ease,
+        box-shadow 0.18s ease,
+        background-color 0.18s ease;
+
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+#products-page input.product-form-input {
+    line-height: normal;
+}
+
+#products-page .product-form-input::placeholder {
+    color: #5f6266;
+}
+
+#products-page .product-form-input:hover {
+    border-color: #44474a;
+}
+
+#products-page .product-form-input:focus {
+    border-color: rgba(101, 216, 82, 0.55);
+
+    background: #17191a;
+
+    box-shadow:
+        0 0 0 3px rgba(101, 216, 82, 0.075);
+}
+
+
+/* =========================================================
+   34. SELECT
+========================================================= */
+
+#products-page .product-form-select {
+    appearance: auto;
+    -webkit-appearance: auto;
+
+    cursor: pointer;
+}
+
+#products-page .product-form-select option {
+    background: #181a1b;
+    color: #e3e4e5;
+}
+
+
+/* =========================================================
+   35. NUMBER INPUT
+========================================================= */
+
+#products-page .product-number-input {
+    display: flex;
+    align-items: center;
+
+    width: 100%;
+    min-width: 0;
+    height: 42px;
+
+    overflow: hidden;
+
+    border: 1px solid #36393b;
+    border-radius: 9px;
+
+    background: #151718;
+
+    transition:
+        border-color 0.18s ease,
+        box-shadow 0.18s ease;
+}
+
+#products-page .product-number-input:focus-within {
+    border-color: rgba(101, 216, 82, 0.55);
+
+    box-shadow:
+        0 0 0 3px rgba(101, 216, 82, 0.075);
+}
+
+#products-page .product-number-input > span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 36px;
+    height: 100%;
+
+    flex: 0 0 36px;
+
+    border-right: 1px solid #2f3234;
+
+    color: #777a7e;
+
+    font-size: 11px;
+    font-weight: 600;
+}
+
+#products-page .product-form-number {
+    display: block !important;
+
+    width: 100%;
+    min-width: 0;
+    height: 40px;
+
+    padding: 0 11px;
+
+    border: 0;
+    outline: 0;
+
+    background: transparent;
+    color: #e3e4e5;
+
+    font-size: 11px;
+
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+#products-page .product-form-number::placeholder {
+    color: #5f6266;
+}
+
+#products-page .product-form-number::-webkit-outer-spin-button,
+#products-page .product-form-number::-webkit-inner-spin-button {
+    margin: 0;
+}
+
+
+/* =========================================================
+   36. FORM GROUP HELP
+========================================================= */
+
+#products-page .product-form-group > .product-form-help {
+    margin-top: 6px;
+}
+
+
+/* =========================================================
+   37. FIELD ERRORS
+========================================================= */
+
+#products-page .product-form-input.field-error,
+#products-page .product-number-input:has(.field-error) {
+    border-color: rgba(239, 92, 92, 0.65);
+}
+
+#products-page .product-form-input.field-error:focus {
+    border-color: #ef7070;
+
+    box-shadow:
+        0 0 0 3px rgba(239, 92, 92, 0.08);
+}
+
+#products-page .product-number-input:has(.field-error):focus-within {
+    border-color: rgba(239, 92, 92, 0.65);
+
+    box-shadow:
+        0 0 0 3px rgba(239, 92, 92, 0.08);
+}
+
+
+/* =========================================================
+   38. FEATURED PRODUCT
+========================================================= */
+
+#products-page .product-featured-group {
+    justify-content: flex-start !important;
+}
+
+#products-page .product-featured-toggle {
+    display: inline-flex !important;
+    align-items: center;
+
+    width: fit-content;
+    max-width: 100%;
+
+    gap: 9px;
+
+    min-height: 42px;
+
+    color: #85888c;
+
+    font-size: 10px;
+    line-height: 1.3;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+#products-page .product-featured-toggle input {
+    position: absolute;
+
+    width: 1px;
+    height: 1px;
+
+    margin: -1px;
+    padding: 0;
+
+    overflow: hidden;
+
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+
+    white-space: nowrap;
+}
+
+#products-page .product-featured-toggle-track {
+    position: relative;
+
+    display: inline-flex;
+    align-items: center;
+
+    width: 37px;
+    height: 22px;
+
+    flex: 0 0 37px;
+
+    padding: 2px;
+
+    border-radius: 999px;
+
+    background: #34373a;
+
+    transition:
+        background-color 0.18s ease,
+        box-shadow 0.18s ease;
+}
+
+#products-page .product-featured-toggle-thumb {
+    display: block;
+
+    width: 18px;
+    height: 18px;
+
+    border-radius: 50%;
+
+    background: #96999d;
+
+    box-shadow:
+        0 1px 3px rgba(0, 0, 0, 0.30);
+
+    transform: translateX(0);
+
+    transition:
+        transform 0.18s ease,
+        background-color 0.18s ease;
+}
+
+#products-page .product-featured-toggle input:checked
+    + .product-featured-toggle-track {
+    background: rgba(101, 216, 82, 0.28);
+
+    box-shadow:
+        inset 0 0 0 1px rgba(101, 216, 82, 0.18);
+}
+
+#products-page .product-featured-toggle input:checked
+    + .product-featured-toggle-track
+    .product-featured-toggle-thumb {
+    background: #65d852;
+
+    transform: translateX(15px);
+}
+
+#products-page .product-featured-toggle input:focus-visible
+    + .product-featured-toggle-track {
+    outline: 2px solid #65d852;
+    outline-offset: 2px;
+}
+
+#products-page .product-featured-toggle-text {
+    color: #85888c;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   39. GENERAL FORM ERROR
+========================================================= */
+
+#products-page .product-form-general-error {
+    display: block;
+
+    margin: 0;
+
+    padding: 11px 13px;
+
+    border: 1px solid rgba(239, 92, 92, 0.22);
+    border-radius: 9px;
+
+    background: rgba(239, 92, 92, 0.055);
+    color: #f07878;
+
+    font-size: 10px;
+    line-height: 1.4;
+}
+
+
+/* =========================================================
+   40. MODAL FOOTER
+========================================================= */
+
+#products-page .product-modal-footer {
+    position: relative;
+
+    z-index: 2;
+
+    display: flex !important;
+    align-items: center;
+    justify-content: flex-end;
+
+    flex: 0 0 auto !important;
+
+    min-height: 72px;
+
+    width: 100%;
+
+    gap: 9px;
+
+    margin: 0;
+
+    padding: 14px 25px;
+
+    border-top: 1px solid #303336;
+
+    background: #202224;
+
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+
+/* =========================================================
+   41. CANCEL BUTTON
+========================================================= */
+
+#products-page .product-modal-cancel-button,
+#products-page .product-modal-submit-button {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 108px;
+    height: 38px;
+
+    padding: 0 15px;
+
+    border-radius: 8px;
+
+    font-size: 10px;
+    line-height: 1;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.16s ease,
+        border-color 0.16s ease,
+        color 0.16s ease,
+        opacity 0.16s ease;
+}
+
+#products-page .product-modal-cancel-button {
+    border: 1px solid #383b3e;
+
+    background: #202224;
+    color: #a7aaad;
+}
+
+#products-page .product-modal-cancel-button:hover {
+    border-color: #4a4d50;
+
+    background: #292c2e;
+    color: #e0e1e2;
+}
+
+
+/* =========================================================
+   42. SUBMIT BUTTON
+========================================================= */
+
+#products-page .product-modal-submit-button {
+    border: 1px solid rgba(101, 216, 82, 0.25);
+
+    background: #65d852;
+    color: #071008;
+}
+
+#products-page .product-modal-submit-button:hover:not(:disabled) {
+    background: #72df61;
+}
+
+#products-page .product-modal-submit-button:disabled {
+    opacity: 0.55;
+
+    cursor: not-allowed;
+}
+
+
+/* =========================================================
+   43. SUBMIT LOADER
+========================================================= */
+
+#products-page .product-submit-loader {
+    display: inline-block;
+
+    width: 13px;
+    height: 13px;
+
+    margin-left: 7px;
+
+    border: 2px solid rgba(7, 16, 8, 0.28);
+    border-top-color: #071008;
+
+    border-radius: 50%;
+
+    animation:
+        products-spin 0.7s linear infinite;
+}
+
+
+/* =========================================================
+   44. DELETE MODAL
+========================================================= */
+
+.product-delete-modal {
+    position: fixed;
+    inset: 0;
+
+    z-index: 10001;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 24px;
+
+    background: rgba(0, 0, 0, 0.72);
+
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+#products-page .product-delete-modal.hidden {
+    display: none !important;
+}
+
+.product-delete-overlay {
+    position: absolute;
+    inset: 0;
+}
+
+.product-delete-card {
+    position: relative;
+
+    z-index: 1;
+
+    width: min(430px, calc(100vw - 40px));
+
+    padding: 26px;
+
+    border: 1px solid #373a3c;
+    border-radius: 15px;
+
+    background: #202224;
+
+    box-shadow:
+        0 24px 65px rgba(0, 0, 0, 0.50);
+
+    animation: product-modal-enter 0.20s ease-out;
+}
+
+.product-delete-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 42px;
+    height: 42px;
+
+    margin-bottom: 15px;
+
+    border: 1px solid rgba(239, 92, 92, 0.22);
+    border-radius: 10px;
+
+    background: rgba(239, 92, 92, 0.07);
+    color: #ef7474;
+}
+
+.product-delete-icon svg {
+    width: 20px;
+    height: 20px;
+}
+
+.product-delete-content h2 {
+    margin: 0;
+
+    color: #ececed;
+
+    font-size: 17px;
+    line-height: 1.3;
+    font-weight: 700;
+}
+
+.product-delete-content p {
+    margin: 7px 0 0;
+
+    color: #777a7e;
+
+    font-size: 11px;
+    line-height: 1.55;
+}
+
+.product-delete-content strong {
+    color: #cfd0d2;
+    font-weight: 700;
+}
+
+.product-delete-actions {
+    display: flex;
+    justify-content: flex-end;
+
+    gap: 8px;
+
+    margin-top: 22px;
+}
+
+.product-delete-cancel-button,
+.product-delete-confirm-button {
+    min-height: 36px;
+
+    padding: 0 14px;
+
+    border-radius: 8px;
+
+    font-size: 10px;
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+.product-delete-cancel-button {
+    border: 1px solid #383b3e;
+
+    background: #202224;
+    color: #a7aaad;
+}
+
+.product-delete-cancel-button:hover {
+    background: #292c2e;
+    color: #e1e2e3;
+}
+
+.product-delete-confirm-button {
+    border: 1px solid rgba(239, 92, 92, 0.25);
+
+    background: rgba(239, 92, 92, 0.10);
+    color: #ef7b7b;
+}
+
+.product-delete-confirm-button:hover {
+    background: rgba(239, 92, 92, 0.16);
+}
+
+
+/* =========================================================
+   45. TOAST
+========================================================= */
+
+.products-toast {
+    position: fixed;
+
+    right: 22px;
+    bottom: 22px;
+
+    z-index: 10002;
+
+    display: flex;
+    align-items: center;
+
+    width: min(340px, calc(100vw - 40px));
+
+    min-height: 58px;
+
+    gap: 10px;
+
+    padding: 10px 11px;
+
+    border: 1px solid #36393b;
+    border-radius: 11px;
+
+    background: #202224;
+
+    box-shadow:
+        0 18px 42px rgba(0, 0, 0, 0.40);
+
+    animation: products-toast-enter 0.20s ease-out;
+}
+
+#products-page .products-toast.hidden {
+    display: none !important;
+}
+
+@keyframes products-toast-enter {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.products-toast-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 30px;
+    height: 30px;
+
+    flex: 0 0 30px;
+
+    border: 1px solid rgba(101, 216, 82, 0.20);
+    border-radius: 8px;
+
+    background: rgba(101, 216, 82, 0.08);
+    color: #65d852;
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.products-toast-content {
+    min-width: 0;
+    flex: 1;
+}
+
+.products-toast-content strong {
+    display: block;
+
+    color: #e8e8e9;
+
+    font-size: 10px;
+    line-height: 1.3;
+    font-weight: 700;
+}
+
+.products-toast-content p {
+    margin: 3px 0 0;
+
+    overflow: hidden;
+
+    color: #717479;
+
+    font-size: 9px;
+    line-height: 1.35;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.products-toast-close {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 25px;
+    height: 25px;
+
+    flex: 0 0 25px;
+
+    padding: 0;
+
+    border: 0;
+    border-radius: 6px;
+
+    background: transparent;
+    color: #66696d;
+
+    cursor: pointer;
+}
+
+.products-toast-close:hover {
+    background: #292c2e;
+    color: #e0e1e2;
+}
+
+.products-toast-close svg {
+    width: 13px;
+    height: 13px;
+}
+
+
+/* =========================================================
+   46. BODY LOCK
+========================================================= */
+
+body.product-modal-open {
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   47. CRITICAL VISIBILITY GUARANTEES
+   ---------------------------------------------------------
+   These are intentionally placed AFTER all normal form
+   rules so accidental admin/global CSS cannot make the
+   information form disappear.
+========================================================= */
+
+#products-page .product-modal:not(.hidden)
+.product-modal-card {
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+#products-page .product-modal:not(.hidden)
+.product-modal-card > .product-form {
+    display: block !important;
+
+    flex: 1 1 auto !important;
+
+    min-height: 0 !important;
+
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+#products-page .product-modal:not(.hidden)
+.product-form-section {
+    display: block !important;
+
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+#products-page .product-modal:not(.hidden)
+.product-form-grid {
+    display: grid !important;
+
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+#products-page .product-modal:not(.hidden)
+.product-form-group {
+    display: flex !important;
+
+    flex-direction: column !important;
+
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+#products-page .product-modal:not(.hidden)
+.product-form-label {
+    display: block !important;
+
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+#products-page .product-modal:not(.hidden)
+.product-form-input {
+    display: block !important;
+
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+#products-page .product-modal:not(.hidden)
+.product-number-input {
+    display: flex !important;
+
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+#products-page .product-modal:not(.hidden)
+.product-featured-toggle {
+    display: inline-flex !important;
+
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+#products-page .product-modal:not(.hidden)
+.product-modal-footer {
+    display: flex !important;
+
+    flex: 0 0 auto !important;
+
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+
+/* =========================================================
+   48. MEDIUM HEIGHT DESKTOP
+========================================================= */
+
+@media (max-height: 820px) {
+
+    .product-modal {
+        padding: 18px;
+    }
+
+    .product-modal-card {
+        width: min(900px, calc(100vw - 36px));
+        height: calc(100vh - 36px);
+        max-height: calc(100vh - 36px);
+    }
+
+    .product-modal-header {
+        min-height: 76px;
+
+        padding: 17px 22px;
+    }
+
+    #products-page .product-modal-card > .product-form {
+        padding-left: 22px;
+        padding-right: 22px;
+    }
+
+    #products-page .product-form-section {
+        padding-top: 22px;
+        padding-bottom: 24px;
+    }
+
+    #products-page .product-form-section-heading {
+        margin-bottom: 14px;
+    }
+
+    #products-page .product-image-upload {
+        min-height: 210px;
+    }
+
+    #products-page .product-upload-empty {
+        min-height: 165px;
+    }
+
+    #products-page .product-modal-footer {
+        min-height: 66px;
+
+        padding: 12px 22px;
+    }
+}
+
+
+/* =========================================================
+   49. TABLET
+========================================================= */
+
+@media (max-width: 1000px) {
+
+    .products-page {
+        padding: 24px 22px 34px;
+    }
+
+    .products-toolbar {
+        grid-template-columns:
+            minmax(0, 1fr)
+            minmax(140px, 160px)
+            minmax(140px, 160px)
+            auto;
+    }
+
+    .product-modal-card {
+        width: min(900px, calc(100vw - 36px));
+    }
+}
+
+
+/* =========================================================
+   50. TABLET / SMALLER WIDTH
+========================================================= */
+
+@media (max-width: 800px) {
+
+    .products-toolbar {
+        grid-template-columns:
+            minmax(0, 1fr)
+            minmax(140px, 1fr)
+            minmax(140px, 1fr);
+
+        gap: 12px;
+    }
+
+    .products-search-wrapper {
+        grid-column: 1 / -1;
+    }
+
+    .products-clear-filters {
+        width: fit-content;
+    }
+
+    #products-page .product-form-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .product-modal-card {
+        width: min(760px, calc(100vw - 30px));
+    }
+}
+
+
+/* =========================================================
+   51. MOBILE — 700PX
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .products-page {
+        padding: 20px 15px 28px;
+    }
+
+    .products-page-header {
+        flex-direction: column;
+        align-items: stretch;
+
+        gap: 15px;
+    }
+
+    .products-page-title {
+        font-size: 24px;
+    }
+
+    .products-add-button {
+        width: 100%;
+    }
+
+    .products-toolbar {
+        grid-template-columns: 1fr;
+
+        align-items: stretch;
+
+        gap: 10px;
+
+        padding: 14px;
+    }
+
+    .products-search-wrapper {
+        grid-column: auto;
+        width: 100%;
+    }
+
+    .products-filter-group {
+        width: 100%;
+    }
+
+    .products-clear-filters {
+        width: 100%;
+    }
+
+    .products-table-card {
+        border-radius: 12px;
+    }
+
+    .products-table-header {
+        padding: 16px;
+    }
+
+    .products-pagination {
+        align-items: flex-start;
+        flex-direction: column;
+
+        gap: 12px;
+
+        padding: 14px 15px;
+    }
+
+    .products-pagination-controls {
+        width: 100%;
+
+        justify-content: flex-end;
+    }
+
+
+    /* -----------------------------------------------------
+       MOBILE PRODUCT MODAL
+    ----------------------------------------------------- */
+
+    .product-modal {
+        align-items: stretch;
+        justify-content: stretch;
+
+        padding: 0;
+    }
+
+    .product-modal-card {
+        width: 100%;
+        max-width: none;
+
+        height: 100%;
+        max-height: none;
+
+        border-right: 0;
+        border-left: 0;
+        border-bottom: 0;
+
+        border-radius: 0;
+    }
+
+    .product-modal-header {
+        min-height: 72px;
+
+        padding: 15px 17px;
+    }
+
+    .product-modal-heading h2 {
+        font-size: 17px;
+    }
+
+    .product-modal-heading p {
+        font-size: 10px;
+    }
+
+    .product-modal-close {
+        width: 36px;
+        height: 36px;
+    }
+
+    #products-page .product-modal-card > .product-form {
+        padding-left: 17px;
+        padding-right: 17px;
+    }
+
+    #products-page .product-form-section {
+        padding-top: 22px;
+        padding-bottom: 24px;
+    }
+
+    #products-page .product-form-grid {
+        grid-template-columns: 1fr !important;
+
+        gap: 16px;
+    }
+
+    #products-page .product-form-group-full {
+        grid-column: auto;
+    }
+
+    #products-page .product-image-upload {
+        min-height: 215px;
+    }
+
+    #products-page .product-upload-empty {
+        min-height: 175px;
+    }
+
+    #products-page .product-modal-footer {
+        min-height: 68px;
+
+        padding: 12px 17px;
+    }
+
+    #products-page .product-modal-cancel-button,
+    #products-page .product-modal-submit-button {
+        flex: 1 1 0;
+
+        min-width: 0;
+    }
+}
+
+
+/* =========================================================
+   52. SMALL MOBILE — 480PX
+========================================================= */
+
+@media (max-width: 480px) {
+
+    .products-page {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .products-page-title {
+        font-size: 22px;
+    }
+
+    .products-page-description {
+        font-size: 12px;
+    }
+
+    .products-table {
+        min-width: 900px;
+    }
+
+    .product-modal-heading p {
+        max-width: 220px;
+    }
+
+    #products-page .product-image-preview-wrapper {
+        width: 135px;
+        height: 135px;
+    }
+
+    #products-page .product-upload-preview-actions {
+        flex-wrap: wrap;
+    }
+
+    #products-page .product-image-change-button,
+    #products-page .product-image-remove-button {
+        min-height: 36px;
+    }
+
+    .product-delete-modal {
+        padding: 16px;
+    }
+
+    .product-delete-card {
+        width: 100%;
+
+        padding: 22px 18px;
+    }
+
+    .product-delete-actions {
+        flex-direction: column-reverse;
+    }
+
+    .product-delete-cancel-button,
+    .product-delete-confirm-button {
+        width: 100%;
+    }
+
+    .products-toast {
+        right: 16px;
+        bottom: 16px;
+
+        width: calc(100vw - 32px);
+    }
+}
+
+
+/* =========================================================
+   53. VERY SMALL MOBILE — 380PX
+========================================================= */
+
+@media (max-width: 380px) {
+
+    .product-modal-header {
+        padding-left: 13px;
+        padding-right: 13px;
+    }
+
+    #products-page .product-modal-card > .product-form {
+        padding-left: 13px;
+        padding-right: 13px;
+    }
+
+    #products-page .product-modal-footer {
+        padding-left: 13px;
+        padding-right: 13px;
+    }
+
+    #products-page .product-form-section {
+        padding-top: 18px;
+        padding-bottom: 20px;
+    }
+
+    #products-page .product-image-upload {
+        min-height: 200px;
+    }
+
+    #products-page .product-image-preview-wrapper {
+        width: 125px;
+        height: 125px;
+    }
+}
+
+
+/* =========================================================
+   54. ACCESSIBILITY
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    #products-page *,
+    #products-page *::before,
+    #products-page *::after {
+        scroll-behavior: auto !important;
+    }
+
+    .product-modal-card,
+    .product-delete-card,
+    .products-toast,
+    .products-loader,
+    .product-submit-loader {
+        animation: none !important;
+    }
+
+    .products-add-button,
+    .product-modal-close,
+    .product-form-input,
+    .product-form-number,
+    .product-action-button,
+    .products-pagination-button,
+    .products-pagination-number,
+    .product-featured-toggle-track,
+    .product-featured-toggle-thumb {
+        transition: none !important;
+    }
+}
+
+
+/* =========================================================
+   55. FINAL HIDDEN UTILITY
+   ---------------------------------------------------------
+   ONLY elements intentionally marked `.hidden` by JS should
+   disappear.
+
+   The form itself, form groups, grid and footer NEVER use
+   `.hidden`, so they cannot accidentally disappear.
+========================================================= */
+
+#products-page .hidden {
+    display: none !important;
+}
+
+
+/* =========================================================
+   END — FINAL PRODUCTS.CSS
+========================================================= */
